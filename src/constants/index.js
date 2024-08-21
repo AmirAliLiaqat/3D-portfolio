@@ -5,23 +5,29 @@ import {
   web,
   javascript,
   typescript,
+  devbrains,
+  bytebunch,
   html,
   css,
   reactjs,
-  redux,
   tailwind,
   nodejs,
   mongodb,
   git,
-  figma,
-  docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
-  jobit,
-  tripguide,
+  php,
+  mysql,
+  mui,
+  wordpress,
+  elementor,
+  byteBunch,
+  bytebunchBlog,
+  devBrains,
+  barberShop,
+  byteKiDuniya,
+  meharHerbals,
+  trackomatric,
+  warraichTraders,
+  waveslines,
 } from "../assets";
 
 export const navLinks = [
@@ -45,11 +51,11 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
+    title: "Web Designer",
     icon: web,
   },
   {
-    title: "React Developer",
+    title: "Web Developer",
     icon: mobile,
   },
   {
@@ -57,7 +63,7 @@ const services = [
     icon: creator,
   },
   {
-    title: "Backend Developer",
+    title: "Wordpress Developer",
     icon: backend,
   },
 ];
@@ -84,10 +90,6 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
     name: "Tailwind CSS",
     icon: tailwind,
   },
@@ -104,66 +106,78 @@ const technologies = [
     icon: git,
   },
   {
-    name: "figma",
-    icon: figma,
+    name: "Wordpress",
+    icon: wordpress,
   },
   {
-    name: "docker",
-    icon: docker,
+    name: "Elementor",
+    icon: elementor,
+  },
+  {
+    name: "PHP",
+    icon: php,
+  },
+  {
+    name: "MySql",
+    icon: mysql,
+  },
+  {
+    name: "Material UI",
+    icon: mui,
   },
 ];
 
 const experiences = [
   {
     title: "Web Designer",
-    company_name: "Starbucks",
-    icon: starbucks,
+    company_name: "ByteBunch",
+    icon: bytebunch,
     iconBg: "#383E56",
-    date: "March 2020 - April 2021",
+    date: "Sep 2021 - Dec 2021",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed and maintained websites using HTML5, CSS3, and Bootstrap5.",
+      "Collaborated with cross-functional teams including designers and product managers to create high-quality products.",
+      "Implemented responsive design and ensured cross-browser compatibility.",
+      "Worked with WordPress and Elementor for website development.",
+    ],
+  },
+  {
+    title: "WordPress Developer",
+    company_name: "ByteBunch",
+    icon: bytebunch,
+    iconBg: "#383E56",
+    date: "Jan 2022 - Aug 2023",
+    points: [
+      "Developed custom WordPress themes and plugins.",
+      "Worked extensively with PHP and MySQL for backend development.",
+      "Collaborated with cross-functional teams to deliver optimized WordPress solutions.",
+      "Ensured website performance, security, and responsiveness.",
     ],
   },
   {
     title: "Frontend Developer",
-    company_name: "Tesla",
-    icon: tesla,
+    company_name: "DevBrains",
+    icon: devbrains,
     iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
+    date: "Aug 2023 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed and maintained web applications using HTML5, CSS3, Bootstrap5, and React.js.",
+      "Worked with Next.js, Recoil.js, and Material UI for creating dynamic and scalable front-end interfaces.",
+      "Implemented GraphQL for efficient data fetching.",
+      "Collaborated with designers and backend developers to create seamless user experiences.",
     ],
   },
   {
-    title: "Backend Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
+    title: "Full Stack Developer",
+    company_name: "DevBrains",
+    icon: devbrains,
     iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
+    date: "May 2024 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developing full-stack web applications using React.js, Next.js, and Node.js.",
+      "Working with Recoil.js and Material UI to build dynamic user interfaces.",
+      "Handled backend development using Nest.js and MongoDB.",
+      "Integrated GraphQL for managing complex data queries and mutations.",
     ],
   },
 ];
@@ -197,67 +211,266 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "ByteBunch",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "ByteBunch is an IT Services Provider Company that provides many services like Web Development, Graphic development, and many more.",
     tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mysql",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: byteBunch,
+    source_code_link: "https://github.com/",
+    source_link: "https://amiraliliaqat.github.io/ByteBunch-Html/",
+  },
+  {
+    name: "ByteBunch Blog",
+    description:
+      "ByteBunch Blog is the blogging site for ByteBunch IT services provider company to aware the peoples with latest information and updates.",
+    tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mysql",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: bytebunchBlog,
+    source_code_link: "https://github.com/",
+    source_link: "https://amiraliliaqat.github.io/Test-ByteBunch-Html/",
+  },
+  {
+    name: "Byte Ki Duniya",
+    description:
+      "Byte Ki Duniya is an IT services provider company that provides all the ultimate solutions for your business.",
+    tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mysql",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: byteKiDuniya,
+    source_code_link: "https://github.com/",
+    source_link: "http://byte.likesyou.org/",
+  },
+  {
+    name: "DevBrains",
+    description:
+      "DevBrains is an IT Services Provider Company that provides many services like Web Development, Graphic development, and many more.",
+    tags: [
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "elementor",
+        color: "green-text-gradient",
+      },
+      {
+        name: "react",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: devBrains,
+    source_code_link: "https://github.com/",
+    source_link: "http://devbrains.likesyou.org/",
+  },
+  {
+    name: "Warraich Traders",
+    description:
+      "Warriach Traders is the housing society management system that is used for buying houses and managing houses materials.",
+    tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mysql",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "react",
+        color: "green-text-gradient",
+      },
+    ],
+    image: warraichTraders,
+    source_code_link: "https://github.com/",
+    source_link: "https://warraich-traders-react.vercel.app/",
+  },
+  {
+    name: "Mehar Herbals",
+    description:
+      "Mehar Herbals is an ecommerce site providing various variaty of herbals products to fullfill your herbal needs.",
+    tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "php",
+        color: "green-text-gradient",
+      },
+      {
+        name: "woocommerce",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: meharHerbals,
+    source_code_link: "https://github.com/",
+    source_link: "http://meharherbals.likesyou.org/",
+  },
+  {
+    name: "Trackomatric",
+    description:
+      "Trakomatic is an artificial intelligence system for detacking security activites at large scale and shopping malls.",
+    tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: trackomatric,
+    source_code_link: "https://github.com/",
+    source_link: "https://amiraliliaqat.github.io/Trackomatric/",
+  },
+  {
+    name: "Barber Shop",
+    description:
+      "Complate and responseive barber shop template using mern stack with good and attractive user experience and user interface.",
+    tags: [
+      {
+        name: "html5",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css3",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
       {
         name: "react",
         color: "blue-text-gradient",
       },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
     ],
-    image: carrent,
+    image: barberShop,
     source_code_link: "https://github.com/",
+    source_link: "https://barber-shop-tau-three.vercel.app/",
   },
   {
-    name: "Job IT",
+    name: "Waveslines",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Waveslines is an ecommerce services provider company which can offers products of all seasons and vatities.",
     tags: [
       {
-        name: "react",
+        name: "wordpress",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "elementor",
         color: "green-text-gradient",
       },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
     ],
-    image: jobit,
+    image: waveslines,
     source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    source_link: "https://weavelinens.com/",
   },
 ];
 
