@@ -4,6 +4,11 @@ import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
 import github from "./github.png";
+import facebook from "./facebook.png";
+import instagram from "./instagram.png";
+import linkedin from "./linkedin.png";
+import whatsapp from "./whatsapp.png";
+import x from "./x.png";
 import glob from "./glob.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -63,6 +68,11 @@ export {
   mobile,
   web,
   github,
+  facebook,
+  instagram,
+  linkedin,
+  whatsapp,
+  x,
   glob,
   menu,
   close,

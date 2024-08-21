@@ -1,4 +1,10 @@
 import {
+  google,
+  whatsapp,
+  facebook,
+  instagram,
+  github,
+  linkedin,
   mobile,
   backend,
   creator,
@@ -29,6 +35,39 @@ import {
   warraichTraders,
   waveslines,
 } from "../assets";
+
+export const socialLinks = [
+  {
+    name: "Whatsapp",
+    link: "https://web.whatsapp.com/send?phone=923090886518",
+    icon: whatsapp,
+  },
+  {
+    name: "Facebook",
+    link: "https://www.facebook.com/mehar.amir.ali.liaqat",
+    icon: facebook,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/mehar.amir.liaqat/",
+    icon: instagram,
+  },
+  {
+    name: "GitHub",
+    link: "https://github.com/AmirAliLiaqat",
+    icon: github,
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/amir-ali-liaqat-a98315222/",
+    icon: linkedin,
+  },
+  {
+    name: "Google",
+    link: "mailto:amirliaqat2020@gmail.com",
+    icon: google,
+  },
+];
 
 export const navLinks = [
   {

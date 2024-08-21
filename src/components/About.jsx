@@ -6,7 +6,7 @@ import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { services } from "../constants";
+import { services, socialLinks } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 
@@ -41,6 +41,22 @@ const About = () => {
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
+      </motion.div>
+
+      <motion.div variants={textVariant()} className="flex gap-2">
+        {socialLinks.map((socialLink, index) => (
+          <a
+            href={socialLink.link}
+            key={index}
+            className="w-15 h-15 cursor-pointer"
+          >
+            <img
+              src={socialLink.icon}
+              alt={socialLink.name}
+              className="w-10 h-10"
+            />
+          </a>
+        ))}
       </motion.div>
 
       <motion.p
