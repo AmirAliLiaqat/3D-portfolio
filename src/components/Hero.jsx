@@ -1,14 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import { motion } from "framer-motion";
-
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+import About from "./About";
 
 const Hero = () => {
   return (
-    <section className={`relative w-full h-screen mx-auto`}>
+    <section
+      className={`relative w-full min-h-screen mx-auto`}
+      style={{ marginTop: "100px" }}
+    >
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
@@ -17,34 +18,25 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915EFF]">Amir</span>
+            Hi, I'm <span className="text-[#915EFF]">Amir Ali</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop user experience, user <br className="sm:block hidden" />
-            interfaces and web applications
+            I'm a dedicated front-end developer passionate about crafting
+            exceptional web experiences. With a solid foundation of 2 years in
+            web development, I have honed my skills across various technologies
+            to create dynamic and user-friendly interfaces.
+          </p>
+          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+            Currently, I am an integral part of a dynamic team contributing my
+            skills to develop cutting-edge web applications. My role involves
+            working with React.js, TypeScript, JavaScript, and Next.js, as well
+            as backend technologies to build robust, high-performance solutions
+            catering to modern user expectations.
           </p>
         </div>
       </div>
 
-      <ComputersCanvas />
-
-      <div className="absolute bottom-0 w-full flex justify-center items-center">
-        <a href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-            />
-          </div>
-        </a>
-      </div>
+      <About />
     </section>
   );
 };

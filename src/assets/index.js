@@ -60,6 +60,7 @@ import trackomatric from "./projects/trackomatric.png";
 import warraichTraders from "./projects/warraichTraders.png";
 import waveslines from "./projects/waveslines.png";
 import ums from "./projects/ums.png";
+import allInOneMedia from "./projects/allInOneMedia.png";
 
 export {
   logo,
@@ -121,4 +122,5 @@ export {
   warraichTraders,
   waveslines,
   ums,
+  allInOneMedia,
 };

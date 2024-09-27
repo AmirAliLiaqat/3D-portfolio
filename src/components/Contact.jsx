@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
+import emailjs from "emailjs-com"; // Import EmailJS
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -26,39 +26,32 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
+    // EmailJS configuration
     emailjs
-      .send(
-        "service_m9x994m",
-        "template_y369986",
-        {
-          from_name: form.name,
-          to_name: "John Doe",
-          from_email: form.email,
-          to_email: "abc@gmail.com",
-          subject: "New Message from my portfolio website",
-          message: form.message,
-        },
-        "user_9x994m"
+      .sendForm(
+        "service_5jgq5nn", // Replace with your EmailJS service ID
+        "template_q39g54q", // Replace with your EmailJS template ID
+        formRef.current,
+        "6J3ax4aEv7ugLBiV5" // Replace with your EmailJS public key
       )
-      .then(() => {
-        setForm({
-          name: "",
-          email: "",
-          message: "",
-        });
-        setLoading(false);
-        alert("Thank you. I will get back to you as soon as possible");
-      })
-      .catch((error) => {
-        setForm({
-          name: "",
-          email: "",
-          message: "",
-        });
-        console.error("Error sending email: ", error);
-        setLoading(false);
-        alert("An error occurred while sending your message.");
-      });
+      .then(
+        (result) => {
+          console.log("Message Sent:", result.text);
+          setLoading(false);
+          alert("Message successfully sent!");
+        },
+        (error) => {
+          console.error("Error:", error.text);
+          setLoading(false);
+          alert("There was an error sending the message.");
+        }
+      );
+
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (

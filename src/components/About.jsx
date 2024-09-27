@@ -1,10 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
-/* eslint-disable react/no-unescaped-entities */
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
 import { services, socialLinks } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -48,80 +46,33 @@ const About = () => {
           <a
             href={socialLink.link}
             key={index}
-            className="w-15 h-15 cursor-pointer"
+            className="w-15 h-15 cursor-pointer me-2"
           >
-            <img
-              src={socialLink.icon}
-              alt={socialLink.name}
-              className="w-10 h-10"
-            />
+            <i className={`${socialLink.icon} fa-2x`}></i>
           </a>
         ))}
       </motion.div>
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]"
-      >
-        I'm a dedicated front-end developer passionate about crafting
-        exceptional web experiences. With a solid foundation of 2 years in web
-        development, I have honed my skills across various technologies to
-        create dynamic and user-friendly interfaces.
-      </motion.p>
-
       <motion.div className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]">
         <h1 className={styles.sectionSubText}>🛠️ My expertise lies in:</h1>
         <ul className="mt-3">
+          <li>✅ Proficient in HTML/CSS for clean, responsive designs.</li>
           <li>
-            ✅ HTML/CSS: My strong foundation in HTML and CSS ensures that the
-            visual aspects of my projects are top-notch, delivering appealing
-            designs and layouts.
+            ✅ Skilled in Bootstrap for mobile-first, visually appealing
+            layouts.
           </li>
+          <li>✅ JavaScript & TypeScript for dynamic, scalable apps.</li>
+          <li>✅ React.js & Next.js for fast, interactive web applications.</li>
           <li>
-            ✅ Bootstrap: I'm experienced in harnessing the potential of
-            Bootstrap to create visually appealing, mobile-first, and responsive
-            websites that look great across devices.
+            ✅ WordPress: Custom themes with custom post types, widgets, and
+            more.
           </li>
-          <li>
-            ✅ JavaScript: With a strong command of JavaScript, I build dynamic
-            and feature-rich web applications, enhancing user engagement and
-            functionality.
-          </li>
-          <li>
-            ✅ TypeScript: My proficiency in TypeScript enables me to write
-            clean, maintainable, and error-free code, contributing to robust and
-            scalable projects.
-          </li>
-          <li>
-            ✅ React.js: Leveraging the power of React, I excel at building
-            responsive and interactive web applications that offer seamless user
-            interactions and enhanced performance.
-          </li>
-          <li>
-            ✅ Next.js: I leverage Next.js to build server-side rendered React
-            applications, ensuring optimal performance and SEO benefits for
-            modern web applications.
-          </li>
-          <li>
-            ✅ WordPress: Having worked extensively with WordPress, I understand
-            the intricacies of creating customizable and feature-rich websites,
-            empowering clients with easy content management.
-          </li>
+          <li>✅ PHP & MySQL for robust WordPress solutions.</li>
+          <li>✅ Node.js, Express.js, and MongoDB for backend development.</li>
         </ul>
       </motion.div>
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]"
-      >
-        🚀 Currently, I am an integral part of a dynamic team contributing my
-        skills to develop cutting-edge web applications. My role involves
-        working with React.js, TypeScript, JavaScript, and Next.js, as well as
-        backend technologies to build robust, high-performance solutions
-        catering to modern user expectations.
-      </motion.p>
-
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-20 flex flex-wrap justify-center gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

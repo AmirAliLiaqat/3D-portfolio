@@ -1,10 +1,4 @@
 import {
-  google,
-  whatsapp,
-  facebook,
-  instagram,
-  github,
-  linkedin,
   mobile,
   backend,
   creator,
@@ -34,38 +28,44 @@ import {
   trackomatric,
   warraichTraders,
   waveslines,
+  allInOneMedia,
 } from "../assets";
 
 export const socialLinks = [
   {
     name: "Whatsapp",
     link: "https://web.whatsapp.com/send?phone=923090886518",
-    icon: whatsapp,
+    icon: "fa-brands fa-whatsapp",
   },
   {
     name: "Facebook",
     link: "https://www.facebook.com/mehar.amir.ali.liaqat",
-    icon: facebook,
+    icon: "fa-brands fa-facebook",
   },
   {
     name: "Instagram",
-    link: "https://www.instagram.com/mehar.amir.liaqat/",
-    icon: instagram,
+    link: "https://www.instagram.com/amir.ali.liaqat/",
+    icon: "fa-brands fa-instagram",
   },
   {
     name: "GitHub",
     link: "https://github.com/AmirAliLiaqat",
-    icon: github,
+    icon: "fa-brands fa-github",
   },
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/in/amir-ali-liaqat-a98315222/",
-    icon: linkedin,
+    link: "https://www.linkedin.com/in/amir-ali-liaqat",
+    icon: "fa-brands fa-linkedin",
   },
   {
     name: "Google",
     link: "mailto:amirliaqat2020@gmail.com",
-    icon: google,
+    icon: "fa-brands fa-google",
+  },
+  {
+    name: "Phone",
+    link: "tel:3090886518",
+    icon: "fa-solid fa-phone",
   },
 ];
 
@@ -90,19 +90,35 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Designer",
+    title: "Web Designing",
     icon: web,
   },
   {
-    title: "Web Developer",
+    title: "Web Developement",
     icon: mobile,
   },
   {
-    title: "Frontend Developer",
+    title: "Frontend Developement",
     icon: creator,
   },
   {
-    title: "Wordpress Developer",
+    title: "Wordpress Developement",
+    icon: backend,
+  },
+  {
+    title: "E-Commerce Solutions",
+    icon: web,
+  },
+  {
+    title: "Blogging Solutions",
+    icon: mobile,
+  },
+  {
+    title: "MERN Stack Development",
+    icon: creator,
+  },
+  {
+    title: "Responsive Design",
     icon: backend,
   },
 ];
@@ -510,6 +526,40 @@ const projects = [
     image: waveslines,
     source_code_link: "https://github.com/",
     source_link: "https://weavelinens.com/",
+  },
+  {
+    name: "All in one media",
+    description:
+      "All in one media is the complete and fully featured media solutions application with various modules and features.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "next.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mui",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "node.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "express.js",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "blue-text-gradient",
+      },  
+    ],
+    image: allInOneMedia,
+    source_code_link: "https://github.com/",
+    source_link: "https://all-in-one-media.vercel.app",
   },
 ];
 

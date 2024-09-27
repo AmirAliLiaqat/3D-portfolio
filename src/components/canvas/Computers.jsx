@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 import { Suspense, useEffect, useState } from "react";
+import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -8,6 +9,20 @@ import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
+
+  // Log the scene structure for debugging
+  console.log(computer.scene.children);
+
+  useEffect(() => {
+    // Traverse the scene and make sure all meshes are visible
+    computer.scene.traverse((child) => {
+      if (child.isMesh) {
+        child.visible = true;
+        // For debugging: apply a basic material to ensure it's rendering
+        child.material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      }
+    });
+  }, [computer.scene]);
 
   return (
     <mesh>
@@ -23,9 +38,8 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        scale={isMobile ? 1 : 1} // Temporarily use default scale
+        position={isMobile ? [0, 0, 0] : [0, 0, 0]} // Temporarily use default position
       />
     </mesh>
   );
