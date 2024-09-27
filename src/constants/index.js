@@ -29,6 +29,7 @@ import {
   warraichTraders,
   waveslines,
   allInOneMedia,
+  cacheStore,
 } from "../assets";
 
 export const socialLinks = [
@@ -555,11 +556,33 @@ const projects = [
       {
         name: "mongodb",
         color: "blue-text-gradient",
-      },  
+      },
     ],
     image: allInOneMedia,
     source_code_link: "https://github.com/",
     source_link: "https://all-in-one-media.vercel.app",
+  },
+  {
+    name: "Cache Store",
+    description:
+      "Cache store is full-featured online mobile accessories selling ecommerce website. Cache store have multiple categories like airbuds, hand-frees, mobile charger etc.",
+    tags: [
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "elementor",
+        color: "green-text-gradient",
+      },
+      {
+        name: "woocommerce",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: cacheStore,
+    source_code_link: "https://github.com/",
+    source_link: "https://cachestore.likesyou.org",
   },
 ];
 

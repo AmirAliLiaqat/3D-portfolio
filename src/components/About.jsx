@@ -72,6 +72,14 @@ const About = () => {
         </ul>
       </motion.div>
 
+      <motion.div>
+        <a href="https://drive.google.com/file/d/1DbTAm4LucVcbPvsDsaBpq2whymNxCWEC/view?usp=sharing" target="_blank">
+          <button className="mt-4 bg-[#915EFF] text-white py-2 px-4 rounded">
+            View Resume
+          </button>
+        </a>
+      </motion.div>
+
       <div className="mt-20 flex flex-wrap justify-center gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />

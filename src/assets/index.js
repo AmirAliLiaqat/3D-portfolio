@@ -61,6 +61,7 @@ import warraichTraders from "./projects/warraichTraders.png";
 import waveslines from "./projects/waveslines.png";
 import ums from "./projects/ums.png";
 import allInOneMedia from "./projects/allInOneMedia.png";
+import cacheStore from "./projects/cacheStore.png";
 
 export {
   logo,
@@ -123,4 +124,5 @@ export {
   waveslines,
   ums,
   allInOneMedia,
+  cacheStore,
 };
