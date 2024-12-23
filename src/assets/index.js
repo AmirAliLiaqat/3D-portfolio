@@ -62,6 +62,7 @@ import waveslines from "./projects/waveslines.png";
 import ums from "./projects/ums.png";
 import allInOneMedia from "./projects/allInOneMedia.png";
 import cacheStore from "./projects/cacheStore.png";
+import richmondInstitute from "./projects/richmondInstitute.png";
 
 export {
   logo,
@@ -125,4 +126,5 @@ export {
   ums,
   allInOneMedia,
   cacheStore,
+  richmondInstitute,
 };

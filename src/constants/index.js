@@ -30,6 +30,7 @@ import {
   waveslines,
   allInOneMedia,
   cacheStore,
+  richmondInstitute,
 } from "../assets";
 
 export const socialLinks = [
@@ -583,6 +584,28 @@ const projects = [
     image: cacheStore,
     source_code_link: "https://github.com/",
     source_link: "https://cachestore.likesyou.org",
+  },
+  {
+    name: "Richmond Institute",
+    description:
+      "Richmond Institute, showcasing its strengths and inviting potential students to explore the opportunities available.",
+    tags: [
+      {
+        name: "wordpress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "elementor",
+        color: "green-text-gradient",
+      },
+      {
+        name: "responsive-layout",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: richmondInstitute,
+    source_code_link: "https://github.com/",
+    source_link: "https://richmondinstitute.pk",
   },
 ];
 
