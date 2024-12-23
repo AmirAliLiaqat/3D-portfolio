@@ -31,6 +31,7 @@ import {
   allInOneMedia,
   cacheStore,
   richmondInstitute,
+  ums,
 } from "../assets";
 
 export const socialLinks = [
@@ -562,6 +563,40 @@ const projects = [
     image: allInOneMedia,
     source_code_link: "https://github.com/",
     source_link: "https://all-in-one-media.vercel.app",
+  },
+  {
+    name: "UMS",
+    description:
+      "UMS is the complete and fully featured student management system with various modules and features.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "next.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mui",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "node.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "express.js",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: ums,
+    source_code_link: "https://github.com/",
+    source_link: "https://mern-lms-with-dashboard-client.vercel.app",
   },
   {
     name: "Cache Store",
