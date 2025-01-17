@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
+import { GitHubButton } from "./styled";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -25,7 +26,6 @@ const Navbar = () => {
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
             Amir Ali Liaqat &nbsp;
-            {/* <span className="sm:block hidden">| Byte Ki Duniya</span> */}
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -41,6 +41,32 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        <div>
+          <GitHubButton
+            style={{
+              padding: "10px 16px",
+              color: "white",
+              width: "max-content",
+            }}
+            href="https://github.com/AmirAliLiaqat"
+            target="_blank"
+          >
+            Github
+          </GitHubButton>
+
+          <GitHubButton
+            style={{
+              padding: "10px 16px",
+              color: "white",
+              width: "max-content",
+            }}
+            href="https://www.linkedin.com/in/amir-ali-liaqat"
+            target="_blank"
+          >
+            Linkedin
+          </GitHubButton>
+        </div>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img

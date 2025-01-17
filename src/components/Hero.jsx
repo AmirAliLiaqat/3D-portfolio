@@ -7,6 +7,7 @@ const Hero = () => {
     <section
       className={`relative w-full min-h-screen mx-auto`}
       style={{ marginTop: "100px" }}
+      id="about"
     >
       <div
         className={`max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}

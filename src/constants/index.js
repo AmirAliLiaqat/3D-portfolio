@@ -78,12 +78,20 @@ export const navLinks = [
     title: "About",
   },
   {
+    id: "services",
+    title: "Services",
+  },
+  {
     id: "experience",
     title: "Experience",
   },
   {
-    id: "work",
-    title: "Work",
+    id: "education",
+    title: "Education",
+  },
+  {
+    id: "project",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -91,7 +99,7 @@ export const navLinks = [
   },
 ];
 
-const services = [
+export const services = [
   {
     title: "Web Designing",
     icon: web,
@@ -126,7 +134,7 @@ const services = [
   },
 ];
 
-const technologies = [
+export const technologies = [
   {
     name: "HTML 5",
     icon: html,
@@ -185,7 +193,7 @@ const technologies = [
   },
 ];
 
-const experiences = [
+export const experiences = [
   {
     title: "Web Designer",
     company_name: "ByteBunch",
@@ -240,7 +248,37 @@ const experiences = [
   },
 ];
 
-const testimonials = [
+export const education = [
+  {
+    id: 0,
+    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Kiit.jpeg?alt=media&token=3839d520-c59d-4341-ad8f-0980c98de4dd",
+    school: "Lahore Leads University, Lahore",
+    date: "Noc 2022 - Noc 2026",
+    grade: "3.02 CGPA",
+    desc: "I am currently pursuing a Bachelor's degree in Computer Science at Lahore Leads University. I have completed 4 semesters and have a CGPA of 3.95. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks, among others. I am also a member of the DevBrains at Johar Town Lahore, where I am learning and working on exciting projects with a team of talented developers.",
+    degree: "Bachelor of Computer Science",
+  },
+  {
+    id: 1,
+    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/methodist.png?alt=media&token=018a1b18-e2dd-4f34-8855-cff1b6b69fd3",
+    school: "Condordia College, Walton Campus",
+    date: "Apr 2021 - Apr 2022",
+    grade: "75%",
+    desc: "I completed my class 12 high school education Concordia College, where I studied fsc pre engineering.",
+    degree: "FSC Pre Engineering",
+  },
+  {
+    id: 2,
+    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/methodist.png?alt=media&token=018a1b18-e2dd-4f34-8855-cff1b6b69fd3",
+    school: "Qazi Pilot High School, Lahore",
+    date: "Apr 2008 - Apr 2020",
+    grade: "89.6%",
+    desc: "I completed my class 10 education at Qazi Pilot High School, where I studied Science with Computer Application.",
+    degree: "Matriculation in Science",
+  },
+];
+
+export const testimonials = [
   {
     testimonial:
       "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
@@ -267,7 +305,7 @@ const testimonials = [
   },
 ];
 
-const projects = [
+export const projects = [
   {
     name: "ByteBunch",
     description:
@@ -298,6 +336,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: byteBunch,
     source_code_link: "https://github.com/",
     source_link: "https://amiraliliaqat.github.io/ByteBunch-Html/",
@@ -332,6 +371,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: bytebunchBlog,
     source_code_link: "https://github.com/",
     source_link: "https://amiraliliaqat.github.io/Test-ByteBunch-Html/",
@@ -366,6 +406,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: byteKiDuniya,
     source_code_link: "https://github.com/",
     source_link: "http://byte.likesyou.org/",
@@ -388,6 +429,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: devBrains,
     source_code_link: "https://github.com/",
     source_link: "http://devbrains.likesyou.org/",
@@ -426,6 +468,7 @@ const projects = [
         color: "green-text-gradient",
       },
     ],
+    category: "wordpress",
     image: warraichTraders,
     source_code_link: "https://github.com/",
     source_link: "https://warraich-traders-react.vercel.app/",
@@ -460,6 +503,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: meharHerbals,
     source_code_link: "https://github.com/",
     source_link: "http://meharherbals.likesyou.org/",
@@ -482,6 +526,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "frontend",
     image: trackomatric,
     source_code_link: "https://github.com/",
     source_link: "https://amiraliliaqat.github.io/Trackomatric/",
@@ -508,6 +553,7 @@ const projects = [
         color: "blue-text-gradient",
       },
     ],
+    category: "mern",
     image: barberShop,
     source_code_link: "https://github.com/",
     source_link: "https://barber-shop-tau-three.vercel.app/",
@@ -526,6 +572,7 @@ const projects = [
         color: "green-text-gradient",
       },
     ],
+    category: "wordpress",
     image: waveslines,
     source_code_link: "https://github.com/",
     source_link: "https://weavelinens.com/",
@@ -560,6 +607,7 @@ const projects = [
         color: "blue-text-gradient",
       },
     ],
+    category: "mern",
     image: allInOneMedia,
     source_code_link: "https://github.com/",
     source_link: "https://all-in-one-media.vercel.app",
@@ -594,6 +642,7 @@ const projects = [
         color: "blue-text-gradient",
       },
     ],
+    category: "mern",
     image: ums,
     source_code_link: "https://github.com/",
     source_link: "https://mern-lms-with-dashboard-client.vercel.app",
@@ -616,6 +665,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: cacheStore,
     source_code_link: "https://github.com/",
     source_link: "https://cachestore.likesyou.org",
@@ -638,10 +688,9 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
+    category: "wordpress",
     image: richmondInstitute,
     source_code_link: "https://github.com/",
     source_link: "https://richmondinstitute.pk",
   },
 ];
-
-export { services, technologies, experiences, testimonials, projects };

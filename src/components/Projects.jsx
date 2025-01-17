@@ -8,6 +8,14 @@ import { github, glob } from "../assets";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
+import { useState } from "react";
+import {
+  CardContainer,
+  Container,
+  Divider,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "./styled/Project";
 
 const ProjectCard = ({
   index,
@@ -19,7 +27,7 @@ const ProjectCard = ({
   source_link,
 }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <div key={`project-${index}`}>
       <Tilt
         options={{
           max: 45,
@@ -75,15 +83,17 @@ const ProjectCard = ({
           ))}
         </div>
       </Tilt>
-    </motion.div>
+    </div>
   );
 };
 
-const Works = () => {
+const Projects = () => {
+  const [toggle, setToggle] = useState("all");
+
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
+        <p className={`${styles.sectionSubText} `}>My Projects</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       </motion.div>
 
@@ -100,13 +110,70 @@ const Works = () => {
         </motion.p>
       </div>
 
+      <Container>
+        <ToggleButtonGroup>
+          {toggle === "all" ? (
+            <ToggleButton active value="all" onClick={() => setToggle("all")}>
+              All
+            </ToggleButton>
+          ) : (
+            <ToggleButton value="all" onClick={() => setToggle("all")}>
+              All
+            </ToggleButton>
+          )}
+          <Divider />
+          {toggle === "wordpress" ? (
+            <ToggleButton
+              active
+              value="wordpress"
+              onClick={() => setToggle("wordpress")}
+            >
+              WordPress
+            </ToggleButton>
+          ) : (
+            <ToggleButton
+              value="wordpress"
+              onClick={() => setToggle("wordpress")}
+            >
+              WordPress
+            </ToggleButton>
+          )}
+          <Divider />
+          {toggle === "mern" ? (
+            <ToggleButton active value="mern" onClick={() => setToggle("mern")}>
+              MERN Stack
+            </ToggleButton>
+          ) : (
+            <ToggleButton value="mern" onClick={() => setToggle("mern")}>
+              MERN Stack
+            </ToggleButton>
+          )}
+        </ToggleButtonGroup>
+      </Container>
+
       <div className="mt-20 flex flex-wrap gap-7">
-        {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
-        ))}
+        <CardContainer>
+          {toggle === "all" &&
+            projects.map((project, index) => (
+              <ProjectCard
+                key={`project-${index}`}
+                index={index}
+                {...project}
+              />
+            ))}
+          {projects
+            .filter((item) => item.category == toggle)
+            .map((project, index) => (
+              <ProjectCard
+                key={`project-${index}`}
+                index={index}
+                {...project}
+              />
+            ))}
+        </CardContainer>
       </div>
     </>
   );
 };
 
-export default SectionWrapper(Works, "work");
+export default SectionWrapper(Projects, "project");

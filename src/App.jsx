@@ -2,13 +2,17 @@ import { BrowserRouter } from "react-router-dom";
 import {
   Contact,
   Experience,
-  // Feedbacks,
+  Feedbacks,
   Hero,
+  Services,
   Navbar,
   Tech,
-  Works,
+  Projects,
   StarsCanvas,
 } from "./components";
+import Footer from "./components/Footer";
+import { Wrapper } from "./components/styled";
+import Education from "./components/Education";
 
 const App = () => {
   return (
@@ -17,15 +21,20 @@ const App = () => {
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
           <Navbar />
           <Hero />
+          <Services />
         </div>
         <Experience />
         <Tech />
-        <Works />
-        {/* <Feedbacks /> */}
+        <Education />
+        <Projects />
+        <Feedbacks />
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />
         </div>
+        <Wrapper>
+          <Footer />
+        </Wrapper>
       </div>
     </BrowserRouter>
   );
