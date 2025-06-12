@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
-import { GitHubButton } from "./styled";
+import { CustomButton } from "./styled";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -43,29 +42,21 @@ const Navbar = () => {
         </ul>
 
         <div>
-          <GitHubButton
-            style={{
-              padding: "10px 16px",
-              color: "white",
-              width: "max-content",
-            }}
+          <CustomButton
+            className="github-btn"
             href="https://github.com/AmirAliLiaqat"
             target="_blank"
           >
             Github
-          </GitHubButton>
+          </CustomButton>
 
-          <GitHubButton
-            style={{
-              padding: "10px 16px",
-              color: "white",
-              width: "max-content",
-            }}
+          <CustomButton
+            className="linkedin-btn"
             href="https://www.linkedin.com/in/amir-ali-liaqat"
             target="_blank"
           >
             Linkedin
-          </GitHubButton>
+          </CustomButton>
         </div>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -96,6 +87,36 @@ const Navbar = () => {
                   <a href={`#${link.id}`}>{link.title}</a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://github.com/AmirAliLiaqat"
+                  target="_blank"
+                  className={`${
+                    active === "Github" ? "text-white" : "text-secondary"
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive("Github");
+                  }}
+                >
+                  Github
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/amir-ali-liaqat"
+                  target="_blank"
+                  className={`${
+                    active === "Linkedin" ? "text-white" : "text-secondary"
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive("Linkedin");
+                  }}
+                >
+                  Linkedin
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,6 +1,4 @@
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
@@ -8,6 +6,7 @@ import { socialLinks } from "../constants";
 import { textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { Img } from "./styled";
+import { profilePic } from "../assets";
 
 const About = () => {
   return (
@@ -21,13 +20,15 @@ const About = () => {
 
           <motion.div variants={textVariant()} className="flex gap-2">
             {socialLinks.map((socialLink, index) => (
-              <a
+              <motion.a
                 href={socialLink.link}
                 key={index}
-                className="w-15 h-15 cursor-pointer me-2"
+                className="w-15 h-15 cursor-pointer me-2 transition-all duration-300 hover:text-[#915EFF]"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <i className={`${socialLink.icon} fa-2x`}></i>
-              </a>
+              </motion.a>
             ))}
           </motion.div>
 
@@ -58,10 +59,15 @@ const About = () => {
             <a
               href="https://drive.google.com/file/d/1DbTAm4LucVcbPvsDsaBpq2whymNxCWEC/view?usp=sharing"
               target="_blank"
+              className="inline-block"
             >
-              <button className="mt-4 bg-[#915EFF] text-white py-2 px-4 rounded">
+              <motion.button
+                className="mt-4 bg-[#915EFF] text-white py-2 px-4 rounded transition-all duration-300 hover:bg-[#7a4fd9] hover:shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 View Resume
-              </button>
+              </motion.button>
             </a>
           </motion.div>
         </div>
@@ -75,9 +81,9 @@ const About = () => {
             }}
           >
             <Img
-              src="https://media.licdn.com/dms/image/v2/D4D35AQE0Zj6mKT-PMw/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1729500123129?e=1737734400&v=beta&t=ay_StLSL1SzO6qs-x-Mmjhvna0vO2qzY3a0C7D8Lvg0"
+              src={profilePic}
               alt="amir-ali-liaqat"
-              style={{ width: "500px", height: "500px", marginTop: "50px" }}
+              style={{ width: "500px", height: "400px", marginTop: "50px" }}
             />
           </Tilt>
         </div>

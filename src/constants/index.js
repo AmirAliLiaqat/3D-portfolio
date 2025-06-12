@@ -32,6 +32,13 @@ import {
   cacheStore,
   richmondInstitute,
   ums,
+  coffeeShop,
+  soarTask,
+  sportsArena,
+  mcclg,
+  matriculation,
+  fsc,
+  computerScience,
 } from "../assets";
 
 export const socialLinks = [
@@ -251,30 +258,33 @@ export const experiences = [
 export const education = [
   {
     id: 0,
-    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Kiit.jpeg?alt=media&token=3839d520-c59d-4341-ad8f-0980c98de4dd",
+    img: computerScience,
     school: "Lahore Leads University, Lahore",
     date: "Noc 2022 - Noc 2026",
     grade: "3.02 CGPA",
     desc: "I am currently pursuing a Bachelor's degree in Computer Science at Lahore Leads University. I have completed 4 semesters and have a CGPA of 3.95. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks, among others. I am also a member of the DevBrains at Johar Town Lahore, where I am learning and working on exciting projects with a team of talented developers.",
     degree: "Bachelor of Computer Science",
+    iconBg: "#383E56",
   },
   {
     id: 1,
-    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/methodist.png?alt=media&token=018a1b18-e2dd-4f34-8855-cff1b6b69fd3",
+    img: fsc,
     school: "Condordia College, Walton Campus",
     date: "Apr 2021 - Apr 2022",
-    grade: "75%",
+    grade: "70%",
     desc: "I completed my class 12 high school education Concordia College, where I studied fsc pre engineering.",
     degree: "FSC Pre Engineering",
+    iconBg: "#E6DEDD",
   },
   {
     id: 2,
-    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/methodist.png?alt=media&token=018a1b18-e2dd-4f34-8855-cff1b6b69fd3",
+    img: matriculation,
     school: "Qazi Pilot High School, Lahore",
     date: "Apr 2008 - Apr 2020",
-    grade: "89.6%",
+    grade: "89%",
     desc: "I completed my class 10 education at Qazi Pilot High School, where I studied Science with Computer Application.",
     degree: "Matriculation in Science",
+    iconBg: "#383E56",
   },
 ];
 
@@ -302,6 +312,22 @@ export const testimonials = [
     designation: "CTO",
     company: "456 Enterprises",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
+  },
+  {
+    testimonial:
+      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
+    name: "Lisa Wang",
+    designation: "CTO",
+    company: "456 Enterprises",
+    image: "https://randomuser.me/api/portraits/men/6.jpg",
+  },
+  {
+    testimonial:
+      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
+    name: "Lisa Wang",
+    designation: "CTO",
+    company: "456 Enterprises",
+    image: "https://randomuser.me/api/portraits/women/7.jpg",
   },
 ];
 
@@ -692,5 +718,98 @@ export const projects = [
     image: richmondInstitute,
     source_code_link: "https://github.com/",
     source_link: "https://richmondinstitute.pk",
+  },
+  {
+    name: "Coffee Shop",
+    description:
+      "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
+    tags: [
+      {
+        name: "nextJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "reactJs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwindCss",
+        color: "pink-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: coffeeShop,
+    source_code_link: "https://github.com/",
+    source_link: "https://leads-fyp.vercel.app",
+  },
+  {
+    name: "Soar Task",
+    description:
+      "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
+    tags: [
+      {
+        name: "reactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "viteJs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwindCss",
+        color: "pink-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: soarTask,
+    source_code_link: "https://github.com/",
+    source_link: "https://soar-task-react.vercel.app",
+  },
+  {
+    name: "Sports Arena",
+    description:
+      "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
+    tags: [
+      {
+        name: "reactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "viteJs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwindCss",
+        color: "pink-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: sportsArena,
+    source_code_link: "https://github.com/",
+    source_link: "https://sports-arena-eight.vercel.app",
+  },
+
+  {
+    name: "Mohammadan Computer College",
+    description:
+      "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
+    tags: [
+      {
+        name: "reactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "viteJs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "bootstrap5",
+        color: "pink-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: mcclg,
+    source_code_link: "https://github.com/",
+    source_link: "https://mcclg.vercel.app",
   },
 ];

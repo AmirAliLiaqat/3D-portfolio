@@ -31,22 +31,36 @@ export const ToggleButton = styled.div`
   }
 `;
 
-export const GitHubButton = styled.a`
+export const CustomButton = styled.a`
   border: 1.8px solid ${({ theme }) => theme.primary};
   height: 70%;
   margin-right: 1rem;
   border-radius: 20px;
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
-  padding: 0 20px;
+  padding: 10px 20px;
   font-weight: 500;
   text-decoration: none;
   font-size: 16px;
-  transition: all 0.6s ease-in-out;
-  :hover {
-    background: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.white};
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+
+  &.github-btn:hover {
+    background: #4a4a4a;
+    border-color: #4a4a4a;
+    color: white;
+  }
+
+  &.linkedin-btn:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: white;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 14px;
     display: none;

@@ -1,13 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
 import {
-  Contact,
-  Experience,
-  Feedbacks,
+  Navbar,
   Hero,
   Services,
-  Navbar,
+  Experience,
   Tech,
   Projects,
+  Feedbacks,
+  Contact,
   StarsCanvas,
 } from "./components";
 import Footer from "./components/Footer";

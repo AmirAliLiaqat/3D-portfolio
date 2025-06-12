@@ -12,6 +12,7 @@ import x from "./x.png";
 import glob from "./glob.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
+import profilePic from "./profilePic.jpeg";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -50,6 +51,10 @@ import microsoft from "./company/microsoft.png";
 import opera from "./company/opera.png";
 import youtube from "./company/youtube.png";
 
+import matriculation from "./education/matriculation.png";
+import fsc from "./education/fsc.png";
+import computerScience from "./education/computerScience.png";
+
 import byteBunch from "./projects/bytebunch.png";
 import bytebunchBlog from "./projects/bytebunchBlog.png";
 import devBrains from "./projects/devbrains.png";
@@ -63,6 +68,10 @@ import ums from "./projects/ums.png";
 import allInOneMedia from "./projects/allInOneMedia.png";
 import cacheStore from "./projects/cacheStore.png";
 import richmondInstitute from "./projects/richmondInstitute.png";
+import coffeeShop from "./projects/coffeeShop.png";
+import soarTask from "./projects/soarTask.png";
+import sportsArena from "./projects/sportsArena.png";
+import mcclg from "./projects/mcclg.png";
 
 export {
   logo,
@@ -79,6 +88,10 @@ export {
   glob,
   menu,
   close,
+  matriculation,
+  fsc,
+  computerScience,
+  profilePic,
   css,
   docker,
   figma,
@@ -127,4 +140,8 @@ export {
   allInOneMedia,
   cacheStore,
   richmondInstitute,
+  coffeeShop,
+  soarTask,
+  sportsArena,
+  mcclg,
 };

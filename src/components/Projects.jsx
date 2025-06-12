@@ -1,8 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
+import React from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
 import { github, glob } from "../assets";
 import { projects } from "../constants";
@@ -46,7 +46,7 @@ const ProjectCard = ({
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient mx-1 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient mx-1 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
             >
               <img
                 src={github}
@@ -56,7 +56,7 @@ const ProjectCard = ({
             </div>
             <div
               onClick={() => window.open(source_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
             >
               <img
                 src={glob}
@@ -89,89 +89,78 @@ const ProjectCard = ({
 
 const Projects = () => {
   const [toggle, setToggle] = useState("all");
+  const [visibleItems, setVisibleItems] = useState(6);
+
+  const filteredProjects =
+    toggle === "all"
+      ? projects
+      : projects.filter((item) => item.category === toggle);
+
+  const handleShowMore = () => {
+    setVisibleItems((prev) => prev + 3);
+  };
 
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My Projects</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
+        <p className={styles.sectionSubText}>My Projects</p>
+        <h2 className={styles.sectionHeadText}>Projects</h2>
       </motion.div>
 
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
-        </motion.p>
-      </div>
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+      >
+        Following projects showcases my skills and experience through real-world
+        examples of my work. Each project is briefly described with links to
+        code repositories and live demos in it. It reflects my ability to solve
+        complex problems, work with different technologies, and manage projects
+        effectively.
+      </motion.p>
 
       <Container>
         <ToggleButtonGroup>
-          {toggle === "all" ? (
-            <ToggleButton active value="all" onClick={() => setToggle("all")}>
-              All
-            </ToggleButton>
-          ) : (
-            <ToggleButton value="all" onClick={() => setToggle("all")}>
-              All
-            </ToggleButton>
-          )}
-          <Divider />
-          {toggle === "wordpress" ? (
-            <ToggleButton
-              active
-              value="wordpress"
-              onClick={() => setToggle("wordpress")}
-            >
-              WordPress
-            </ToggleButton>
-          ) : (
-            <ToggleButton
-              value="wordpress"
-              onClick={() => setToggle("wordpress")}
-            >
-              WordPress
-            </ToggleButton>
-          )}
-          <Divider />
-          {toggle === "mern" ? (
-            <ToggleButton active value="mern" onClick={() => setToggle("mern")}>
-              MERN Stack
-            </ToggleButton>
-          ) : (
-            <ToggleButton value="mern" onClick={() => setToggle("mern")}>
-              MERN Stack
-            </ToggleButton>
-          )}
+          {[
+            { value: "all", label: "All" },
+            { value: "wordpress", label: "WordPress" },
+            { value: "mern", label: "MERN Stack" },
+          ].map((option, index) => (
+            <React.Fragment key={option.value}>
+              {index > 0 && <Divider />}
+              <ToggleButton
+                active={toggle === option.value}
+                value={option.value}
+                onClick={() => {
+                  setToggle(option.value);
+                  setVisibleItems(6); // Reset visible items when changing category
+                }}
+              >
+                {option.label}
+              </ToggleButton>
+            </React.Fragment>
+          ))}
         </ToggleButtonGroup>
       </Container>
 
-      <div className="mt-20 flex flex-wrap gap-7">
+      <div className="mt-10 flex flex-wrap gap-7">
         <CardContainer>
-          {toggle === "all" &&
-            projects.map((project, index) => (
-              <ProjectCard
-                key={`project-${index}`}
-                index={index}
-                {...project}
-              />
-            ))}
-          {projects
-            .filter((item) => item.category == toggle)
-            .map((project, index) => (
-              <ProjectCard
-                key={`project-${index}`}
-                index={index}
-                {...project}
-              />
-            ))}
+          {filteredProjects.slice(0, visibleItems).map((project, index) => (
+            <ProjectCard key={`project-${index}`} index={index} {...project} />
+          ))}
         </CardContainer>
       </div>
+
+      {visibleItems < filteredProjects.length && (
+        <div className="mt-10 flex justify-center">
+          <motion.button
+            variants={fadeIn("", "", 0.1, 1)}
+            onClick={handleShowMore}
+            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+          >
+            Show More
+          </motion.button>
+        </div>
+      )}
     </>
   );
 };
