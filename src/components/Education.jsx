@@ -6,7 +6,7 @@ import {
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { education } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import { textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 
@@ -41,6 +41,7 @@ const EducationCard = ({ education }) => (
 );
 
 const Education = () => {
+  const { education } = usePortfolio();
   return (
     <>
       <motion.div variants={textVariant()}>

@@ -6,7 +6,7 @@ import {
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { experiences } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import { textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 
@@ -20,11 +20,18 @@ const ExperienceCard = ({ experience }) => (
     iconStyle={{ background: experience.iconBg }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
-        <img
-          src={experience.icon}
-          alt={experience.company_name}
-          className="w-[60%] h-[60%] object-contain"
-        />
+        {typeof experience.icon === "string" &&
+        (experience.icon.startsWith("http") ||
+          experience.icon.startsWith("/") ||
+          experience.icon.startsWith("data:")) ? (
+          <img
+            src={experience.icon}
+            alt={experience.company_name}
+            className="w-[60%] h-[60%] object-contain"
+          />
+        ) : (
+          <div className="text-xs">{experience.company_name[0]}</div>
+        )}
       </div>
     }
   >
@@ -52,6 +59,7 @@ const ExperienceCard = ({ experience }) => (
 );
 
 const Experience = () => {
+  const { experience } = usePortfolio();
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -61,7 +69,7 @@ const Experience = () => {
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>
-          {experiences.map((experience, index) => (
+          {experience.map((experience, index) => (
             <ExperienceCard key={index} experience={experience} />
           ))}
         </VerticalTimeline>

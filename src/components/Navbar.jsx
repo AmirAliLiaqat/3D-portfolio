@@ -2,12 +2,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import { logo, menu, close } from "../assets";
 import { CustomButton } from "./styled";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const { details, socialLinks } = usePortfolio();
+
+  const githubLink =
+    socialLinks.find((l) => l.name === "GitHub")?.link ||
+    "https://github.com/AmirAliLiaqat";
+  const linkedinLink =
+    socialLinks.find((l) => l.name === "LinkedIn")?.link ||
+    "https://www.linkedin.com/in/amir-ali-liaqat";
 
   return (
     <nav
@@ -24,7 +33,7 @@ const Navbar = () => {
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Amir Ali Liaqat &nbsp;
+            {details.name} &nbsp;
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -44,7 +53,7 @@ const Navbar = () => {
         <div>
           <CustomButton
             className="github-btn"
-            href="https://github.com/AmirAliLiaqat"
+            href={githubLink}
             target="_blank"
           >
             Github
@@ -52,7 +61,7 @@ const Navbar = () => {
 
           <CustomButton
             className="linkedin-btn"
-            href="https://www.linkedin.com/in/amir-ali-liaqat"
+            href={linkedinLink}
             target="_blank"
           >
             Linkedin
@@ -89,7 +98,7 @@ const Navbar = () => {
               ))}
               <li>
                 <a
-                  href="https://github.com/AmirAliLiaqat"
+                  href={githubLink}
                   target="_blank"
                   className={`${
                     active === "Github" ? "text-white" : "text-secondary"
@@ -104,7 +113,7 @@ const Navbar = () => {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/in/amir-ali-liaqat"
+                  href={linkedinLink}
                   target="_blank"
                   className={`${
                     active === "Linkedin" ? "text-white" : "text-secondary"

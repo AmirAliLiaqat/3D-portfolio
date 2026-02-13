@@ -1,42 +1,39 @@
-import { BrowserRouter } from "react-router-dom";
-import {
-  Navbar,
-  Hero,
-  Services,
-  Experience,
-  Tech,
-  Projects,
-  Feedbacks,
-  Contact,
-  StarsCanvas,
-} from "./components";
-import Footer from "./components/Footer";
-import { Wrapper } from "./components/styled";
-import Education from "./components/Education";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PortfolioProvider } from "./context/PortfolioContext";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminProjects from "./pages/admin/AdminProjects";
+import AdminProjectForm from "./pages/admin/AdminProjectForm";
+import AdminSkills from "./pages/admin/AdminSkills";
+import AdminExperience from "./pages/admin/AdminExperience";
+import AdminEducation from "./pages/admin/AdminEducation";
+import AdminTestimonials from "./pages/admin/AdminTestimonials";
+import AdminDetails from "./pages/admin/AdminDetails";
+import AdminProfile from "./pages/admin/AdminProfile";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
-          <Hero />
-          <Services />
-        </div>
-        <Experience />
-        <Tech />
-        <Education />
-        <Projects />
-        <Feedbacks />
-        <div className="relative z-0">
-          <Contact />
-          <StarsCanvas />
-        </div>
-        <Wrapper>
-          <Footer />
-        </Wrapper>
-      </div>
-    </BrowserRouter>
+    <PortfolioProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Login />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="profile" element={<AdminProfile />} />
+            <Route path="projects" element={<AdminProjects />} />
+            <Route path="projects/add" element={<AdminProjectForm />} />
+            <Route path="projects/edit/:id" element={<AdminProjectForm />} />
+
+            <Route path="skills" element={<AdminSkills />} />
+            <Route path="experience" element={<AdminExperience />} />
+            <Route path="education" element={<AdminEducation />} />
+            <Route path="testimonials" element={<AdminTestimonials />} />
+            <Route path="details" element={<AdminDetails />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </PortfolioProvider>
   );
 };
 
