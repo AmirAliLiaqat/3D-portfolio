@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { navLinks, socialLinks } from "../constants";
+import { navLinks } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import {
   Copyright,
   FooterContainer,
@@ -11,6 +12,8 @@ import { logo } from "../assets";
 
 const Footer = () => {
   const [active, setActive] = useState("");
+  const { details, socialLinks } = usePortfolio();
+  const currentYear = new Date().getFullYear();
 
   return (
     <FooterContainer>
@@ -25,7 +28,7 @@ const Footer = () => {
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[30px] m-4 sm:m-2 font-bold cursor-pointer flex">
-            Amir Ali Liaqat &nbsp;
+            {details.name} &nbsp;
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -46,13 +49,17 @@ const Footer = () => {
             <a
               href={socialLink.link}
               key={index}
-              className="w-15 h-15 cursor-pointer mx-2 sm:mx-4"
+              target="_blank"
+              rel="noreferrer"
+              className="w-15 h-15 cursor-pointer mx-2 sm:mx-4 hover:text-white transition-colors"
             >
               <i className={`${socialLink.icon} fa-2x`}></i>
             </a>
           ))}
         </SocialMediaIcons>
-        <Copyright>&copy; 2025 Amir Ali Liaqat. All rights reserved.</Copyright>
+        <Copyright>
+          &copy; {currentYear} {details.name}. All rights reserved.
+        </Copyright>
       </FooterWrapper>
     </FooterContainer>
   );

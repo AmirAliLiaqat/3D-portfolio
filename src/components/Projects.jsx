@@ -1,14 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { github, glob } from "../assets";
-import { projects } from "../constants";
+// import { projects } from "../constants"; // Removed
+import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
-import { useState } from "react";
 import {
   CardContainer,
   Container,
@@ -88,6 +88,7 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
+  const { projects } = usePortfolio();
   const [toggle, setToggle] = useState("all");
   const [visibleItems, setVisibleItems] = useState(6);
 

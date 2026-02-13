@@ -2,13 +2,14 @@
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { socialLinks } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import { textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { Img } from "./styled";
 import { profilePic } from "../assets";
 
 const About = () => {
+  const { details, socialLinks } = usePortfolio();
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-center w-full">
@@ -23,6 +24,8 @@ const About = () => {
               <motion.a
                 href={socialLink.link}
                 key={index}
+                target="_blank"
+                rel="noreferrer"
                 className="w-15 h-15 cursor-pointer me-2 transition-all duration-300 hover:text-[#915EFF]"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -81,8 +84,8 @@ const About = () => {
             }}
           >
             <Img
-              src={profilePic}
-              alt="amir-ali-liaqat"
+              src={details.profileImage || profilePic}
+              alt={details.name || "amir-ali-liaqat"}
               style={{ width: "500px", height: "400px", marginTop: "50px" }}
             />
           </Tilt>

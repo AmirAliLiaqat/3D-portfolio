@@ -1,10 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { motion } from "framer-motion";
-import { services } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 
 const Services = () => {
+  const { services } = usePortfolio();
   return (
     <div className="flex flex-wrap justify-center gap-10">
       {services.map((service, index) => (

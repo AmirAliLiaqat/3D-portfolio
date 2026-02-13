@@ -1,8 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { styles } from "../styles";
+import { usePortfolio } from "../context/PortfolioContext";
 import About from "./About";
 
 const Hero = () => {
+  const { details } = usePortfolio();
+
   return (
     <section
       className={`relative w-full min-h-screen mx-auto`}
@@ -19,20 +22,13 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915EFF]">Amir Ali</span>
+            Hi, I'm <span className="text-[#915EFF]">{details.shortName}</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I'm a dedicated front-end developer passionate about crafting
-            exceptional web experiences. With a solid foundation of 2 years in
-            web development, I have honed my skills across various technologies
-            to create dynamic and user-friendly interfaces.
+            {details.description}
           </p>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Currently, I am an integral part of a dynamic team contributing my
-            skills to develop cutting-edge web applications. My role involves
-            working with React.js, TypeScript, JavaScript, and Next.js, as well
-            as backend technologies to build robust, high-performance solutions
-            catering to modern user expectations.
+            {details.about}
           </p>
         </div>
       </div>

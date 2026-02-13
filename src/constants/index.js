@@ -41,6 +41,14 @@ import {
   computerScience,
 } from "../assets";
 
+export const details = {
+  name: "Amir Ali Liaqat",
+  shortName: "Amir Ali",
+  role: "Dedicated Front-End Developer",
+  description: "I'm a dedicated front-end developer passionate about crafting exceptional web experiences. With a solid foundation of 2 years in web development, I have honed my skills across various technologies to create dynamic and user-friendly interfaces.",
+  about: "Currently, I am an integral part of a dynamic team contributing my skills to develop cutting-edge web applications. My role involves working with React.js, TypeScript, JavaScript, and Next.js, as well as backend technologies to build robust, high-performance solutions catering to modern user expectations.",
+};
+
 export const socialLinks = [
   {
     name: "Whatsapp",

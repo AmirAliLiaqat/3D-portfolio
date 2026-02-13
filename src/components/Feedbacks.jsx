@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import { testimonials } from "../constants";
+import { usePortfolio } from "../context/PortfolioContext";
 import useEmblaCarousel from "embla-carousel-react";
 
 const FeedbackCard = ({
@@ -47,6 +47,7 @@ const FeedbackCard = ({
 );
 
 const Feedbacks = () => {
+  const { testimonials } = usePortfolio();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
