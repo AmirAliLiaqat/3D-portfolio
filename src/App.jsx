@@ -11,13 +11,19 @@ import AdminEducation from "./pages/admin/AdminEducation";
 import AdminTestimonials from "./pages/admin/AdminTestimonials";
 import AdminDetails from "./pages/admin/AdminDetails";
 import AdminProfile from "./pages/admin/AdminProfile";
+import AllProjects from "./pages/AllProjects";
+import ProjectDetails from "./pages/ProjectDetails";
+import { Navbar } from "./components";
 
 const App = () => {
   return (
     <PortfolioProvider>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<AllProjects />} />
+          <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/admin" element={<Login />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="profile" element={<AdminProfile />} />

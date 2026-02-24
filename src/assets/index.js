@@ -1,3 +1,4 @@
+/************* social media icons ***************/
 import logo from "./logo.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
@@ -12,9 +13,11 @@ import x from "./x.png";
 import glob from "./glob.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-import profilePic from "./profilePic.jpeg";
+import profilePic from "./amir.png";
 
+/************* services icons ***************/
 import css from "./tech/css.png";
+import bootstrap from "./tech/bootstrap.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
 import git from "./tech/git.png";
@@ -29,10 +32,19 @@ import elementor from "./tech/elementor.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import woocommerce from "./tech/woocommerce.png";
 import php from "./tech/php.png";
 import mysql from "./tech/mysql.png";
 import mui from "./tech/mui.png";
+import excel from "./tech/excel.png";
+import express from "./tech/express.png";
+import jira from "./tech/jira.png";
+import monday from "./tech/monday.png";
+import nextJs from "./tech/nextJs.png";
+import powerpoint from "./tech/powerpoint.png";
+import word from "./tech/word.png";
 
+/************* companies icons ***************/
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
@@ -51,10 +63,12 @@ import microsoft from "./company/microsoft.png";
 import opera from "./company/opera.png";
 import youtube from "./company/youtube.png";
 
+/************* education icons ***************/
 import matriculation from "./education/matriculation.png";
 import fsc from "./education/fsc.png";
 import computerScience from "./education/computerScience.png";
 
+/************* projects icons ***************/
 import byteBunch from "./projects/bytebunch.png";
 import bytebunchBlog from "./projects/bytebunchBlog.png";
 import devBrains from "./projects/devbrains.png";
@@ -72,6 +86,11 @@ import coffeeShop from "./projects/coffeeShop.png";
 import soarTask from "./projects/soarTask.png";
 import sportsArena from "./projects/sportsArena.png";
 import mcclg from "./projects/mcclg.png";
+import plantify from "./projects/plantify.png";
+import fixonic from "./projects/fixonic.png";
+import nexKind from "./projects/nexKind.png";
+import campusCore from "./projects/campusCore.png";
+import campusHub from "./projects/campusHub.png";
 
 export {
   logo,
@@ -98,7 +117,9 @@ export {
   git,
   wordpress,
   elementor,
+  woocommerce,
   html,
+  bootstrap,
   javascript,
   mongodb,
   nodejs,
@@ -144,4 +165,16 @@ export {
   soarTask,
   sportsArena,
   mcclg,
+  plantify,
+  fixonic,
+  nexKind,
+  campusCore,
+  campusHub,
+  excel,
+  express,
+  jira,
+  monday,
+  nextJs,
+  powerpoint,
+  word,
 };

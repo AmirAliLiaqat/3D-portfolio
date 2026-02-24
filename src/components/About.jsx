@@ -1,95 +1,100 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { usePortfolio } from "../context/PortfolioContext";
-import { textVariant } from "../utils/motion";
+import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
-import { Img } from "./styled";
-import { profilePic } from "../assets";
 
 const About = () => {
-  const { details, socialLinks } = usePortfolio();
+  const { details } = usePortfolio();
+
+  const expertiseItems = [
+    {
+      icon: "fa-solid fa-code",
+      title: "Frontend Mastery",
+      description:
+        "Proficient in HTML/CSS, Bootstrap, React.js, Next.js, TypeScript & Tailwind CSS for creating responsive, modern interfaces.",
+      color: "#915EFF",
+    },
+    {
+      icon: "fa-solid fa-server",
+      title: "Backend Development",
+      description:
+        "Node.js, Express.js & MongoDB for building robust, scalable server-side solutions and RESTful APIs.",
+      color: "#38ef7d",
+    },
+    {
+      icon: "fa-brands fa-wordpress",
+      title: "WordPress Expert",
+      description:
+        "Custom themes, plugins, Elementor, WooCommerce, PHP & MySQL for powerful WordPress solutions.",
+      color: "#56ccf2",
+    },
+    {
+      icon: "fa-solid fa-mobile-screen-button",
+      title: "App Development",
+      description:
+        "React Native for cross-platform mobile applications with native-like performance and experience.",
+      color: "#fc6767",
+    },
+  ];
+
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between items-center w-full">
-        <div className="left-column">
-          <motion.div variants={textVariant()}>
-            <p className={styles.sectionSubText}>Introduction</p>
-            <h2 className={styles.sectionHeadText}>Overview.</h2>
-          </motion.div>
+      <div id="about-section" />
+      <motion.div variants={textVariant()} className="mt-4">
+        <p className={styles.sectionSubText}>Introduction</p>
+        <h2 className={styles.sectionHeadText}>
+          Overview<span className="text-[#915EFF]">.</span>
+        </h2>
+      </motion.div>
 
-          <motion.div variants={textVariant()} className="flex gap-2">
-            {socialLinks.map((socialLink, index) => (
-              <motion.a
-                href={socialLink.link}
-                key={index}
-                target="_blank"
-                rel="noreferrer"
-                className="w-15 h-15 cursor-pointer me-2 transition-all duration-300 hover:text-[#915EFF]"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <i className={`${socialLink.icon} fa-2x`}></i>
-              </motion.a>
-            ))}
-          </motion.div>
+      <motion.p
+        variants={fadeIn("", "", 0.1, 1)}
+        className="mt-4 text-secondary text-[17px] max-w-4xl leading-[30px]"
+      >
+        {details.about}
+      </motion.p>
 
-          <motion.div className="mt-4 text-secondary text-[17px] max-w-5xl leading-[30px]">
-            <h1 className={styles.sectionSubText}>🛠️ My expertise lies in:</h1>
-            <ul className="mt-3">
-              <li>✅ Proficient in HTML/CSS for clean, responsive designs.</li>
-              <li>
-                ✅ Skilled in Bootstrap for mobile-first, visually appealing
-                layouts.
-              </li>
-              <li>✅ JavaScript & TypeScript for dynamic, scalable apps.</li>
-              <li>
-                ✅ React.js & Next.js for fast, interactive web applications.
-              </li>
-              <li>
-                ✅ WordPress: Custom themes with custom post types, widgets, and
-                more.
-              </li>
-              <li>✅ PHP & MySQL for robust WordPress solutions.</li>
-              <li>
-                ✅ Node.js, Express.js, and MongoDB for backend development.
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div>
-            <a
-              href="https://drive.google.com/file/d/1DbTAm4LucVcbPvsDsaBpq2whymNxCWEC/view?usp=sharing"
-              target="_blank"
-              className="inline-block"
-            >
-              <motion.button
-                className="mt-4 bg-[#915EFF] text-white py-2 px-4 rounded transition-all duration-300 hover:bg-[#7a4fd9] hover:shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Resume
-              </motion.button>
-            </a>
-          </motion.div>
-        </div>
-
-        <div className="right-column">
-          <Tilt
-            options={{
-              max: 45,
-              scale: 1,
-              speed: 450,
-            }}
+      {/* Expertise Grid */}
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {expertiseItems.map((item, index) => (
+          <motion.div
+            key={index}
+            variants={fadeIn("up", "spring", index * 0.15, 0.75)}
+            className="group relative rounded-2xl p-[1px] overflow-hidden"
           >
-            <Img
-              src={details.profileImage || profilePic}
-              alt={details.name || "amir-ali-liaqat"}
-              style={{ width: "500px", height: "400px", marginTop: "50px" }}
+            {/* Gradient border */}
+            <div
+              className="absolute inset-0 rounded-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"
+              style={{
+                background: `linear-gradient(135deg, ${item.color}40, transparent 50%, ${item.color}20)`,
+              }}
             />
-          </Tilt>
-        </div>
+
+            {/* Card content */}
+            <div className="relative bg-tertiary rounded-2xl p-6 h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                style={{
+                  background: `${item.color}15`,
+                  border: `1px solid ${item.color}30`,
+                }}
+              >
+                <i
+                  className={`${item.icon} text-xl`}
+                  style={{ color: item.color }}
+                />
+              </div>
+              <h3 className="text-white font-semibold text-lg mb-2">
+                {item.title}
+              </h3>
+              <p className="text-secondary/80 text-sm leading-relaxed flex-1">
+                {item.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </>
   );

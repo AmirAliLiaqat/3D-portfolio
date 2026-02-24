@@ -1,14 +1,11 @@
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { styles } from "../styles";
-import { github, glob } from "../assets";
-// import { projects } from "../constants"; // Removed
 import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
+import ProjectCard from "./ProjectCard";
 import {
   CardContainer,
   Container,
@@ -17,89 +14,22 @@ import {
   ToggleButtonGroup,
 } from "./styled/Project";
 
-const ProjectCard = ({
-  index,
-  name,
-  description,
-  tags,
-  image,
-  source_code_link,
-  source_link,
-}) => {
-  return (
-    <div key={`project-${index}`}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
-      >
-        <div className="relative w-full h-[230px]">
-          <img
-            src={image}
-            alt="project_image"
-            className="w-full h-full object-cover rounded-2xl"
-          />
-
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient mx-1 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
-            >
-              <img
-                src={github}
-                alt="source code"
-                className="w-1/2 h-1/2 object-contain"
-              />
-            </div>
-            <div
-              onClick={() => window.open(source_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
-            >
-              <img
-                src={glob}
-                alt="source link"
-                className="w-1/2 h-1/2 object-contain"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
-        </div>
-      </Tilt>
-    </div>
-  );
-};
-
 const Projects = () => {
   const { projects } = usePortfolio();
   const [toggle, setToggle] = useState("all");
-  const [visibleItems, setVisibleItems] = useState(6);
+  const visibleItems = 6;
 
   const filteredProjects =
     toggle === "all"
       ? projects
       : projects.filter((item) => item.category === toggle);
 
-  const handleShowMore = () => {
-    setVisibleItems((prev) => prev + 3);
-  };
+  const categories = [
+    { value: "all", label: "All" },
+    { value: "wordpress", label: "WordPress" },
+    { value: "mern", label: "MERN Stack" },
+    { value: "frontend", label: "Frontend" }
+  ];
 
   return (
     <>
@@ -119,29 +49,21 @@ const Projects = () => {
         effectively.
       </motion.p>
 
-      <Container>
-        <ToggleButtonGroup>
-          {[
-            { value: "all", label: "All" },
-            { value: "wordpress", label: "WordPress" },
-            { value: "mern", label: "MERN Stack" },
-          ].map((option, index) => (
-            <React.Fragment key={option.value}>
-              {index > 0 && <Divider />}
-              <ToggleButton
-                active={toggle === option.value}
-                value={option.value}
-                onClick={() => {
-                  setToggle(option.value);
-                  setVisibleItems(6); // Reset visible items when changing category
-                }}
-              >
-                {option.label}
-              </ToggleButton>
-            </React.Fragment>
-          ))}
-        </ToggleButtonGroup>
-      </Container>
+      {/* Categories Filter */}
+      <div className="mt-10 mb-12 flex flex-wrap justify-center items-center gap-4">
+        {categories.map((category) => (
+          <button
+            key={category.value}
+            onClick={() => setToggle(category.value)}
+            className={`px-6 py-2 rounded-xl border-2 transition-all duration-300 font-semibold ${toggle === category.value
+              ? "bg-[#915eff] border-[#915eff] text-white shadow-lg shadow-primary"
+              : "border-[#915eff] text-secondary hover:bg-[#915eff20]"
+              }`}
+          >
+            {category.label}
+          </button>
+        ))}
+      </div>
 
       <div className="mt-10 flex flex-wrap gap-7">
         <CardContainer>
@@ -151,17 +73,16 @@ const Projects = () => {
         </CardContainer>
       </div>
 
-      {visibleItems < filteredProjects.length && (
-        <div className="mt-10 flex justify-center">
+      <div className="mt-10 flex justify-center">
+        <Link to="/projects">
           <motion.button
             variants={fadeIn("", "", 0.1, 1)}
-            onClick={handleShowMore}
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary hover:bg-[#915eff] transition-all"
           >
-            Show More
+            View All Projects
           </motion.button>
-        </div>
-      )}
+        </Link>
+      </div>
     </>
   );
 };

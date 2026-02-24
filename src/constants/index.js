@@ -9,16 +9,27 @@ import {
   bytebunch,
   html,
   css,
+  bootstrap,
   reactjs,
   tailwind,
   nodejs,
   mongodb,
   git,
+  github,
+  linkedin,
+  figma,
   php,
   mysql,
   mui,
   wordpress,
   elementor,
+  excel,
+  express,
+  jira,
+  monday,
+  nextJs,
+  powerpoint,
+  word,
   byteBunch,
   bytebunchBlog,
   devBrains,
@@ -36,16 +47,29 @@ import {
   soarTask,
   sportsArena,
   mcclg,
+  plantify,
+  fixonic,
+  nexKind,
+  campusCore,
+  campusHub,
   matriculation,
   fsc,
+  woocommerce,
   computerScience,
+  docker,
 } from "../assets";
 
 export const details = {
   name: "Amir Ali Liaqat",
   shortName: "Amir Ali",
   role: "Dedicated Front-End Developer",
-  description: "I'm a dedicated front-end developer passionate about crafting exceptional web experiences. With a solid foundation of 2 years in web development, I have honed my skills across various technologies to create dynamic and user-friendly interfaces.",
+  designations: [
+    "Web Designer",
+    "Full Stack Developer",
+    "MERN Stack Developer",
+    "IT Instructor",
+  ],
+  description: "I'm a dedicated front-end developer passionate about crafting exceptional web experiences. With a solid foundation of 4+ years in web development, I have honed my skills across various technologies to create dynamic and user-friendly interfaces.",
   about: "Currently, I am an integral part of a dynamic team contributing my skills to develop cutting-edge web applications. My role involves working with React.js, TypeScript, JavaScript, and Next.js, as well as backend technologies to build robust, high-performance solutions catering to modern user expectations.",
 };
 
@@ -116,36 +140,64 @@ export const navLinks = [
 
 export const services = [
   {
-    title: "Web Designing",
-    icon: web,
+    category: "Services",
+    items: [
+      { title: "Web Designing", icon: web },
+      { title: "Frontend Development", icon: creator },
+      { title: "App Development", icon: mobile },
+      { title: "Responsive Design", icon: web },
+      { title: "Blogging Solutions", icon: backend },
+      { title: "E-Commerce Solutions", icon: web },
+      { title: "MERN Stack Development", icon: nodejs },
+    ],
   },
   {
-    title: "Web Developement",
-    icon: mobile,
+    category: "Frontend",
+    items: [
+      { title: "HTML", icon: html },
+      { title: "CSS", icon: css },
+      { title: "Bootstrap", icon: bootstrap },
+      { title: "JavaScript", icon: javascript },
+      { title: "TypeScript", icon: typescript },
+      { title: "React.js", icon: reactjs },
+      { title: "Next.js", icon: nextJs },
+      { title: "React Native", icon: reactjs },
+      { title: "Tailwind CSS", icon: tailwind },
+      { title: "Material UI", icon: mui },
+    ],
   },
   {
-    title: "Frontend Developement",
-    icon: creator,
+    category: "Backend",
+    items: [
+      { title: "Node.js", icon: nodejs },
+      { title: "Express.js", icon: express },
+      { title: "MongoDB", icon: mongodb },
+      { title: "PHP", icon: php },
+      { title: "MySQL", icon: mysql },
+    ],
   },
   {
-    title: "Wordpress Developement",
-    icon: backend,
+    category: "WordPress",
+    items: [
+      { title: "WordPress", icon: wordpress },
+      { title: "Elementor", icon: elementor },
+      { title: "WooCommerce", icon: woocommerce },
+    ],
   },
   {
-    title: "E-Commerce Solutions",
-    icon: web,
-  },
-  {
-    title: "Blogging Solutions",
-    icon: mobile,
-  },
-  {
-    title: "MERN Stack Development",
-    icon: creator,
-  },
-  {
-    title: "Responsive Design",
-    icon: backend,
+    category: "Productivity",
+    items: [
+      { title: "Figma", icon: figma },
+      { title: "Jira", icon: jira },
+      { title: "Monday", icon: monday },
+      { title: "Docker", icon: docker },
+      { title: "Git", icon: git },
+      { title: "GitHub", icon: github },
+      { title: "LinkedIn", icon: linkedin },
+      { title: "MS Word", icon: word },
+      { title: "MS Excel", icon: excel },
+      { title: "MS PowerPoint", icon: powerpoint },
+    ],
   },
 ];
 
@@ -261,6 +313,32 @@ export const experiences = [
       "Integrated GraphQL for managing complex data queries and mutations.",
     ],
   },
+  {
+    title: "WordPress Developer",
+    company_name: "Mindware Technologies",
+    icon: wordpress,
+    iconBg: "#E6DEDD",
+    date: "Dec 2024 - Jan 2025",
+    points: [
+      "Worked as a Contract WordPress Developer at Mindware Technologies.",
+      "Developed and optimized WordPress websites, focusing on performance and user experience.",
+      "Implemented custom features and managed site updates remotely.",
+      "Collaborated with the team to ensure project milestones were met within the 2-month contract period.",
+    ],
+  },
+  {
+    title: "IT Mentor",
+    company_name: "NexSkill Institute",
+    icon: creator,
+    iconBg: "#383E56",
+    date: "2025 - Present",
+    points: [
+      "Mentoring and instructing students in Frontend and Backend development technologies.",
+      "Successfully covered 1 batch of Frontend Development, teaching HTML, CSS, Bootstrap, Tailwind, JavaScript, and React.js.",
+      "Conducted 2 batches of Backend Development, covering Node.js, Express.js, and MongoDB.",
+      "Guided students through hands-on projects and real-world application development.",
+    ],
+  },
 ];
 
 export const education = [
@@ -341,6 +419,147 @@ export const testimonials = [
 
 export const projects = [
   {
+    id: "plantify",
+    name: "Plantify",
+    description:
+      "Plantify is a comprehensive plant care and disease detection platform that helps users identify plant health issues and provides expert recommendations for treatment.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "blue-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: plantify,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://plantify-fyp-project.vercel.app/",
+  },
+  {
+    id: "fixonic",
+    name: "Fixonic",
+    description:
+      "Fixonic is a professional service marketplace connecting users with expert technicians for various repair needs, featuring a seamless booking and tracking system.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "express",
+        color: "blue-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: fixonic,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://fixonic.vercel.app/",
+  },
+  {
+    id: "nexkind",
+    name: "Nexkind",
+    description:
+      "Nexkind is a modern web application designed to provide innovative digital solutions, featuring a sleek user interface and robust backend architecture.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "blue-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: nexKind,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://nexkind.vercel.app/",
+  },
+  {
+    id: "campus-core",
+    name: "Campus Core",
+    description:
+      "Campus Core is an advanced institutional management system that streamlines administrative tasks, student records, and academic workflows for educational institutions.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "express",
+        color: "blue-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: campusCore,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://campus-core-frontend.vercel.app/",
+  },
+  {
+    id: "campus-hub",
+    name: "Campus Hub",
+    description:
+      "Campus Hub is a student management system (SMS) designed to enhance campus life and communication, providing tools for student engagement and academic management.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "blue-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: campusHub,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://campus-sms.vercel.app/",
+  },
+  {
+    id: "bytebunch",
     name: "ByteBunch",
     description:
       "ByteBunch is an IT Services Provider Company that provides many services like Web Development, Graphic development, and many more.",
@@ -376,6 +595,7 @@ export const projects = [
     source_link: "https://amiraliliaqat.github.io/ByteBunch-Html/",
   },
   {
+    id: "bytebunch-blog",
     name: "ByteBunch Blog",
     description:
       "ByteBunch Blog is the blogging site for ByteBunch IT services provider company to aware the peoples with latest information and updates.",
@@ -411,6 +631,7 @@ export const projects = [
     source_link: "https://amiraliliaqat.github.io/Test-ByteBunch-Html/",
   },
   {
+    id: "byte-ki-duniya",
     name: "Byte Ki Duniya",
     description:
       "Byte Ki Duniya is an IT services provider company that provides all the ultimate solutions for your business.",
@@ -446,6 +667,7 @@ export const projects = [
     source_link: "http://byte.likesyou.org/",
   },
   {
+    id: "devbrains",
     name: "DevBrains",
     description:
       "DevBrains is an IT Services Provider Company that provides many services like Web Development, Graphic development, and many more.",
@@ -469,6 +691,7 @@ export const projects = [
     source_link: "http://devbrains.likesyou.org/",
   },
   {
+    id: "warraich-traders",
     name: "Warraich Traders",
     description:
       "Warriach Traders is the housing society management system that is used for buying houses and managing houses materials.",
@@ -508,6 +731,7 @@ export const projects = [
     source_link: "https://warraich-traders-react.vercel.app/",
   },
   {
+    id: "mehar-herbals",
     name: "Mehar Herbals",
     description:
       "Mehar Herbals is an ecommerce site providing various variaty of herbals products to fullfill your herbal needs.",
@@ -543,6 +767,7 @@ export const projects = [
     source_link: "http://meharherbals.likesyou.org/",
   },
   {
+    id: "trackomatric",
     name: "Trackomatric",
     description:
       "Trakomatic is an artificial intelligence system for detacking security activites at large scale and shopping malls.",
@@ -566,6 +791,7 @@ export const projects = [
     source_link: "https://amiraliliaqat.github.io/Trackomatric/",
   },
   {
+    id: "barber-shop",
     name: "Barber Shop",
     description:
       "Complate and responseive barber shop template using mern stack with good and attractive user experience and user interface.",
@@ -593,6 +819,7 @@ export const projects = [
     source_link: "https://barber-shop-tau-three.vercel.app/",
   },
   {
+    id: "waveslines",
     name: "Waveslines",
     description:
       "Waveslines is an ecommerce services provider company which can offers products of all seasons and vatities.",
@@ -612,6 +839,7 @@ export const projects = [
     source_link: "https://weavelinens.com/",
   },
   {
+    id: "all-in-one-media",
     name: "All in one media",
     description:
       "All in one media is the complete and fully featured media solutions application with various modules and features.",
@@ -647,6 +875,7 @@ export const projects = [
     source_link: "https://all-in-one-media.vercel.app",
   },
   {
+    id: "ums",
     name: "UMS",
     description:
       "UMS is the complete and fully featured student management system with various modules and features.",
@@ -682,6 +911,7 @@ export const projects = [
     source_link: "https://mern-lms-with-dashboard-client.vercel.app",
   },
   {
+    id: "cache-store",
     name: "Cache Store",
     description:
       "Cache store is full-featured online mobile accessories selling ecommerce website. Cache store have multiple categories like airbuds, hand-frees, mobile charger etc.",
@@ -705,6 +935,7 @@ export const projects = [
     source_link: "https://cachestore.likesyou.org",
   },
   {
+    id: "richmond-institute",
     name: "Richmond Institute",
     description:
       "Richmond Institute, showcasing its strengths and inviting potential students to explore the opportunities available.",
@@ -728,6 +959,7 @@ export const projects = [
     source_link: "https://richmondinstitute.pk",
   },
   {
+    id: "coffee-shop",
     name: "Coffee Shop",
     description:
       "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
@@ -751,6 +983,7 @@ export const projects = [
     source_link: "https://leads-fyp.vercel.app",
   },
   {
+    id: "soar-task",
     name: "Soar Task",
     description:
       "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
@@ -774,6 +1007,7 @@ export const projects = [
     source_link: "https://soar-task-react.vercel.app",
   },
   {
+    id: "sports-arena",
     name: "Sports Arena",
     description:
       "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
@@ -796,9 +1030,9 @@ export const projects = [
     source_code_link: "https://github.com/",
     source_link: "https://sports-arena-eight.vercel.app",
   },
-
   {
-    name: "Mohammadan Computer College",
+    id: "mcclg",
+    name: "MC College",
     description:
       "Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.",
     tags: [

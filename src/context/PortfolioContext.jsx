@@ -44,7 +44,15 @@ export const PortfolioProvider = ({ children }) => {
     setExperience(loadData("experience", initialExperience) || initialExperience);
     setEducation(loadData("education", initialEducation) || initialEducation);
     setTestimonials(loadData("testimonials", initialTestimonials) || initialTestimonials);
-    setServices(loadData("services", initialServices) || initialServices);
+    setServices(() => {
+      const loaded = loadData("services", initialServices);
+      // Validate structure: if first item doesn't have 'category', use fresh data
+      if (loaded && loaded.length > 0 && !loaded[0].category) {
+        localStorage.removeItem("portfolio_services");
+        return initialServices;
+      }
+      return loaded || initialServices;
+    });
     setDetails(loadData("details", initialDetails) || initialDetails);
     setSocialLinks(loadData("socialLinks", initialSocialLinks) || initialSocialLinks);
     setLoading(false);
@@ -153,15 +161,15 @@ export const PortfolioProvider = ({ children }) => {
 
   // Details & Social Links Update
   const updateDetails = (newDetails) => saveData("details", newDetails, setDetails);
-  
+
   const addSocialLink = (item) => saveData("socialLinks", [...socialLinks, item], setSocialLinks);
   const updateSocialLink = (index, item) => {
-      const updated = [...socialLinks];
-      updated[index] = item;
-      saveData("socialLinks", updated, setSocialLinks);
+    const updated = [...socialLinks];
+    updated[index] = item;
+    saveData("socialLinks", updated, setSocialLinks);
   };
   const deleteSocialLink = (index) => {
-      saveData("socialLinks", socialLinks.filter((_, i) => i !== index), setSocialLinks);
+    saveData("socialLinks", socialLinks.filter((_, i) => i !== index), setSocialLinks);
   };
 
   const value = {

@@ -202,3 +202,616 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+
+/* ===== Hero Section Premium Styles ===== */
+
+/* Blinking cursor for typewriter */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  animation: blink 0.8s step-end infinite;
+  font-weight: 200;
+}
+
+/* Floating animation for profile image */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.hero-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Gradient border ring animation */
+@keyframes spin-gradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero-profile-ring {
+  position: relative;
+}
+
+.hero-profile-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #915EFF,
+    #6B3FA0,
+    #4B1F80,
+    #915EFF,
+    #c084fc,
+    #915EFF
+  );
+  animation: spin-gradient 4s linear infinite;
+  z-index: -1;
+}
+
+.hero-profile-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #915EFF,
+    #6B3FA0,
+    #4B1F80,
+    #915EFF,
+    #c084fc,
+    #915EFF
+  );
+  animation: spin-gradient 4s linear infinite;
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.6;
+}
+
+/* Staggered fade-in for hero children */
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate-in > * {
+  opacity: 0;
+  animation: heroFadeInUp 0.7s ease-out forwards;
+}
+.hero-animate-in > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-animate-in > *:nth-child(2) { animation-delay: 0.3s; }
+.hero-animate-in > *:nth-child(3) { animation-delay: 0.5s; }
+.hero-animate-in > *:nth-child(4) { animation-delay: 0.7s; }
+.hero-animate-in > *:nth-child(5) { animation-delay: 0.9s; }
+.hero-animate-in > *:nth-child(6) { animation-delay: 1.1s; }
+
+/* Glow text effect */
+.hero-glow-text {
+  text-shadow: 0 0 20px rgba(145, 94, 255, 0.4),
+               0 0 40px rgba(145, 94, 255, 0.2);
+}
+
+/* Gradient underline */
+.hero-gradient-underline {
+  position: relative;
+  display: inline-block;
+}
+.hero-gradient-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #915EFF, #c084fc, #915EFF);
+  border-radius: 2px;
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Social icon hover glow */
+.hero-social-icon {
+  transition: all 0.3s ease;
+}
+.hero-social-icon:hover {
+  color: #915EFF !important;
+  filter: drop-shadow(0 0 8px rgba(145, 94, 255, 0.6));
+  transform: translateY(-3px);
+}
+
+/* Stats counter */
+.hero-stat-card {
+  background: rgba(21, 16, 48, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(145, 94, 255, 0.15);
+  transition: all 0.3s ease;
+}
+.hero-stat-card:hover {
+  border-color: rgba(145, 94, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(145, 94, 255, 0.15);
+}
+
+/* CTA buttons */
+.hero-btn-primary {
+  background: linear-gradient(135deg, #915EFF 0%, #7B3FE4 100%);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(145, 94, 255, 0.3);
+}
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(145, 94, 255, 0.5);
+  background: linear-gradient(135deg, #a070ff 0%, #915EFF 100%);
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: #dfd9ff;
+  border: 1.5px solid rgba(145, 94, 255, 0.5);
+  transition: all 0.3s ease;
+}
+.hero-btn-secondary:hover {
+  border-color: #915EFF;
+  background: rgba(145, 94, 255, 0.1);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Badge pill */
+.hero-badge {
+  background: rgba(145, 94, 255, 0.12);
+  border: 1px solid rgba(145, 94, 255, 0.25);
+  color: #c084fc;
+  backdrop-filter: blur(4px);
+}
+
+/* Scroll indicator */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.5; }
+}
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ===== Footer Premium Styles ===== */
+
+.footer-social-icon {
+  background: rgba(145, 94, 255, 0.06);
+  border: 1px solid rgba(145, 94, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.footer-social-icon:hover {
+  background: rgba(145, 94, 255, 0.15);
+  border-color: rgba(145, 94, 255, 0.4);
+  color: #915EFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(145, 94, 255, 0.15);
+}
+
+.footer-contact-icon {
+  background: rgba(145, 94, 255, 0.08);
+  border: 1px solid rgba(145, 94, 255, 0.12);
+  transition: all 0.3s ease;
+}
+.group:hover .footer-contact-icon {
+  background: rgba(145, 94, 255, 0.15);
+  border-color: rgba(145, 94, 255, 0.3);
+}
+
+.footer-back-to-top {
+  background: rgba(145, 94, 255, 0.08);
+  border: 1px solid rgba(145, 94, 255, 0.15);
+  transition: all 0.3s ease;
+}
+.footer-back-to-top:hover {
+  background: rgba(145, 94, 255, 0.2);
+  border-color: rgba(145, 94, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(145, 94, 255, 0.2);
+}
+
+/* ===== Testimonial Section Premium Styles ===== */
+
+.testimonial-card > div {
+  background: rgba(9, 3, 37, 0.7);
+  border: 1px solid rgba(145, 94, 255, 0.08);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+.testimonial-card:hover > div {
+  border-color: rgba(145, 94, 255, 0.25);
+  box-shadow: 0 8px 30px rgba(145, 94, 255, 0.08);
+  transform: translateY(-4px);
+}
+
+.testimonial-nav-btn {
+  background: rgba(145, 94, 255, 0.08);
+  border: 1px solid rgba(145, 94, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.testimonial-nav-btn:hover {
+  background: rgba(145, 94, 255, 0.2);
+  border-color: rgba(145, 94, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(145, 94, 255, 0.15);
+}
+
+/* ===== Contact Section Premium Styles ===== */
+
+.contact-info-card {
+  background: rgba(21, 16, 48, 0.5);
+  border: 1px solid rgba(145, 94, 255, 0.08);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.contact-info-card:hover {
+  border-color: rgba(145, 94, 255, 0.25);
+  background: rgba(21, 16, 48, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(145, 94, 255, 0.1);
+}
+
+.contact-form-wrapper {
+  background: rgba(16, 13, 37, 0.8);
+  border: 1px solid rgba(145, 94, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.contact-input {
+  background: rgba(21, 16, 48, 0.6);
+  border: 1px solid rgba(145, 94, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.contact-input:focus {
+  border-color: rgba(145, 94, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(145, 94, 255, 0.08);
+  background: rgba(21, 16, 48, 0.9);
+}
+.contact-input::placeholder {
+  color: rgba(170, 166, 195, 0.35);
+}
+
+.contact-submit-btn {
+  background: linear-gradient(135deg, #915EFF 0%, #7B3FE4 100%);
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(145, 94, 255, 0.25);
+}
+.contact-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(145, 94, 255, 0.4);
+  background: linear-gradient(135deg, #a070ff 0%, #915EFF 100%);
+}
+
+.contact-social-icon {
+  background: rgba(145, 94, 255, 0.06);
+  border: 1px solid rgba(145, 94, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.contact-social-icon:hover {
+  background: rgba(145, 94, 255, 0.15);
+  border-color: rgba(145, 94, 255, 0.4);
+  color: #915EFF !important;
+  transform: translateY(-2px);
+}
+
+/* ===== Admin Panel Premium Styles ===== */
+
+/* --- Sidebar --- */
+.admin-sidebar {
+  background: rgba(5, 8, 22, 0.95);
+  border-right: 1px solid rgba(145, 94, 255, 0.06);
+  backdrop-filter: blur(20px);
+}
+
+.admin-sidebar-logo {
+  background: rgba(145, 94, 255, 0.1);
+  border: 1px solid rgba(145, 94, 255, 0.15);
+}
+
+.admin-nav-item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+.admin-nav-item:hover {
+  background: rgba(145, 94, 255, 0.06);
+}
+.admin-nav-active {
+  background: rgba(145, 94, 255, 0.12) !important;
+  color: #915EFF !important;
+  border: 1px solid rgba(145, 94, 255, 0.15);
+  font-weight: 600;
+}
+.admin-nav-active i {
+  color: #915EFF;
+}
+
+.admin-logout-btn {
+  color: rgba(252, 103, 103, 0.7);
+}
+.admin-logout-btn:hover {
+  background: rgba(252, 103, 103, 0.08);
+  color: #fc6767;
+}
+
+/* --- Top Header Bar --- */
+.admin-top-bar {
+  background: rgba(5, 8, 22, 0.8);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(145, 94, 255, 0.05);
+}
+
+.admin-header-badge {
+  background: rgba(56, 239, 125, 0.06);
+  border: 1px solid rgba(56, 239, 125, 0.1);
+}
+
+.admin-avatar {
+  background: rgba(145, 94, 255, 0.1);
+  border: 1px solid rgba(145, 94, 255, 0.2);
+}
+
+/* --- Main Content Area --- */
+.admin-main-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(145, 94, 255, 0.2) transparent;
+}
+.admin-main-content::-webkit-scrollbar {
+  width: 6px;
+}
+.admin-main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.admin-main-content::-webkit-scrollbar-thumb {
+  background: rgba(145, 94, 255, 0.2);
+  border-radius: 3px;
+}
+.admin-main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(145, 94, 255, 0.4);
+}
+
+/* --- Admin Forms (global override for bg-tertiary forms in admin) --- */
+.admin-main-content .bg-tertiary {
+  background: rgba(21, 16, 48, 0.6) !important;
+  border: 1px solid rgba(145, 94, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.admin-main-content .bg-black-100 {
+  background: rgba(16, 13, 37, 0.7) !important;
+  border: 1px solid rgba(145, 94, 255, 0.08);
+  transition: all 0.3s ease;
+}
+.admin-main-content .bg-black-100:focus,
+.admin-main-content input.bg-black-100:focus,
+.admin-main-content textarea.bg-black-100:focus {
+  border-color: rgba(145, 94, 255, 0.35) !important;
+  box-shadow: 0 0 0 3px rgba(145, 94, 255, 0.06);
+}
+
+.admin-main-content .bg-black-200 {
+  background: rgba(9, 3, 37, 0.6) !important;
+  border: 1px solid rgba(145, 94, 255, 0.06);
+  transition: all 0.3s ease;
+}
+.admin-main-content .bg-black-200:hover {
+  border-color: rgba(145, 94, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(145, 94, 255, 0.05);
+}
+
+/* --- Admin Buttons --- */
+.admin-main-content button[type="submit"],
+.admin-main-content .bg-white {
+  background: linear-gradient(135deg, #915EFF 0%, #7B3FE4 100%) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(145, 94, 255, 0.25);
+  transition: all 0.3s ease;
+}
+.admin-main-content button[type="submit"]:hover,
+.admin-main-content .bg-white:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(145, 94, 255, 0.35);
+  background: linear-gradient(135deg, #a070ff 0%, #915EFF 100%) !important;
+}
+
+/* Cancel / Delete buttons in admin */
+.admin-main-content .bg-red-500 {
+  background: rgba(252, 103, 103, 0.15) !important;
+  color: #fc6767 !important;
+  border: 1px solid rgba(252, 103, 103, 0.2) !important;
+  box-shadow: none !important;
+}
+.admin-main-content .bg-red-500:hover {
+  background: rgba(252, 103, 103, 0.25) !important;
+  border-color: rgba(252, 103, 103, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* --- Admin Section Headings --- */
+.admin-main-content h2 {
+  position: relative;
+  display: inline-block;
+}
+.admin-main-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #915EFF, transparent);
+  border-radius: 2px;
+}
+
+/* --- Admin Card Hover Actions --- */
+.admin-main-content .group:hover .opacity-0 {
+  opacity: 1 !important;
+}
+
+/* --- Admin Form Labels --- */
+.admin-main-content label span {
+  letter-spacing: 0.02em;
+}
+
+/* --- Color Input Styling --- */
+.admin-main-content input[type="color"] {
+  cursor: pointer;
+  border: 1px solid rgba(145, 94, 255, 0.15);
+  border-radius: 8px;
+  padding: 2px;
+}
+.admin-main-content input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+.admin-main-content input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+
+/* ===== Admin Login Page Styles ===== */
+
+.login-card {
+  background: rgba(12, 9, 30, 0.85);
+  border: 1px solid rgba(145, 94, 255, 0.1);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 1px rgba(145, 94, 255, 0.04),
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(145, 94, 255, 0.04);
+}
+
+/* Animated gradient ring around the logo */
+.login-logo-ring {
+  background: rgba(145, 94, 255, 0.08);
+  border: 1px solid rgba(145, 94, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.login-logo-ring::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(145, 94, 255, 0.4) 25%,
+    transparent 50%
+  );
+  animation: spin-gradient 3s linear infinite;
+  z-index: -1;
+}
+
+.login-input {
+  background: rgba(21, 16, 48, 0.6);
+  border: 1px solid rgba(145, 94, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.login-input:focus {
+  border-color: rgba(145, 94, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(145, 94, 255, 0.08);
+  background: rgba(21, 16, 48, 0.85);
+}
+.login-input::placeholder {
+  color: rgba(170, 166, 195, 0.3);
+}
+
+.login-submit-btn {
+  background: linear-gradient(135deg, #915EFF 0%, #7B3FE4 100%);
+  border: none;
+  box-shadow: 0 4px 20px rgba(145, 94, 255, 0.3);
+  transition: all 0.3s ease;
+}
+.login-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(145, 94, 255, 0.45);
+  background: linear-gradient(135deg, #a070ff 0%, #915EFF 100%);
+}
+.login-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-error {
+  background: rgba(252, 59, 59, 0.07);
+  border: 1px solid rgba(252, 59, 59, 0.2);
+}
+
+/* Shake animation on wrong password */
+@keyframes loginShake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px); }
+  30%       { transform: translateX(8px); }
+  45%       { transform: translateX(-6px); }
+  60%       { transform: translateX(6px); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+.login-shake {
+  animation: loginShake 0.6s ease;
+}
+
+/* Floating background dots */
+@keyframes loginFloat1 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50%       { transform: translateY(-18px) scale(1.2); opacity: 0.5; }
+}
+@keyframes loginFloat2 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+  50%       { transform: translateY(-24px) scale(1.3); opacity: 0.4; }
+}
+@keyframes loginFloat3 {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.25; }
+  50%       { transform: translateY(-12px) scale(1.1); opacity: 0.45; }
+}
+.login-float-1 { animation: loginFloat1 5s ease-in-out infinite; }
+.login-float-2 { animation: loginFloat2 7s ease-in-out infinite 1s; }
+.login-float-3 { animation: loginFloat3 6s ease-in-out infinite 2s; }
+
+/* ===== Scroll To Top Button ===== */
+
+.scroll-top-btn {
+  filter: drop-shadow(0 4px 15px rgba(145, 94, 255, 0.15));
+  transition: opacity 0.4s ease, transform 0.4s ease, filter 0.3s ease;
+}
+.scroll-top-btn:hover {
+  filter: drop-shadow(0 6px 25px rgba(145, 94, 255, 0.35));
+  transform: translateY(-3px) !important;
+}
+
+.scroll-top-inner {
+  background: rgba(12, 9, 30, 0.9);
+  border: 1px solid rgba(145, 94, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.scroll-top-btn:hover .scroll-top-inner {
+  background: rgba(145, 94, 255, 0.1);
+  border-color: rgba(145, 94, 255, 0.4);
+}
+.scroll-top-btn:hover .fa-arrow-up {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}

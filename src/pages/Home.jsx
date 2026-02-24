@@ -12,17 +12,17 @@ import {
 import { Wrapper } from "../components/styled";
 import Education from "../components/Education";
 import Footer from "../components/Footer";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Home = () => {
   return (
     <div className="relative z-0 bg-primary">
       <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <Navbar />
         <Hero />
         <Services />
       </div>
       <Experience />
-      <Tech />
+      {/* <Tech /> */}
       <Education />
       <Projects />
       <Feedbacks />
@@ -33,6 +33,7 @@ const Home = () => {
       <Wrapper>
         <Footer />
       </Wrapper>
+      <ScrollToTop />
     </div>
   );
 };

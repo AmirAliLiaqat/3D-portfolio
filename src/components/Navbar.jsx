@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
@@ -9,7 +9,14 @@ import { CustomButton } from "./styled";
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { details, socialLinks } = usePortfolio();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const githubLink =
     socialLinks.find((l) => l.name === "GitHub")?.link ||
@@ -20,7 +27,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${scrolled
+          ? "bg-primary/90 backdrop-blur-md shadow-lg shadow-black/20"
+          : "bg-transparent"
+        }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -40,12 +50,11 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`${
-                active === link.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              className={`${active === link.title ? "text-white" : "text-secondary"
+                } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(link.title)}
             >
-              <a href={`#${link.id}`}>{link.title}</a>
+              <Link to={`/#${link.id}`}>{link.title}</Link>
             </li>
           ))}
         </ul>
@@ -77,32 +86,29 @@ const Navbar = () => {
           />
 
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${!toggle ? "hidden" : "flex"
+              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${
-                    active === link.title ? "text-white" : "text-secondary"
-                  } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${active === link.title ? "text-white" : "text-secondary"
+                    } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(link.title);
                   }}
                 >
-                  <a href={`#${link.id}`}>{link.title}</a>
+                  <Link to={`/#${link.id}`}>{link.title}</Link>
                 </li>
               ))}
               <li>
                 <a
                   href={githubLink}
                   target="_blank"
-                  className={`${
-                    active === "Github" ? "text-white" : "text-secondary"
-                  } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${active === "Github" ? "text-white" : "text-secondary"
+                    } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive("Github");
@@ -115,9 +121,8 @@ const Navbar = () => {
                 <a
                   href={linkedinLink}
                   target="_blank"
-                  className={`${
-                    active === "Linkedin" ? "text-white" : "text-secondary"
-                  } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${active === "Linkedin" ? "text-white" : "text-secondary"
+                    } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive("Linkedin");
