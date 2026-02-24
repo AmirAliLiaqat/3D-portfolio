@@ -88,7 +88,7 @@ import sportsArena from "./projects/sportsArena.png";
 import mcclg from "./projects/mcclg.png";
 import plantify from "./projects/plantify.png";
 import fixonic from "./projects/fixonic.png";
-import nexKind from "./projects/nexKind.png";
+import nexKind from "./projects/nexkind.png";
 import campusCore from "./projects/campusCore.png";
 import campusHub from "./projects/campusHub.png";
 
