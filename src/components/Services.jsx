@@ -35,7 +35,7 @@ const ServiceCard = ({ title, icon, index }) => (
 
 const Services = () => {
   const { services } = usePortfolio();
-  const [activeCategory, setActiveCategory] = useState("Frontend");
+  const [activeCategory, setActiveCategory] = useState("Services");
 
   const activeGroup = services.find((s) => s.category === activeCategory);
 

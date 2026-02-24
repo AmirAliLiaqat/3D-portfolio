@@ -43,6 +43,10 @@ import monday from "./tech/monday.png";
 import nextJs from "./tech/nextJs.png";
 import powerpoint from "./tech/powerpoint.png";
 import word from "./tech/word.png";
+import tutorLMS from "./tech/tutorLMS.png";
+import woodmart from "./tech/woodmart.png";
+import slack from "./tech/slack.png";
+import stripe from "./tech/stripe.png";
 
 /************* companies icons ***************/
 import meta from "./company/meta.png";
@@ -62,6 +66,8 @@ import ibm from "./company/ibm.png";
 import microsoft from "./company/microsoft.png";
 import opera from "./company/opera.png";
 import youtube from "./company/youtube.png";
+import nexskill from "./company/nexskill.png";
+import mindware from "./company/mindware.png";
 
 /************* education icons ***************/
 import matriculation from "./education/matriculation.png";
@@ -177,4 +183,10 @@ export {
   nextJs,
   powerpoint,
   word,
+  tutorLMS,
+  woodmart,
+  slack,
+  stripe,
+  nexskill,
+  mindware,
 };

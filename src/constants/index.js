@@ -57,6 +57,12 @@ import {
   woocommerce,
   computerScience,
   docker,
+  nexskill,
+  mindware,
+  tutorLMS,
+  woodmart,
+  slack,
+  stripe,
 } from "../assets";
 
 export const details = {
@@ -142,9 +148,12 @@ export const services = [
   {
     category: "Services",
     items: [
-      { title: "Web Designing", icon: web },
       { title: "Frontend Development", icon: creator },
+      { title: "Backend Development", icon: backend },
       { title: "App Development", icon: mobile },
+      { title: "WordPress Development", icon: wordpress },
+      { title: "Web Designing", icon: web },
+      { title: "UI/UX Design", icon: figma },
       { title: "Responsive Design", icon: web },
       { title: "Blogging Solutions", icon: backend },
       { title: "E-Commerce Solutions", icon: web },
@@ -182,12 +191,16 @@ export const services = [
       { title: "WordPress", icon: wordpress },
       { title: "Elementor", icon: elementor },
       { title: "WooCommerce", icon: woocommerce },
+      { title: "Tutor LMS", icon: tutorLMS },
+      { title: "WoodMart", icon: woodmart },
     ],
   },
   {
     category: "Productivity",
     items: [
       { title: "Figma", icon: figma },
+      { title: "Slack", icon: slack },
+      { title: "Stripe", icon: stripe },
       { title: "Jira", icon: jira },
       { title: "Monday", icon: monday },
       { title: "Docker", icon: docker },
@@ -316,7 +329,7 @@ export const experiences = [
   {
     title: "WordPress Developer",
     company_name: "Mindware Technologies",
-    icon: wordpress,
+    icon: mindware,
     iconBg: "#E6DEDD",
     date: "Dec 2024 - Jan 2025",
     points: [
@@ -329,7 +342,7 @@ export const experiences = [
   {
     title: "IT Mentor",
     company_name: "NexSkill Institute",
-    icon: creator,
+    icon: nexskill,
     iconBg: "#383E56",
     date: "2025 - Present",
     points: [
