@@ -815,3 +815,39 @@
   transform: translateY(-2px);
   transition: transform 0.3s ease;
 }
+
+/* ===== Blog Content Styles ===== */
+.blog-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.blog-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #915EFF;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.blog-content p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+.blog-content li {
+  margin-bottom: 10px;
+}
+
+.blog-content strong {
+  color: white;
+}

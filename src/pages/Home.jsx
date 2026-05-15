@@ -13,6 +13,7 @@ import { Wrapper } from "../components/styled";
 import Education from "../components/Education";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
+import Blogs from "./Blogs";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
       {/* <Tech /> */}
       <Education />
       <Projects />
+      <Blogs limit={3} />
       <Feedbacks />
       <div className="relative z-0">
         <Contact />

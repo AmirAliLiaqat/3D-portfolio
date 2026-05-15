@@ -13,6 +13,8 @@ import AdminDetails from "./pages/admin/AdminDetails";
 import AdminProfile from "./pages/admin/AdminProfile";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
+import Blogs from "./pages/Blogs";
+import BlogDetails from "./pages/BlogDetails";
 import { Navbar } from "./components";
 
 const App = () => {
@@ -24,6 +26,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/project/:id" element={<ProjectDetails />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="/admin" element={<Login />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="profile" element={<AdminProfile />} />

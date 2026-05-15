@@ -15,6 +15,8 @@ import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
 
+import BlogCard from "./BlogCard";
+
 export {
   Hero,
   Navbar,
@@ -30,4 +32,5 @@ export {
   BallCanvas,
   ComputersCanvas,
   StarsCanvas,
+  BlogCard,
 };
