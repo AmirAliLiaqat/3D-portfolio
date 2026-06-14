@@ -75,28 +75,35 @@ import fsc from "./education/fsc.png";
 import computerScience from "./education/computerScience.png";
 
 /************* projects icons ***************/
-import byteBunch from "./projects/bytebunch.png";
-import bytebunchBlog from "./projects/bytebunchBlog.png";
-import devBrains from "./projects/devbrains.png";
-import barberShop from "./projects/barberShop.png";
-import byteKiDuniya from "./projects/byteKiDuniya.png";
-import meharHerbals from "./projects/meharHerbals.png";
-import trackomatric from "./projects/trackomatric.png";
-import warraichTraders from "./projects/warraichTraders.png";
-import waveslines from "./projects/waveslines.png";
-import ums from "./projects/ums.png";
-import allInOneMedia from "./projects/allInOneMedia.png";
-import cacheStore from "./projects/cacheStore.png";
-import richmondInstitute from "./projects/richmondInstitute.png";
-import coffeeShop from "./projects/coffeeShop.png";
-import soarTask from "./projects/soarTask.png";
-import sportsArena from "./projects/sportsArena.png";
-import mcclg from "./projects/mcclg.png";
-import plantify from "./projects/plantify.png";
-import fixonic from "./projects/fixonic.png";
-import nexKind from "./projects/nexkind.png";
-import campusCore from "./projects/campusCore.png";
-import campusHub from "./projects/campusHub.png";
+import byteBunch from "./projects/wordpress/bytebunch.png";
+import bytebunchBlog from "./projects/wordpress/bytebunchBlog.png";
+import devBrains from "./projects/wordpress/devbrains.png";
+import byteKiDuniya from "./projects/wordpress/byteKiDuniya.png";
+import meharHerbals from "./projects/wordpress/meharHerbals.png";
+import cacheStore from "./projects/wordpress/cacheStore.png";
+import waveslines from "./projects/wordpress/waveslines.png";
+import warraichTraders from "./projects/wordpress/warraichTraders.png";
+import richmondInstitute from "./projects/wordpress/richmondInstitute.png";
+
+import barberShop from "./projects/mern/barberShop.png";
+import ums from "./projects/mern/ums.png";
+import allInOneMedia from "./projects/mern/allInOneMedia.png";
+import coffeeShop from "./projects/mern/coffeeShop.png";
+import soarTask from "./projects/mern/soarTask.png";
+import sportsArena from "./projects/mern/sportsArena.png";
+import mcclg from "./projects/mern/mcclg.png";
+import plantify from "./projects/mern/plantify.png";
+import fixonic from "./projects/mern/fixonic.png";
+import nexKind from "./projects/mern/nexkind.png";
+import campusCore from "./projects/mern/campusCore.png";
+import campusHub from "./projects/mern/campusHub.png";
+import prepmaster from "./projects/mern/prepMaster.png";
+
+import appPlaceholder from "./projects/app/appPlaceholder.png";
+import devutils from "./projects/app/devutils.png";
+import splentra from "./projects/app/splentra.png";
+import dengueguard from "./projects/app/dengueguard.png";
+import plantifyApp from "./projects/app/plantifyApp.png";
 
 export {
   logo,
@@ -160,7 +167,6 @@ export {
   barberShop,
   byteKiDuniya,
   meharHerbals,
-  trackomatric,
   warraichTraders,
   waveslines,
   ums,
@@ -176,6 +182,12 @@ export {
   nexKind,
   campusCore,
   campusHub,
+  prepmaster,
+  appPlaceholder,
+  devutils,
+  splentra,
+  dengueguard,
+  plantifyApp,
   excel,
   express,
   jira,

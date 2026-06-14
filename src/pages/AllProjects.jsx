@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { usePortfolio } from "../context/PortfolioContext";
@@ -9,7 +9,6 @@ const AllProjects = () => {
   const { projects } = usePortfolio();
   const [toggle, setToggle] = useState("all");
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -23,7 +22,7 @@ const AllProjects = () => {
     { value: "all", label: "All" },
     { value: "wordpress", label: "WordPress" },
     { value: "mern", label: "MERN Stack" },
-    { value: "frontend", label: "Frontend" }
+    { value: "app", label: "App Development" }
   ];
 
   return (

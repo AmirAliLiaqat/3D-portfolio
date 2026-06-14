@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
+import { CardContainer } from "./styled/Project";
 import ProjectCard from "./ProjectCard";
-import {
-  CardContainer,
-  Container,
-  Divider,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "./styled/Project";
 
 const Projects = () => {
   const { projects } = usePortfolio();
@@ -28,7 +22,7 @@ const Projects = () => {
     { value: "all", label: "All" },
     { value: "wordpress", label: "WordPress" },
     { value: "mern", label: "MERN Stack" },
-    { value: "frontend", label: "Frontend" }
+    { value: "app", label: "App Development" },
   ];
 
   return (
@@ -55,10 +49,11 @@ const Projects = () => {
           <button
             key={category.value}
             onClick={() => setToggle(category.value)}
-            className={`px-6 py-2 rounded-xl border-2 transition-all duration-300 font-semibold ${toggle === category.value
-              ? "bg-[#915eff] border-[#915eff] text-white shadow-lg shadow-primary"
-              : "border-[#915eff] text-secondary hover:bg-[#915eff20]"
-              }`}
+            className={`px-6 py-2 rounded-xl border-2 transition-all duration-300 font-semibold ${
+              toggle === category.value
+                ? "bg-[#915eff] border-[#915eff] text-white shadow-lg shadow-primary"
+                : "border-[#915eff] text-secondary hover:bg-[#915eff20]"
+            }`}
           >
             {category.label}
           </button>

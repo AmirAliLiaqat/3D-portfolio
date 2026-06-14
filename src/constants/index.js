@@ -36,7 +36,6 @@ import {
   barberShop,
   byteKiDuniya,
   meharHerbals,
-  trackomatric,
   warraichTraders,
   waveslines,
   allInOneMedia,
@@ -52,6 +51,12 @@ import {
   nexKind,
   campusCore,
   campusHub,
+  prepmaster,
+  appPlaceholder,
+  devutils,
+  splentra,
+  dengueguard,
+  plantifyApp,
   matriculation,
   fsc,
   woocommerce,
@@ -75,8 +80,10 @@ export const details = {
     "MERN Stack Developer",
     "IT Instructor",
   ],
-  description: "I'm a dedicated front-end developer passionate about crafting exceptional web experiences. With a solid foundation of 4+ years in web development, I have honed my skills across various technologies to create dynamic and user-friendly interfaces.",
-  about: "Currently, I am an integral part of a dynamic team contributing my skills to develop cutting-edge web applications. My role involves working with React.js, TypeScript, JavaScript, and Next.js, as well as backend technologies to build robust, high-performance solutions catering to modern user expectations.",
+  description:
+    "I'm a dedicated front-end developer passionate about crafting exceptional web experiences. With a solid foundation of 4+ years in web development, I have honed my skills across various technologies to create dynamic and user-friendly interfaces.",
+  about:
+    "Currently, I am an integral part of a dynamic team contributing my skills to develop cutting-edge web applications. My role involves working with React.js, TypeScript, JavaScript, and Next.js, as well as backend technologies to build robust, high-performance solutions catering to modern user expectations.",
 };
 
 export const socialLinks = [
@@ -436,8 +443,164 @@ export const testimonials = [
 
 export const projects = [
   {
-    id: "plantify",
-    name: "Plantify",
+    id: "devutils",
+    name: "DevUtils",
+    description:
+      'DevUtils Mobile is a high-performance, ultra-premium developer toolkit built natively for iOS and Android. It packages over 15 powerful, offline-first developer utilities into a single application. Designed to be a comprehensive "Swiss Army Knife", DevUtils offers granular tool toggling, deeply integrated native modules, and a unified dark/light mode design system.',
+    tags: [
+      {
+        name: "react native",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "javascript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "netlify",
+        color: "green-text-gradient",
+      },
+    ],
+    category: "app",
+    image: devutils,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://devutils-privacy.netlify.app/",
+  },
+  {
+    id: "splentra",
+    name: "Splentra",
+    description:
+      "Splentra is a modern, production-ready, fintech-inspired mobile expense splitting application designed to help roommates, coworkers, and friends divide bills, log transactions, and simplify outstanding debts.",
+    tags: [
+      {
+        name: "react native",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "javascript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "express",
+        color: "green-text-gradient",
+      },
+    ],
+    category: "app",
+    image: splentra,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://splentra-backend.vercel.app/privacy",
+  },
+  {
+    id: "dengueguard",
+    name: "DengueGuard",
+    description:
+      "A professional-grade, high-end AI-Driven Dengue Detection and Knowledge-Based Expert System (KBS). This project integrates statistical Machine Learning with a rule-based inference engine to provide a state-of-the-art diagnostic assistant.",
+    tags: [
+      {
+        name: "python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "flask",
+        color: "green-text-gradient",
+      },
+      {
+        name: "react native",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "javascript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "hugging face",
+        color: "green-text-gradient",
+      },
+    ],
+    category: "app",
+    image: dengueguard,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://dengueguard-privacy.netlify.app/",
+  },
+  {
+    id: "plantify-app",
+    name: "Plantify App",
+    description:
+      "Plantify is a comprehensive app designed to help users manage their gardens, buy plants, and diagnose plant diseases. It effectively combines a modern e-commerce platform with a smart garden planner and an AI-powered disease detection system.",
+    tags: [
+      {
+        name: "react native",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "javascript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    category: "app",
+    image: plantifyApp,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "http://206.189.193.179/",
+  },
+  {
+    id: "prepmaster",
+    name: "PrepMaster",
+    description:
+      "A professional, scalable, and secure full-stack test preparation platform. This project features a Next.js 15 frontend, a FastAPI Python service, and a comprehensive DevOps suite for DigitalOcean deployment.",
+    tags: [
+      {
+        name: "nextjs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "fastapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    category: "mern",
+    image: prepmaster,
+    source_code_link: "https://github.com/AmirAliLiaqat",
+    source_link: "https://prepmaster.com/",
+  },
+  {
+    id: "plantify-web",
+    name: "Plantify Web",
     description:
       "Plantify is a comprehensive plant care and disease detection platform that helps users identify plant health issues and provides expert recommendations for treatment.",
     tags: [
@@ -783,30 +946,7 @@ export const projects = [
     source_code_link: "https://github.com/",
     source_link: "http://meharherbals.likesyou.org/",
   },
-  {
-    id: "trackomatric",
-    name: "Trackomatric",
-    description:
-      "Trakomatic is an artificial intelligence system for detacking security activites at large scale and shopping malls.",
-    tags: [
-      {
-        name: "html5",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "css3",
-        color: "green-text-gradient",
-      },
-      {
-        name: "bootstrap5",
-        color: "pink-text-gradient",
-      },
-    ],
-    category: "frontend",
-    image: trackomatric,
-    source_code_link: "https://github.com/",
-    source_link: "https://amiraliliaqat.github.io/Trackomatric/",
-  },
+
   {
     id: "barber-shop",
     name: "Barber Shop",
