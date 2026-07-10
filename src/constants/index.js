@@ -81,9 +81,9 @@ export const details = {
     "IT Instructor",
   ],
   description:
-    "I'm a dedicated front-end developer passionate about crafting exceptional web experiences. With a solid foundation of 4+ years in web development, I have honed my skills across various technologies to create dynamic and user-friendly interfaces.",
+    "I'm a Full Stack Software Engineer with over 4 years of experience building modern web and mobile applications. Currently, I work at DevBrains Software House, where I develop scalable, high-performance solutions using technologies such as React.js, Next.js, TypeScript, Node.js, Express.js, MongoDB, and React Native. I enjoy creating responsive user interfaces, designing robust backend APIs, and delivering seamless end-to-end applications with clean, maintainable code.",
   about:
-    "Currently, I am an integral part of a dynamic team contributing my skills to develop cutting-edge web applications. My role involves working with React.js, TypeScript, JavaScript, and Next.js, as well as backend technologies to build robust, high-performance solutions catering to modern user expectations.",
+    "I'm passionate about solving real-world problems through modern development practices and continuously expanding my technical expertise. I thrive in collaborative environments, value writing efficient and reusable code, and focus on building secure, scalable, and user-centric products that provide exceptional user experiences across web and mobile platforms.",
 };
 
 export const socialLinks = [
@@ -316,7 +316,7 @@ export const experiences = [
     company_name: "DevBrains",
     icon: devbrains,
     iconBg: "#E6DEDD",
-    date: "Aug 2023 - Present",
+    date: "Aug 2023 - June 2026",
     points: [
       "Developed and maintained web applications using HTML5, CSS3, Bootstrap5, and React.js.",
       "Worked with Next.js, Recoil.js, and Material UI for creating dynamic and scalable front-end interfaces.",
@@ -325,15 +325,15 @@ export const experiences = [
     ],
   },
   {
-    title: "Full Stack Developer",
+    title: "Software Engineer",
     company_name: "DevBrains",
     icon: devbrains,
     iconBg: "#E6DEDD",
-    date: "May 2024 - Present",
+    date: "June 2026 - Present",
     points: [
       "Developing full-stack web applications using React.js, Next.js, and Node.js.",
       "Working with Recoil.js and Material UI to build dynamic user interfaces.",
-      "Handled backend development using Nest.js and MongoDB.",
+      "Handled backend development using Nest.js with MongoDB & PostgreSQL.",
       "Integrated GraphQL for managing complex data queries and mutations.",
     ],
   },
