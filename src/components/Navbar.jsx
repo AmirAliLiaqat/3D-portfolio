@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { styles } from "../styles";
-import { navLinks } from "../constants";
+import { navLinks } from "../mock/index.js";
 import { usePortfolio } from "../context/PortfolioContext";
 import { logo, menu, close } from "../assets";
 import { CustomButton } from "./styled";
 
 const Navbar = () => {
+  const location = useLocation();
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -18,6 +19,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Do not render top Navbar in Admin dashboard pages
+  if (location.pathname.startsWith("/admin")) {
+    return null;
+  }
+
   const githubLink =
     socialLinks.find((l) => l.name === "GitHub")?.link ||
     "https://github.com/AmirAliLiaqat";
@@ -25,12 +31,15 @@ const Navbar = () => {
     socialLinks.find((l) => l.name === "LinkedIn")?.link ||
     "https://www.linkedin.com/in/amir-ali-liaqat";
 
+  const filteredNavLinks = navLinks.filter((link) => link.id !== "company");
+
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${scrolled
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${
+        scrolled
           ? "bg-primary/90 backdrop-blur-md shadow-lg shadow-black/20"
           : "bg-transparent"
-        }`}
+      }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -47,11 +56,12 @@ const Navbar = () => {
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((link) => (
+          {filteredNavLinks.map((link) => (
             <li
               key={link.id}
-              className={`${active === link.title ? "text-white" : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
+              className={`${
+                active === link.title ? "text-white" : "text-secondary"
+              } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(link.title)}
             >
               {link.id === "blogs" ? (
@@ -90,15 +100,17 @@ const Navbar = () => {
           />
 
           <div
-            className={`${!toggle ? "hidden" : "flex"
-              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${
+              !toggle ? "hidden" : "flex"
+            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks.map((link) => (
+              {filteredNavLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${active === link.title ? "text-white" : "text-secondary"
-                    } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${
+                    active === link.title ? "text-white" : "text-secondary"
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(link.title);
@@ -115,8 +127,9 @@ const Navbar = () => {
                 <a
                   href={githubLink}
                   target="_blank"
-                  className={`${active === "Github" ? "text-white" : "text-secondary"
-                    } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${
+                    active === "Github" ? "text-white" : "text-secondary"
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive("Github");
@@ -129,8 +142,9 @@ const Navbar = () => {
                 <a
                   href={linkedinLink}
                   target="_blank"
-                  className={`${active === "Linkedin" ? "text-white" : "text-secondary"
-                    } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${
+                    active === "Linkedin" ? "text-white" : "text-secondary"
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive("Linkedin");

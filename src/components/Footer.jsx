@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { navLinks } from "../constants";
+import { navLinks } from "../mock/index.js";
 import { usePortfolio } from "../context/PortfolioContext";
 import { Link } from "react-router-dom";
 import { logo } from "../assets";

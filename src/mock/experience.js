@@ -1,0 +1,74 @@
+import {
+  devbrains,
+  bytebunch,
+  nexskill,
+  mindware,
+} from "../assets/index.js";
+
+export const experiences = [
+  {
+    title: "WordPress Developer",
+    company_name: "ByteBunch",
+    icon: bytebunch,
+    iconBg: "#383E56",
+    date: "Jan 2022 - Aug 2023",
+    points: [
+      "Developed custom WordPress themes and plugins.",
+      "Worked extensively with PHP and MySQL for backend development.",
+      "Collaborated with cross-functional teams to deliver optimized WordPress solutions.",
+      "Ensured website performance, security, and responsiveness.",
+    ],
+  },
+  {
+    title: "Frontend Developer",
+    company_name: "DevBrains",
+    icon: devbrains,
+    iconBg: "#E6DEDD",
+    date: "Aug 2023 - June 2026",
+    points: [
+      "Developed and maintained web applications using HTML5, CSS3, Bootstrap5, and React.js.",
+      "Worked with Next.js, Recoil.js, and Material UI for creating dynamic and scalable front-end interfaces.",
+      "Implemented GraphQL for efficient data fetching.",
+      "Collaborated with designers and backend developers to create seamless user experiences.",
+    ],
+  },
+  {
+    title: "Software Engineer",
+    company_name: "DevBrains",
+    icon: devbrains,
+    iconBg: "#E6DEDD",
+    date: "June 2026 - Present",
+    points: [
+      "Developing full-stack web applications using React.js, Next.js, and Node.js.",
+      "Working with Recoil.js and Material UI to build dynamic user interfaces.",
+      "Handled backend development using Nest.js with MongoDB & PostgreSQL.",
+      "Integrated GraphQL for managing complex data queries and mutations.",
+    ],
+  },
+  {
+    title: "WordPress Developer",
+    company_name: "Mindware Technologies",
+    icon: mindware,
+    iconBg: "#E6DEDD",
+    date: "Dec 2024 - Jan 2025",
+    points: [
+      "Worked as a Contract WordPress Developer at Mindware Technologies.",
+      "Developed and optimized WordPress websites, focusing on performance and user experience.",
+      "Implemented custom features and managed site updates remotely.",
+      "Collaborated with the team to ensure project milestones were met within the 2-month contract period.",
+    ],
+  },
+  {
+    title: "IT Mentor",
+    company_name: "NexSkill Institute",
+    icon: nexskill,
+    iconBg: "#383E56",
+    date: "2025 - Present",
+    points: [
+      "Mentoring and instructing students in Frontend and Backend development technologies.",
+      "Successfully covered 1 batch of Frontend Development, teaching HTML, CSS, Bootstrap, Tailwind, JavaScript, and React.js.",
+      "Conducted 2 batches of Backend Development, covering Node.js, Express.js, and MongoDB.",
+      "Guided students through hands-on projects and real-world application development.",
+    ],
+  },
+];

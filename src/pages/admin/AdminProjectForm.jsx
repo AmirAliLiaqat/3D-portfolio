@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { styles } from "../../styles";
+import ImageUploader from "../../components/admin/ImageUploader";
 
 const AdminProjectForm = () => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ const AdminProjectForm = () => {
         setFormData({
           ...projectToEdit,
           tags: projectToEdit.tags
-            ? projectToEdit.tags.map((t) => t.name).join(", ")
+            ? projectToEdit.tags.map((t) => (typeof t === "object" ? t.name : t)).join(", ")
             : "",
         });
       }
@@ -41,10 +42,13 @@ const AdminProjectForm = () => {
     e.preventDefault();
 
     // Process tags
-    const processedTags = formData.tags.split(",").map((tag) => ({
-      name: tag.trim(),
-      color: "blue-text-gradient", // Default color
-    }));
+    const processedTags = formData.tags
+      .split(",")
+      .filter((t) => t.trim())
+      .map((tag) => ({
+        name: tag.trim(),
+        color: "blue-text-gradient",
+      }));
 
     const projectData = {
       ...formData,
@@ -118,22 +122,20 @@ const AdminProjectForm = () => {
               >
                 <option value="wordpress">WordPress</option>
                 <option value="mern">MERN Stack</option>
+                <option value="fullstack">Fullstack</option>
                 <option value="frontend">Frontend</option>
+                <option value="mobile">App / Mobile</option>
               </select>
             </label>
           </div>
 
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-2">Image URL</span>
-            <input
-              type="text"
-              name="image"
-              value={formData.image}
-              onChange={handleChange}
-              placeholder="Image URL (e.g. from existing assets or external)"
-              className="bg-black-100 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-            />
-          </label>
+          {/* Cloudinary Image Uploader */}
+          <ImageUploader
+            label="Project Image (Cloudinary)"
+            value={formData.image}
+            onChange={(url) => setFormData((prev) => ({ ...prev, image: url }))}
+            placeholder="Cloudinary image URL"
+          />
 
           <div className="md:flex gap-4">
             <label className="flex flex-col w-full">
@@ -168,7 +170,7 @@ const AdminProjectForm = () => {
           <div className="flex gap-4 mt-4">
             <button
               type="submit"
-              className="bg-white text-primary font-bold py-3 px-8 rounded-xl hover:bg-white/90 transition-colors"
+              className="bg-[#915EFF] text-white font-bold py-3 px-8 rounded-xl hover:bg-indigo-600 transition-colors shadow-md shadow-[#915EFF]/20"
             >
               {id ? "Update Project" : "Add Project"}
             </button>

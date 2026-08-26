@@ -10,11 +10,15 @@ import AdminExperience from "./pages/admin/AdminExperience";
 import AdminEducation from "./pages/admin/AdminEducation";
 import AdminTestimonials from "./pages/admin/AdminTestimonials";
 import AdminDetails from "./pages/admin/AdminDetails";
+import AdminCompany from "./pages/admin/AdminCompany";
+import AdminBlogs from "./pages/admin/AdminBlogs";
+import AdminBlogForm from "./pages/admin/AdminBlogForm";
 import AdminProfile from "./pages/admin/AdminProfile";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
+import FloatingSocials from "./components/FloatingSocials";
 import { Navbar } from "./components";
 
 const App = () => {
@@ -22,6 +26,7 @@ const App = () => {
     <PortfolioProvider>
       <BrowserRouter>
         <Navbar />
+        <FloatingSocials />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<AllProjects />} />
@@ -31,9 +36,14 @@ const App = () => {
           <Route path="/admin" element={<Login />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="profile" element={<AdminProfile />} />
+            <Route path="company" element={<AdminCompany />} />
             <Route path="projects" element={<AdminProjects />} />
             <Route path="projects/add" element={<AdminProjectForm />} />
             <Route path="projects/edit/:id" element={<AdminProjectForm />} />
+
+            <Route path="blogs" element={<AdminBlogs />} />
+            <Route path="blogs/add" element={<AdminBlogForm />} />
+            <Route path="blogs/edit/:id" element={<AdminBlogForm />} />
 
             <Route path="skills" element={<AdminSkills />} />
             <Route path="experience" element={<AdminExperience />} />

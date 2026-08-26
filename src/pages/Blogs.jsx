@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
-import { blogs } from "../constants/blogs";
+import { usePortfolio } from "../context/PortfolioContext";
 import BlogCard from "../components/BlogCard";
 
 const Blogs = ({ limit }) => {
+  const { blogs = [] } = usePortfolio();
   const displayedBlogs = limit ? blogs.slice(0, limit) : blogs;
 
   return (
@@ -21,7 +22,7 @@ const Blogs = ({ limit }) => {
       </div>
       <div className={`-mt-20 pb-14 ${styles.paddingX} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 justify-items-center`}>
         {displayedBlogs.map((blog, index) => (
-          <BlogCard key={blog.id} index={index} {...blog} />
+          <BlogCard key={blog.id || blog._id || index} index={index} {...blog} />
         ))}
       </div>
 

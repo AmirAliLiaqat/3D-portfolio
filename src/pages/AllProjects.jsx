@@ -13,16 +13,20 @@ const AllProjects = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const filteredProjects =
-    toggle === "all"
-      ? projects
-      : projects.filter((item) => item.category === toggle);
+  const filteredProjects = projects.filter((item) => {
+    if (toggle === "all") return true;
+    const cat = (item.category || "").toLowerCase();
+    if (toggle === "wordpress") return cat.includes("wordpress");
+    if (toggle === "mern") return cat.includes("mern") || cat.includes("fullstack");
+    if (toggle === "mobile") return cat.includes("mobile") || cat.includes("app") || cat.includes("frontend");
+    return cat === toggle.toLowerCase();
+  });
 
   const categories = [
     { value: "all", label: "All" },
     { value: "wordpress", label: "WordPress" },
     { value: "mern", label: "MERN Stack" },
-    { value: "app", label: "App Development" }
+    { value: "mobile", label: "App / Mobile" },
   ];
 
   return (
@@ -30,7 +34,7 @@ const AllProjects = () => {
       <div className="max-w-7xl mx-auto">
         <motion.div variants={textVariant()}>
           <p className={styles.sectionSubText}>Portfolio Showcase</p>
-          <h2 className={styles.sectionHeadText}>All Projects</h2>
+          <h2 className={styles.sectionHeadText}>All Projects ({projects.length})</h2>
         </motion.div>
 
         <motion.p
@@ -42,15 +46,16 @@ const AllProjects = () => {
         </motion.p>
 
         {/* Categories Filter */}
-        <div className="mt-10 mb-12 flex flex-wrap justify-center items-center gap-4">
+        <div className="mt-10 mb-12 flex flex-wrap justify-center items-center gap-3 sm:gap-4">
           {categories.map((category) => (
             <button
               key={category.value}
               onClick={() => setToggle(category.value)}
-              className={`px-6 py-2 rounded-xl border-2 transition-all duration-300 font-semibold ${toggle === category.value
+              className={`px-5 py-2 rounded-xl border-2 transition-all duration-300 font-semibold text-sm sm:text-base ${
+                toggle === category.value
                   ? "bg-[#915eff] border-[#915eff] text-white shadow-lg shadow-primary"
                   : "border-[#915eff] text-secondary hover:bg-[#915eff20]"
-                }`}
+              }`}
             >
               {category.label}
             </button>
@@ -59,7 +64,7 @@ const AllProjects = () => {
 
         <div className="mt-10 flex flex-wrap gap-7 justify-center">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id || `project-${index}`} index={index} {...project} />
+            <ProjectCard key={project._id || project.id || `project-${index}`} index={index} {...project} />
           ))}
         </div>
 

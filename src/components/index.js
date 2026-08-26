@@ -14,7 +14,6 @@ import Projects from "./Projects";
 import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
-
 import BlogCard from "./BlogCard";
 import Company from "./Company";
 
