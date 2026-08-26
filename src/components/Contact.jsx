@@ -8,6 +8,7 @@ import { EarthCanvas } from "./canvas";
 import { slideIn, fadeIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { usePortfolio } from "../context/PortfolioContext";
+import { portfolioAPI } from "../services/api";
 
 const Contact = () => {
   const formRef = useRef();
@@ -25,10 +26,25 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    try {
+      // 1. Try sending to Node.js backend API (MongoDB + Nodemailer SMTP)
+      const res = await portfolioAPI.sendContactInquiry(form);
+      if (res && res.success) {
+        setLoading(false);
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 4000);
+        setForm({ name: "", email: "", message: "" });
+        return;
+      }
+    } catch (apiError) {
+      console.warn("Backend Contact API failed, attempting EmailJS fallback:", apiError.message);
+    }
+
+    // 2. Fallback to EmailJS
     emailjs
       .sendForm(
         "service_5jgq5nn",
@@ -38,7 +54,7 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log("Message Sent:", result.text);
+          console.log("Message Sent via EmailJS:", result.text);
           setLoading(false);
           setSuccess(true);
           setTimeout(() => setSuccess(false), 4000);

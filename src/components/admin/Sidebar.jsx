@@ -16,11 +16,13 @@ const Sidebar = () => {
 
   const menuItems = [
     { path: "/admin/profile", name: "Profile", icon: "fa-user" },
+    { path: "/admin/company", name: "Company Details", icon: "fa-building" },
     { path: "/admin/details", name: "Services", icon: "fa-cogs" },
     { path: "/admin/skills", name: "Skills", icon: "fa-code" },
-    { path: "/admin/experience", name: "Experience", icon: "fa-building" },
+    { path: "/admin/experience", name: "Experience", icon: "fa-briefcase" },
     { path: "/admin/education", name: "Education", icon: "fa-graduation-cap" },
-    { path: "/admin/projects", name: "Projects", icon: "fa-briefcase" },
+    { path: "/admin/projects", name: "Projects", icon: "fa-layer-group" },
+    { path: "/admin/blogs", name: "Blogs", icon: "fa-newspaper" },
     {
       path: "/admin/testimonials",
       name: "Testimonials",

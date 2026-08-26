@@ -2,13 +2,16 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { blogs } from "../constants/blogs";
+import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn, textVariant } from "../utils/motion";
-import { SectionWrapper } from "../hoc";
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const blog = blogs.find((b) => b.id === id);
+  const { blogs = [] } = usePortfolio();
+
+  const blog = blogs.find(
+    (b) => String(b.id) === String(id) || String(b._id) === String(id)
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,10 +28,12 @@ const BlogDetails = () => {
     );
   }
 
+  const authorName = blog.author?.name || (typeof blog.author === "string" ? blog.author : "Amir Ali Liaqat");
+
   return (
-    <div className="mt-20">
+    <div className="mt-20 max-w-7xl mx-auto px-6">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>{blog.date} | By {blog.author}</p>
+        <p className={styles.sectionSubText}>{blog.date} | By {authorName}</p>
         <h2 className={styles.sectionHeadText}>{blog.title}</h2>
       </motion.div>
 
@@ -58,12 +63,6 @@ const BlogDetails = () => {
              <Link to="/blogs" className="text-[#915EFF] font-bold flex items-center gap-2 hover:underline">
                ← Back to Blogs
              </Link>
-             <div className="flex gap-4">
-               {/* Social Share Placeholders */}
-               <span className="text-[14px]">Share:</span>
-               <i className="fab fa-twitter cursor-pointer hover:text-white" />
-               <i className="fab fa-linkedin cursor-pointer hover:text-white" />
-             </div>
           </div>
         </motion.div>
       </div>
@@ -71,4 +70,4 @@ const BlogDetails = () => {
   );
 };
 
-export default SectionWrapper(BlogDetails, "");
+export default BlogDetails;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { styles } from "../../styles";
+import ImageUploader from "../../components/admin/ImageUploader";
 
 const AdminEducation = () => {
   const { education, addEducation, updateEducation, deleteEducation } =
@@ -69,6 +70,7 @@ const AdminEducation = () => {
               setFormData({ ...formData, school: e.target.value })
             }
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+            required
           />
           <input
             type="text"
@@ -78,6 +80,7 @@ const AdminEducation = () => {
               setFormData({ ...formData, degree: e.target.value })
             }
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+            required
           />
           <input
             type="text"
@@ -95,14 +98,6 @@ const AdminEducation = () => {
             }
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
           />
-          <input
-            type="text"
-            placeholder="Image URL / Icon"
-            value={formData.img}
-            onChange={(e) => setFormData({ ...formData, img: e.target.value })}
-            className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
-          />
-
           <div className="md:col-span-2">
             <label className="text-secondary text-sm block mb-1">
               Icon Background Color
@@ -118,6 +113,13 @@ const AdminEducation = () => {
           </div>
         </div>
 
+        <ImageUploader
+          label="Institution Logo / Image (Cloudinary)"
+          value={formData.img}
+          onChange={(url) => setFormData((prev) => ({ ...prev, img: url }))}
+          placeholder="Cloudinary image URL"
+        />
+
         <textarea
           rows="3"
           value={formData.desc}
@@ -129,9 +131,9 @@ const AdminEducation = () => {
         <div className="flex gap-2 mt-4">
           <button
             type="submit"
-            className="bg-white text-primary font-bold py-2 px-6 rounded-lg hover:bg-white/90 transition-colors"
+            className="bg-[#915EFF] text-white font-bold py-2.5 px-6 rounded-lg hover:bg-indigo-600 transition-colors"
           >
-            {editingIndex !== null ? "Update" : "Add"}
+            {editingIndex !== null ? "Update Education" : "Add Education"}
           </button>
           {editingIndex !== null && (
             <button
@@ -148,7 +150,7 @@ const AdminEducation = () => {
                   iconBg: "#383E56",
                 });
               }}
-              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-red-600 transition-colors"
+              className="bg-red-500 text-white font-bold py-2.5 px-6 rounded-lg hover:bg-red-600 transition-colors"
             >
               Cancel
             </button>
@@ -166,26 +168,40 @@ const AdminEducation = () => {
             <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
                 onClick={() => handleEdit(index, edu)}
-                className="text-blue-500 bg-tertiary p-2 rounded-full"
+                className="text-blue-400 bg-tertiary p-2 rounded-full"
               >
                 <i className="fa fa-pencil"></i>
               </button>
               <button
                 onClick={() => handleDelete(index)}
-                className="text-red-500 bg-tertiary p-2 rounded-full"
+                className="text-red-400 bg-tertiary p-2 rounded-full"
               >
                 <i className="fa fa-trash"></i>
               </button>
             </div>
 
-            <h3 className="text-white text-[24px] font-bold">{edu.school}</h3>
-            <p
-              className="text-secondary text-[16px] font-semibold"
-              style={{ margin: 0 }}
-            >
-              {edu.degree}
-            </p>
-            <p className="text-secondary text-[14px] mt-1">{edu.date}</p>
+            <div className="flex items-center gap-4 mb-3">
+              {edu.img && (
+                <div
+                  className="w-12 h-12 rounded-full p-2 flex items-center justify-center overflow-hidden flex-shrink-0"
+                  style={{ backgroundColor: edu.iconBg }}
+                >
+                  <img
+                    src={edu.img}
+                    alt={edu.school}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+              <div>
+                <h3 className="text-white text-[22px] font-bold">{edu.school}</h3>
+                <p className="text-secondary text-[16px] font-semibold">
+                  {edu.degree}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-secondary text-[14px]">{edu.date}</p>
             <p className="text-white-100 text-[14px] mt-2">{edu.desc}</p>
             <p className="text-white-100 text-[12px] mt-2 font-bold">
               Grade: {edu.grade}

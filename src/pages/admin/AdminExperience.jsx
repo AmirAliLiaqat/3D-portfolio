@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { styles } from "../../styles";
+import ImageUploader from "../../components/admin/ImageUploader";
 
 const AdminExperience = () => {
   const { experience, addExperience, updateExperience, deleteExperience } =
@@ -84,6 +85,7 @@ const AdminExperience = () => {
               setFormData({ ...formData, title: e.target.value })
             }
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+            required
           />
           <input
             type="text"
@@ -93,6 +95,7 @@ const AdminExperience = () => {
               setFormData({ ...formData, company_name: e.target.value })
             }
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+            required
           />
           <input
             type="text"
@@ -101,20 +104,12 @@ const AdminExperience = () => {
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
           />
-          <input
-            type="text"
-            placeholder="Icon URL / Class"
-            value={formData.icon}
-            onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
-            className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
-          />
-          <div className="md:col-span-2">
+          <div>
             <label className="text-secondary text-sm block mb-1">
               Icon Background Color
             </label>
             <input
               type="color"
-              placeholder="Icon Background Color"
               value={formData.iconBg}
               onChange={(e) =>
                 setFormData({ ...formData, iconBg: e.target.value })
@@ -123,6 +118,13 @@ const AdminExperience = () => {
             />
           </div>
         </div>
+
+        <ImageUploader
+          label="Company Logo (Cloudinary)"
+          value={formData.icon}
+          onChange={(url) => setFormData((prev) => ({ ...prev, icon: url }))}
+          placeholder="Cloudinary company logo URL"
+        />
 
         <div className="border-t border-white/10 pt-4">
           <label className="text-white font-bold block mb-2">
@@ -149,18 +151,18 @@ const AdminExperience = () => {
           <button
             type="button"
             onClick={addPoint}
-            className="text-blue-500 hover:text-blue-400 mt-2 text-sm"
+            className="text-[#915EFF] hover:underline mt-2 text-sm font-semibold flex items-center gap-1"
           >
-            + Add Point
+            + Add Responsibility Point
           </button>
         </div>
 
         <div className="flex gap-2 mt-4">
           <button
             type="submit"
-            className="bg-white text-primary font-bold py-2 px-6 rounded-lg hover:bg-white/90 transition-colors"
+            className="bg-[#915EFF] text-white font-bold py-2.5 px-6 rounded-lg hover:bg-indigo-600 transition-colors"
           >
-            {editingIndex !== null ? "Update" : "Add"}
+            {editingIndex !== null ? "Update Experience" : "Add Experience"}
           </button>
           {editingIndex !== null && (
             <button
@@ -176,7 +178,7 @@ const AdminExperience = () => {
                   points: [],
                 });
               }}
-              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-red-600 transition-colors"
+              className="bg-red-500 text-white font-bold py-2.5 px-6 rounded-lg hover:bg-red-600 transition-colors"
             >
               Cancel
             </button>
@@ -194,26 +196,40 @@ const AdminExperience = () => {
             <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
                 onClick={() => handleEdit(index, exp)}
-                className="text-blue-500 bg-tertiary p-2 rounded-full"
+                className="text-blue-400 bg-tertiary p-2 rounded-full hover:bg-blue-500/20"
               >
                 <i className="fa fa-pencil"></i>
               </button>
               <button
                 onClick={() => handleDelete(index)}
-                className="text-red-500 bg-tertiary p-2 rounded-full"
+                className="text-red-400 bg-tertiary p-2 rounded-full hover:bg-red-500/20"
               >
                 <i className="fa fa-trash"></i>
               </button>
             </div>
 
-            <h3 className="text-white text-[24px] font-bold">{exp.title}</h3>
-            <p
-              className="text-secondary text-[16px] font-semibold"
-              style={{ margin: 0 }}
-            >
-              {exp.company_name}
-            </p>
-            <ul className="mt-5 list-disc ml-5 space-y-2">
+            <div className="flex items-center gap-4 mb-3">
+              {exp.icon && (
+                <div
+                  className="w-12 h-12 rounded-full p-2 flex items-center justify-center overflow-hidden flex-shrink-0"
+                  style={{ backgroundColor: exp.iconBg }}
+                >
+                  <img
+                    src={exp.icon}
+                    alt={exp.company_name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+              <div>
+                <h3 className="text-white text-[22px] font-bold">{exp.title}</h3>
+                <p className="text-secondary text-[16px] font-semibold">
+                  {exp.company_name}
+                </p>
+              </div>
+            </div>
+
+            <ul className="mt-4 list-disc ml-5 space-y-2">
               {exp.points.map((point, pointIndex) => (
                 <li
                   key={`experience-point-${pointIndex}`}
@@ -223,7 +239,7 @@ const AdminExperience = () => {
                 </li>
               ))}
             </ul>
-            <p className="text-secondary text-[12px] mt-2">{exp.date}</p>
+            <p className="text-secondary text-[12px] mt-3">{exp.date}</p>
           </div>
         ))}
       </div>

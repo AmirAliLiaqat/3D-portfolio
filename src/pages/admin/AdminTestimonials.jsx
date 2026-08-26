@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { styles } from "../../styles";
+import ImageUploader from "../../components/admin/ImageUploader";
 
 const AdminTestimonials = () => {
   const { testimonials, addTestimonial, updateTestimonial, deleteTestimonial } =
@@ -57,13 +58,14 @@ const AdminTestimonials = () => {
           {editingIndex !== null ? "Edit Testimonial" : "Add New Testimonial"}
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <input
             type="text"
             placeholder="Name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+            required
           />
           <input
             type="text"
@@ -83,16 +85,14 @@ const AdminTestimonials = () => {
             }
             className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
           />
-          <input
-            type="text"
-            placeholder="Image URL"
-            value={formData.image}
-            onChange={(e) =>
-              setFormData({ ...formData, image: e.target.value })
-            }
-            className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
-          />
         </div>
+
+        <ImageUploader
+          label="Avatar / Company Image (Cloudinary)"
+          value={formData.image}
+          onChange={(url) => setFormData((prev) => ({ ...prev, image: url }))}
+          placeholder="Cloudinary avatar or logo URL"
+        />
 
         <textarea
           rows="3"
@@ -102,14 +102,15 @@ const AdminTestimonials = () => {
           }
           placeholder="Testimonial Text"
           className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+          required
         />
 
         <div className="flex gap-2 mt-4">
           <button
             type="submit"
-            className="bg-white text-primary font-bold py-2 px-6 rounded-lg hover:bg-white/90 transition-colors"
+            className="bg-[#915EFF] text-white font-bold py-2.5 px-6 rounded-lg hover:bg-indigo-600 transition-colors"
           >
-            {editingIndex !== null ? "Update" : "Add"}
+            {editingIndex !== null ? "Update Testimonial" : "Add Testimonial"}
           </button>
           {editingIndex !== null && (
             <button
@@ -124,7 +125,7 @@ const AdminTestimonials = () => {
                   testimonial: "",
                 });
               }}
-              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-red-600 transition-colors"
+              className="bg-red-500 text-white font-bold py-2.5 px-6 rounded-lg hover:bg-red-600 transition-colors"
             >
               Cancel
             </button>
@@ -136,42 +137,44 @@ const AdminTestimonials = () => {
         {testimonials.map((test, index) => (
           <div
             key={index}
-            className="bg-black-200 p-6 rounded-2xl relative group"
+            className="bg-black-200 p-6 rounded-2xl relative group border border-white/10"
           >
             <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
                 onClick={() => handleEdit(index, test)}
-                className="text-blue-500 bg-tertiary p-2 rounded-full"
+                className="text-blue-400 bg-tertiary p-2 rounded-full"
               >
                 <i className="fa fa-pencil"></i>
               </button>
               <button
                 onClick={() => handleDelete(index)}
-                className="text-red-500 bg-tertiary p-2 rounded-full"
+                className="text-red-400 bg-tertiary p-2 rounded-full"
               >
                 <i className="fa fa-trash"></i>
               </button>
             </div>
 
-            <p className="text-white font-black text-[48px]">"</p>
+            <p className="text-[#915EFF] font-black text-[40px] leading-none">"</p>
             <div className="mt-1">
-              <p className="text-white tracking-wider text-[18px]">
+              <p className="text-white tracking-wider text-[16px]">
                 {test.testimonial}
               </p>
-              <div className="mt-7 flex justify-between items-center gap-1">
+              <div className="mt-6 flex justify-between items-center gap-1">
                 <div className="flex-1 flex flex-col">
                   <p className="text-white font-medium text-[16px]">
-                    <span className="blue-text-gradient">@</span> {test.name}
+                    <span className="text-[#915EFF]">@</span> {test.name}
                   </p>
-                  <p className="mt-1 text-secondary text-[12px]">
+                  <p className="mt-0.5 text-secondary text-[12px]">
                     {test.designation} of {test.company}
                   </p>
                 </div>
-                <img
-                  src={test.image}
-                  alt={`feedback-by-${test.name}`}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+                {test.image && (
+                  <img
+                    src={test.image}
+                    alt={`feedback-by-${test.name}`}
+                    className="w-12 h-12 rounded-full object-cover border border-[#915EFF]/40"
+                  />
+                )}
               </div>
             </div>
           </div>

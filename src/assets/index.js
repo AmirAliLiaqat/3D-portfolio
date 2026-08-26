@@ -16,37 +16,41 @@ import close from "./close.svg";
 import profilePic from "./amir.png";
 
 /************* services icons ***************/
-import css from "./tech/css.png";
-import bootstrap from "./tech/bootstrap.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
-import git from "./tech/git.png";
-import html from "./tech/html.png";
-import javascript from "./tech/javascript.png";
-import mongodb from "./tech/mongodb.png";
-import nodejs from "./tech/nodejs.png";
-import reactjs from "./tech/reactjs.png";
-import redux from "./tech/redux.png";
-import wordpress from "./tech/wordpress.png";
-import elementor from "./tech/elementor.png";
-import tailwind from "./tech/tailwind.png";
-import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
-import woocommerce from "./tech/woocommerce.png";
-import php from "./tech/php.png";
-import mysql from "./tech/mysql.png";
-import mui from "./tech/mui.png";
-import excel from "./tech/excel.png";
-import express from "./tech/express.png";
-import jira from "./tech/jira.png";
-import monday from "./tech/monday.png";
-import nextJs from "./tech/nextJs.png";
-import powerpoint from "./tech/powerpoint.png";
-import word from "./tech/word.png";
-import tutorLMS from "./tech/tutorLMS.png";
-import woodmart from "./tech/woodmart.png";
-import slack from "./tech/slack.png";
-import stripe from "./tech/stripe.png";
+import css from "./skills/css.png";
+import bootstrap from "./skills/bootstrap.png";
+import docker from "./skills/docker.png";
+import figma from "./skills/figma.png";
+import git from "./skills/git.png";
+import html from "./skills/html.png";
+import javascript from "./skills/javascript.png";
+import mongodb from "./skills/mongodb.png";
+import nodejs from "./skills/nodejs.png";
+import reactjs from "./skills/reactjs.png";
+import redux from "./skills/redux.png";
+import wordpress from "./skills/wordpress.png";
+import elementor from "./skills/elementor.png";
+import tailwind from "./skills/tailwind.png";
+import typescript from "./skills/typescript.png";
+import threejs from "./skills/threejs.svg";
+import woocommerce from "./skills/woocommerce.png";
+import php from "./skills/php.png";
+import mysql from "./skills/mysql.png";
+import mui from "./skills/mui.png";
+import excel from "./skills/excel.png";
+import express from "./skills/express.png";
+import jira from "./skills/jira.png";
+import monday from "./skills/monday.png";
+import nextJs from "./skills/nextJs.png";
+import powerpoint from "./skills/powerpoint.png";
+import word from "./skills/word.png";
+import tutorLMS from "./skills/tutorLMS.png";
+import woodmart from "./skills/woodmart.png";
+import slack from "./skills/slack.png";
+import stripe from "./skills/stripe.png";
+import digitalocean from "./skills/digitalocean.svg";
+import vercel from "./skills/vercel.svg";
+import netlify from "./skills/netlify.svg";
+import render from "./skills/render.svg";
 
 /************* companies icons ***************/
 import meta from "./company/meta.png";
@@ -202,6 +206,10 @@ export {
   slack,
   stripe,
   nexskill,
+  digitalocean,
+  vercel,
+  netlify,
+  render,
   mindware,
   designstodeploySquare,
   designstodeployBanner,

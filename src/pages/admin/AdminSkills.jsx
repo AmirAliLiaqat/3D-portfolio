@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { styles } from "../../styles";
+import ImageUploader from "../../components/admin/ImageUploader";
 
 const AdminSkills = () => {
   const { skills, addSkill, updateSkill, deleteSkill } = usePortfolio();
@@ -33,7 +34,7 @@ const AdminSkills = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h2 className={styles.sectionHeadText}>Manage Skills</h2>
+      <h2 className={styles.sectionHeadText}>Manage Skills & Tech Stack</h2>
 
       <form
         onSubmit={handleSubmit}
@@ -42,28 +43,29 @@ const AdminSkills = () => {
         <h3 className="text-white font-bold text-lg">
           {editingIndex !== null ? "Edit Skill" : "Add New Skill"}
         </h3>
-        <div className="flex gap-4">
-          <input
-            type="text"
-            placeholder="Skill Name (e.g. React JS)"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
-          />
-          <input
-            type="text"
-            placeholder="Icon URL / Class"
-            value={formData.icon}
-            onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
-            className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
-          />
-        </div>
+
+        <input
+          type="text"
+          placeholder="Skill Name (e.g. React JS)"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          className="bg-black-100 py-3 px-4 rounded-lg text-white outline-none w-full"
+          required
+        />
+
+        <ImageUploader
+          label="Skill Icon (Cloudinary / Image URL)"
+          value={formData.icon}
+          onChange={(url) => setFormData((prev) => ({ ...prev, icon: url }))}
+          placeholder="Icon URL or upload to Cloudinary"
+        />
+
         <div className="flex gap-2">
           <button
             type="submit"
-            className="bg-white text-primary font-bold py-2 px-6 rounded-lg hover:bg-white/90 transition-colors"
+            className="bg-[#915EFF] text-white font-bold py-2.5 px-6 rounded-lg hover:bg-indigo-600 transition-colors"
           >
-            {editingIndex !== null ? "Update" : "Add"}
+            {editingIndex !== null ? "Update Skill" : "Add Skill"}
           </button>
           {editingIndex !== null && (
             <button
@@ -72,7 +74,7 @@ const AdminSkills = () => {
                 setEditingIndex(null);
                 setFormData({ name: "", icon: "" });
               }}
-              className="bg-red-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-red-600 transition-colors"
+              className="bg-red-500 text-white font-bold py-2.5 px-6 rounded-lg hover:bg-red-600 transition-colors"
             >
               Cancel
             </button>
@@ -84,39 +86,39 @@ const AdminSkills = () => {
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="bg-black-200 p-4 rounded-xl flex flex-col items-center gap-4 relative group"
+            className="bg-black-200 p-4 rounded-xl flex flex-col items-center gap-4 relative group border border-white/10"
           >
             <button
               onClick={() => handleDelete(index)}
-              className="absolute top-2 right-2 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-black-100 rounded-full"
+              className="absolute top-2 right-2 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 bg-black-100 rounded-full"
             >
-              <i className="fa fa-trash"></i>
+              <i className="fa fa-trash text-xs"></i>
             </button>
             <button
               onClick={() => handleEdit(index, skill)}
-              className="absolute top-2 left-2 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 bg-black-100 rounded-full"
+              className="absolute top-2 left-2 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 bg-black-100 rounded-full"
             >
-              <i className="fa fa-pencil"></i>
+              <i className="fa fa-pencil text-xs"></i>
             </button>
 
-            <div className="w-16 h-16 rounded-full bg-tertiary flex items-center justify-center p-2">
-              {/* Render icon if it's a string URL or component usage - simplified for URL/Asset string */}
-              {typeof skill.icon === "string" &&
-              (skill.icon.startsWith("http") ||
-                skill.icon.startsWith("data:") ||
-                skill.icon.startsWith("/")) ? (
+            <div className="w-16 h-16 rounded-full bg-tertiary flex items-center justify-center p-2 border border-white/10 overflow-hidden">
+              {typeof skill.icon === "string" && skill.icon ? (
                 <img
                   src={skill.icon}
                   alt={skill.name}
                   className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = "none";
+                  }}
                 />
               ) : (
-                <span className="text-xs text-secondary overflow-hidden">
+                <span className="text-sm font-bold text-[#915EFF]">
                   {skill.name[0]}
                 </span>
               )}
             </div>
-            <p className="text-white font-bold text-center">{skill.name}</p>
+            <p className="text-white font-bold text-center text-sm">{skill.name}</p>
           </div>
         ))}
       </div>
