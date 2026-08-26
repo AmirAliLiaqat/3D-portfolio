@@ -16,6 +16,7 @@ import Contact from "./Contact";
 import CanvasLoader from "./Loader";
 
 import BlogCard from "./BlogCard";
+import Company from "./Company";
 
 export {
   Hero,
@@ -33,4 +34,5 @@ export {
   ComputersCanvas,
   StarsCanvas,
   BlogCard,
+  Company,
 };

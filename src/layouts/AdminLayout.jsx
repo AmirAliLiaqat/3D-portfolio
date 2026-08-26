@@ -1,7 +1,7 @@
 import { Outlet, Navigate, useLocation } from "react-router-dom";
 import { StarsCanvas } from "../components/canvas";
-import Sidebar from "../components/admin/Sidebar";
 import { usePortfolio } from "../context/PortfolioContext";
+import Sidebar from "../components/admin/Sidebar";
 
 const AdminLayout = () => {
   const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";

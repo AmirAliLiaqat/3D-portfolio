@@ -68,6 +68,8 @@ import opera from "./company/opera.png";
 import youtube from "./company/youtube.png";
 import nexskill from "./company/nexskill.png";
 import mindware from "./company/mindware.png";
+import designstodeploySquare from "./company/designstodeploy-square.png";
+import designstodeployBanner from "./company/designstodeploy-banner.png";
 
 /************* education icons ***************/
 import matriculation from "./education/matriculation.png";
@@ -201,4 +203,6 @@ export {
   stripe,
   nexskill,
   mindware,
+  designstodeploySquare,
+  designstodeployBanner,
 };

@@ -2,6 +2,7 @@ import {
   Navbar,
   Hero,
   Services,
+  Company,
   Experience,
   Tech,
   Projects,
@@ -22,6 +23,7 @@ const Home = () => {
         <Hero />
         <Services />
       </div>
+      <Company />
       <Experience />
       {/* <Tech /> */}
       <Education />
