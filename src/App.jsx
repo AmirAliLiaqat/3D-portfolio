@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PortfolioProvider } from "./context/PortfolioContext";
+import { Navbar } from "./components";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import AdminLayout from "./layouts/AdminLayout";
@@ -19,7 +20,6 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
 import FloatingSocials from "./components/FloatingSocials";
-import { Navbar } from "./components";
 
 const App = () => {
   return (
