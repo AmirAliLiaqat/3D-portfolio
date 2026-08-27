@@ -161,13 +161,12 @@ const Hero = () => {
 
             {/* Profile Image with animated ring */}
             <div
-              className="hero-profile-ring rounded-full overflow-hidden relative z-10"
-              style={{ width: "400px", height: "400px" }}
+              className="hero-profile-ring rounded-full overflow-hidden relative z-10 w-[260px] h-[260px] xs:w-[300px] xs:h-[300px] sm:w-[350px] sm:h-[350px] lg:w-[400px] lg:h-[400px]"
             >
               <img
                 src={details.profileImage || profilePic}
                 alt={details.name || "profile"}
-                className="w-full object-cover rounded-full"
+                className="w-full h-full object-cover rounded-full"
                 style={{ border: "3px solid #151030" }}
               />
             </div>
