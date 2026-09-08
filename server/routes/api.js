@@ -18,6 +18,7 @@ import { protect } from "../middleware/auth.js";
 import { sendNotificationEmail } from "../config/nodemailer.js";
 import { upload } from "../config/cloudinary.js";
 import connectDB from "../config/db.js";
+import { buildPortfolioContext, getGroqReply, isOnTopic } from "../utils/aiAssistant.js";
 
 const router = express.Router();
 
@@ -92,6 +93,78 @@ router.post("/contact", async (req, res) => {
   } catch (error) {
     console.error("Contact API error:", error);
     res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// POST /api/chat - AI Assistant (Groq powered, grounded in portfolio data)
+router.post("/chat", async (req, res) => {
+  try {
+    const { messages } = req.body;
+
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return res
+        .status(400)
+        .json({ success: false, message: "messages array is required" });
+    }
+
+    // Keep payload light & safe: last 12 turns, sanitized roles/content only
+    const history = messages
+      .filter(
+        (m) =>
+          m &&
+          (m.role === "user" || m.role === "assistant") &&
+          typeof m.content === "string" &&
+          m.content.trim() !== ""
+      )
+      .slice(-12)
+      .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
+
+    if (history.length === 0 || history[history.length - 1].role !== "user") {
+      return res
+        .status(400)
+        .json({ success: false, message: "Last message must be from the user" });
+    }
+
+    const { text: portfolioContext, name, keywords } = await buildPortfolioContext();
+
+    // Reject anything not plausibly about the portfolio owner BEFORE calling
+    // Groq at all, so no tokens are spent on unrelated questions.
+    const latestUserMessage = history[history.length - 1].content;
+    if (!isOnTopic(latestUserMessage, keywords)) {
+      return res.json({
+        success: true,
+        reply: `I'm just here to help with questions about ${name} — things like services, projects, skills, experience, education, or how to get in touch. Try asking me one of those! 😊`,
+        offTopic: true,
+      });
+    }
+
+    const systemPrompt = `You are the friendly AI assistant embedded in ${name}'s personal 3D portfolio website. You represent ${name} and help visitors (recruiters, clients, collaborators) learn about their services, skills, projects, education, and experience, and guide them on how to get in touch.
+
+Ground every answer strictly in the PORTFOLIO DATA below. If asked something outside this data (unrelated general knowledge, coding help unrelated to ${name}, etc.), politely say you can only help with questions about ${name}'s portfolio and steer the conversation back to relevant topics. Never invent facts, links, prices, or availability that are not in the data.
+
+Speak in a warm, concise, professional tone (2-5 sentences per answer unless a list is clearer). You may use "I" to refer to ${name} when it reads naturally (e.g. "I've worked on..."), since you are their AI representative. When relevant, suggest visitors check the Projects, Services, or Contact sections of the site, or use the contact form to reach out directly. Keep responses in plain text (no markdown headers).
+
+PORTFOLIO DATA:
+${portfolioContext}`;
+
+    const groqMessages = [{ role: "system", content: systemPrompt }, ...history];
+
+    const reply = await getGroqReply(groqMessages);
+
+    res.json({ success: true, reply });
+  } catch (error) {
+    console.error("Chat API error:", error.message);
+    if (error.code === "NO_API_KEY") {
+      return res.status(503).json({
+        success: false,
+        message:
+          "The AI assistant isn't configured yet. Please use the contact form to reach out instead.",
+      });
+    }
+    res.status(500).json({
+      success: false,
+      message: "I'm having trouble responding right now. Please try again in a moment.",
+    });
   }
 });
 

@@ -20,6 +20,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
 import FloatingSocials from "./components/FloatingSocials";
+import AIAssistant from "./components/AIAssistant";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <FloatingSocials />
+        <AIAssistant />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<AllProjects />} />

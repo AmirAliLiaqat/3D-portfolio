@@ -134,4 +134,13 @@ export const portfolioAPI = {
   getContactInquiries: () => apiRequest("/admin/contact-inquiries"),
 };
 
+// AI Assistant Chat (Groq powered)
+export const chatAPI = {
+  sendMessage: (messages) =>
+    apiRequest("/chat", {
+      method: "POST",
+      body: JSON.stringify({ messages }),
+    }),
+};
+
 export default portfolioAPI;
