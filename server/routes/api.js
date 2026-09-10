@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
 import {
@@ -18,7 +17,11 @@ import { protect } from "../middleware/auth.js";
 import { sendNotificationEmail } from "../config/nodemailer.js";
 import { upload } from "../config/cloudinary.js";
 import connectDB from "../config/db.js";
-import { buildPortfolioContext, getGroqReply, isOnTopic } from "../utils/aiAssistant.js";
+import {
+  buildPortfolioContext,
+  getGroqReply,
+  isOnTopic,
+} from "../utils/aiAssistant.js";
 
 const router = express.Router();
 
@@ -74,7 +77,10 @@ router.post("/contact", async (req, res) => {
     if (!name || !email || !message) {
       return res
         .status(400)
-        .json({ success: false, message: "Please provide name, email, and message" });
+        .json({
+          success: false,
+          message: "Please provide name, email, and message",
+        });
     }
 
     // Save inquiry to MongoDB Atlas
@@ -114,7 +120,7 @@ router.post("/chat", async (req, res) => {
           m &&
           (m.role === "user" || m.role === "assistant") &&
           typeof m.content === "string" &&
-          m.content.trim() !== ""
+          m.content.trim() !== "",
       )
       .slice(-12)
       .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
@@ -122,10 +128,17 @@ router.post("/chat", async (req, res) => {
     if (history.length === 0 || history[history.length - 1].role !== "user") {
       return res
         .status(400)
-        .json({ success: false, message: "Last message must be from the user" });
+        .json({
+          success: false,
+          message: "Last message must be from the user",
+        });
     }
 
-    const { text: portfolioContext, name, keywords } = await buildPortfolioContext();
+    const {
+      text: portfolioContext,
+      name,
+      keywords,
+    } = await buildPortfolioContext();
 
     // Reject anything not plausibly about the portfolio owner BEFORE calling
     // Groq at all, so no tokens are spent on unrelated questions.
@@ -138,16 +151,19 @@ router.post("/chat", async (req, res) => {
       });
     }
 
-    const systemPrompt = `You are the friendly AI assistant embedded in ${name}'s personal 3D portfolio website. You represent ${name} and help visitors (recruiters, clients, collaborators) learn about their services, skills, projects, education, and experience, and guide them on how to get in touch.
+    const systemPrompt = `You are the friendly AI assistant embedded in ${name}'s personal 3D portfolio website. You represent ${name} and help visitors (recruiters, clients, collaborators) learn about their services, skills, projects, articles, education, and experience, and guide them on how to get in touch.
 
 Ground every answer strictly in the PORTFOLIO DATA below. If asked something outside this data (unrelated general knowledge, coding help unrelated to ${name}, etc.), politely say you can only help with questions about ${name}'s portfolio and steer the conversation back to relevant topics. Never invent facts, links, prices, or availability that are not in the data.
 
-Speak in a warm, concise, professional tone (2-5 sentences per answer unless a list is clearer). You may use "I" to refer to ${name} when it reads naturally (e.g. "I've worked on..."), since you are their AI representative. When relevant, suggest visitors check the Projects, Services, or Contact sections of the site, or use the contact form to reach out directly. Keep responses in plain text (no markdown headers).
+Speak in a warm, concise, professional tone (2-5 sentences per answer unless a list is clearer). You may use "I" to refer to ${name} when it reads naturally (e.g. "I've worked on..."), since you are their AI representative. When relevant, suggest visitors check the Projects, Services, Blogs, or Contact sections of the site, or use the contact form to reach out directly. Keep responses in plain text (no markdown headers).
 
 PORTFOLIO DATA:
 ${portfolioContext}`;
 
-    const groqMessages = [{ role: "system", content: systemPrompt }, ...history];
+    const groqMessages = [
+      { role: "system", content: systemPrompt },
+      ...history,
+    ];
 
     const reply = await getGroqReply(groqMessages);
 
@@ -163,7 +179,8 @@ ${portfolioContext}`;
     }
     res.status(500).json({
       success: false,
-      message: "I'm having trouble responding right now. Please try again in a moment.",
+      message:
+        "I'm having trouble responding right now. Please try again in a moment.",
     });
   }
 });
@@ -195,7 +212,9 @@ router.post("/auth/login", async (req, res) => {
         },
       });
     } else {
-      res.status(401).json({ success: false, message: "Invalid username or password" });
+      res
+        .status(401)
+        .json({ success: false, message: "Invalid username or password" });
     }
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -211,7 +230,9 @@ router.get("/auth/me", protect, (req, res) => {
 router.post("/upload", upload.single("image"), (req, res) => {
   try {
     if (!req.file) {
-      return res.status(400).json({ success: false, message: "No image uploaded" });
+      return res
+        .status(400)
+        .json({ success: false, message: "No image uploaded" });
     }
     res.json({
       success: true,
@@ -366,7 +387,7 @@ router.put("/admin/experience/:id", protect, async (req, res) => {
     const experience = await Experience.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true },
     );
     res.json({ success: true, data: experience });
   } catch (error) {

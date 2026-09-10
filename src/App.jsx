@@ -20,6 +20,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Blogs from "./pages/Blogs";
 import BlogDetails from "./pages/BlogDetails";
 import FloatingSocials from "./components/FloatingSocials";
+import FloatingWorkPlatforms from "./components/FloatingWorkPlatforms";
 import AIAssistant from "./components/AIAssistant";
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <FloatingSocials />
+        <FloatingWorkPlatforms />
         <AIAssistant />
         <Routes>
           <Route path="/" element={<Home />} />

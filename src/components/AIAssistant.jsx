@@ -1,9 +1,10 @@
+import ReactMarkdown from "react-markdown";
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { profilePic } from "../assets";
 import { usePortfolio } from "../context/PortfolioContext";
 import { chatAPI } from "../services/api";
-import { profilePic } from "../assets";
 
 const SUGGESTED_PROMPTS = [
   "What services do you offer?",
@@ -12,6 +13,12 @@ const SUGGESTED_PROMPTS = [
   "How can I contact you?",
 ];
 
+const DEFAULT_PANEL_SIZE = { width: 400, height: 600 };
+const PANEL_LIMITS = {
+  width: { min: 340, max: 620 },
+  height: { min: 480, max: 780 },
+};
+
 const AIAssistant = () => {
   const location = useLocation();
   const { details } = usePortfolio();
@@ -19,11 +26,11 @@ const AIAssistant = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [panelSize, setPanelSize] = useState(DEFAULT_PANEL_SIZE);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
 
-  const firstName =
-    details?.shortName || details?.name?.split(" ")[0] || "my";
+  const firstName = details?.shortName || details?.name?.split(" ")[0] || "my";
 
   // Greet the visitor the first time the panel is opened
   useEffect(() => {
@@ -86,7 +93,8 @@ const AIAssistant = () => {
 
       const res = await chatAPI.sendMessage(payload);
       const replyText =
-        res?.reply || "Sorry, I couldn't generate a response. Please try again.";
+        res?.reply ||
+        "Sorry, I couldn't generate a response. Please try again.";
 
       setMessages((prev) => [
         ...prev,
@@ -114,6 +122,44 @@ const AIAssistant = () => {
 
   const showSuggestions = !isLoading && messages.length <= 1;
 
+  const startPanelResize = (event) => {
+    event.preventDefault();
+    const startX = event.clientX;
+    const startY = event.clientY;
+    const startSize = panelSize;
+
+    const handlePointerMove = (moveEvent) => {
+      setPanelSize({
+        width: Math.min(
+          PANEL_LIMITS.width.max,
+          Math.max(
+            PANEL_LIMITS.width.min,
+            startSize.width + moveEvent.clientX - startX,
+          ),
+        ),
+        height: Math.min(
+          PANEL_LIMITS.height.max,
+          Math.max(
+            PANEL_LIMITS.height.min,
+            startSize.height + moveEvent.clientY - startY,
+          ),
+        ),
+      });
+    };
+
+    const stopPanelResize = () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", stopPanelResize);
+      document.body.style.removeProperty("cursor");
+      document.body.style.removeProperty("user-select");
+    };
+
+    document.body.style.cursor = "nwse-resize";
+    document.body.style.userSelect = "none";
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", stopPanelResize);
+  };
+
   return (
     <>
       {/* Launcher */}
@@ -127,21 +173,17 @@ const AIAssistant = () => {
 
         <span className="relative z-10 flex items-center justify-center w-full h-full rounded-full overflow-hidden">
           {isOpen ? (
-            <i className="fa-solid fa-xmark text-white text-xl" />
+            <i
+              className="fa-solid fa-xmark text-white text-xl"
+              aria-hidden="true"
+            />
           ) : (
-            <img
-              src={profilePic}
-              alt="AI Assistant"
-              className="w-full h-full object-cover"
+            <i
+              className="fa-solid fa-comments text-white text-2xl"
+              aria-hidden="true"
             />
           )}
         </span>
-
-        {!isOpen && (
-          <span className="ai-launcher-badge" aria-hidden="true">
-            <i className="fa-solid fa-comment-dots" />
-          </span>
-        )}
 
         {!isOpen && (
           <span className="absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 bg-[#151030]/95 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-xl border border-white/10 hidden sm:block">
@@ -161,7 +203,11 @@ const AIAssistant = () => {
             role="dialog"
             aria-modal="true"
             aria-label="AI Assistant chat"
-            className="ai-assistant-panel fixed z-[59] inset-4 sm:inset-auto sm:bottom-24 sm:left-6 sm:w-[400px] sm:h-[600px] sm:max-h-[calc(100vh-140px)] rounded-3xl overflow-hidden flex flex-col"
+            style={{
+              "--ai-panel-width": `${panelSize.width}px`,
+              "--ai-panel-height": `${panelSize.height}px`,
+            }}
+            className="ai-assistant-panel fixed z-[59] inset-4 sm:inset-auto sm:bottom-24 sm:left-6 sm:max-h-[calc(100vh-140px)] rounded-3xl overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="ai-assistant-header flex items-center justify-between gap-3 px-4 sm:px-5 py-4 border-b border-white/10">
@@ -181,14 +227,19 @@ const AIAssistant = () => {
                   <p className="text-secondary text-xs">Online</p>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close chat"
-                className="w-8 h-8 flex items-center justify-center rounded-full text-secondary hover:text-white hover:bg-white/5 transition-colors flex-shrink-0"
-              >
-                <i className="fa-solid fa-xmark" />
-              </button>
+              <div className="flex items-center gap-1 flex-shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close chat"
+                  className="ai-panel-close"
+                >
+                  <i
+                    className="fa-solid fa-xmark text-base"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -202,10 +253,17 @@ const AIAssistant = () => {
                   className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${m.role === "user" ? "ai-bubble-user" : "ai-bubble-assistant"
-                      }`}
+                    className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                      m.role === "user"
+                        ? "ai-bubble-user whitespace-pre-wrap"
+                        : "ai-bubble-assistant ai-markdown"
+                    }`}
                   >
-                    {m.content}
+                    {m.role === "assistant" ? (
+                      <ReactMarkdown>{m.content}</ReactMarkdown>
+                    ) : (
+                      m.content
+                    )}
                   </div>
                 </div>
               ))}
@@ -258,12 +316,24 @@ const AIAssistant = () => {
                 aria-label="Send message"
                 className="ai-send-btn"
               >
-                <i className="fa-solid fa-paper-plane text-xs" />
+                <i
+                  className="fa-solid fa-paper-plane text-sm"
+                  aria-hidden="true"
+                />
               </button>
             </form>
             <p className="text-center text-[10px] text-secondary/50 pb-2.5 px-4 flex-shrink-0">
               AI can make mistakes — please verify important details.
             </p>
+            <span
+              className="ai-panel-resize-handle"
+              role="slider"
+              aria-label="Resize chat panel"
+              aria-valuemin={PANEL_LIMITS.width.min}
+              aria-valuemax={PANEL_LIMITS.width.max}
+              tabIndex={0}
+              onPointerDown={startPanelResize}
+            />
           </motion.div>
         )}
       </AnimatePresence>
