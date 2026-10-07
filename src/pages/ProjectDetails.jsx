@@ -5,6 +5,7 @@ import { usePortfolio } from "../context/PortfolioContext";
 import { styles } from "../styles";
 import { github, glob } from "../assets";
 import { fadeIn, textVariant } from "../utils/motion";
+import { getAppIcon } from "../utils/appIcons";
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -26,6 +27,8 @@ const ProjectDetails = () => {
     );
   }
 
+  const appIcon = getAppIcon(project.name);
+
   return (
     <div className="bg-primary min-h-screen py-20 px-5 sm:px-16">
       <div className="max-w-7xl mx-auto">
@@ -39,11 +42,21 @@ const ProjectDetails = () => {
             variants={fadeIn("right", "spring", 0.5, 0.75)}
             className="relative w-full h-[300px] sm:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
           >
-            <img
-              src={project.image}
-              alt={project.name}
-              className="w-full h-full object-cover"
-            />
+            {appIcon ? (
+              <div className="w-full h-full bg-gradient-to-br from-[#2b2b55] via-[#1a1a2e] to-[#0f0c29] flex items-center justify-center">
+                <img
+                  src={appIcon}
+                  alt={`${project.name} app icon`}
+                  className="w-40 h-40 sm:w-56 sm:h-56 object-contain rounded-[2rem] shadow-2xl shadow-black/60"
+                />
+              </div>
+            ) : (
+              <img
+                src={project.image}
+                alt={project.name}
+                className="w-full h-full object-cover"
+              />
+            )}
             <div className="absolute top-5 right-5 flex gap-3">
               <div
                 onClick={() => window.open(project.source_code_link, "_blank")}
