@@ -5,6 +5,37 @@ import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 
+// Official socials that must always appear, even when the backend
+// company record predates them.
+const OFFICIAL_SOCIALS = [
+  {
+    name: "YouTube",
+    link: "https://youtube.com/@designs.to.deploy",
+    icon: "fa-brands fa-youtube",
+    color: "#FF0000",
+  },
+  {
+    name: "TikTok",
+    link: "https://www.tiktok.com/@designstodeploy",
+    icon: "fa-brands fa-tiktok",
+    color: "#FE2C55",
+  },
+  {
+    name: "X",
+    link: "https://x.com/designstodeploy",
+    icon: "fa-brands fa-x-twitter",
+    color: "#FFFFFF",
+  },
+];
+
+const withOfficialSocials = (socials = []) => {
+  const names = new Set(socials.map((s) => (s.name || "").toLowerCase()));
+  return [
+    ...socials,
+    ...OFFICIAL_SOCIALS.filter((s) => !names.has(s.name.toLowerCase())),
+  ];
+};
+
 const Company = () => {
   const { companyDetails } = usePortfolio();
 
@@ -155,7 +186,7 @@ const Company = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            {companyDetails.socials.map((social, index) => (
+            {withOfficialSocials(companyDetails.socials).map((social, index) => (
               <a
                 key={social.name || index}
                 href={social.link}
