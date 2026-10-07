@@ -48,6 +48,24 @@ export const initialCompanyDetails = {
       color: "#0A66C2",
     },
     {
+      name: "YouTube",
+      link: "https://youtube.com/@designs.to.deploy",
+      icon: "fa-brands fa-youtube",
+      color: "#FF0000",
+    },
+    {
+      name: "TikTok",
+      link: "https://www.tiktok.com/@designstodeploy",
+      icon: "fa-brands fa-tiktok",
+      color: "#FE2C55",
+    },
+    {
+      name: "X",
+      link: "https://x.com/designstodeploy",
+      icon: "fa-brands fa-x-twitter",
+      color: "#FFFFFF",
+    },
+    {
       name: "Website",
       link: "https://www.designstodeploy.dev/",
       icon: "fa-solid fa-globe",

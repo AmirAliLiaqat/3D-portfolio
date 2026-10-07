@@ -2,6 +2,7 @@ import React from "react";
 import { Tilt } from "react-tilt";
 import { github, glob } from "../assets";
 import { Link } from "react-router-dom";
+import { getAppIcon } from "../utils/appIcons";
 
 const ProjectCard = ({
   index,
@@ -13,6 +14,7 @@ const ProjectCard = ({
   source_code_link,
   source_link,
 }) => {
+  const appIcon = getAppIcon(name);
   return (
     <div>
       <Tilt
@@ -24,11 +26,21 @@ const ProjectCard = ({
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
       >
         <div className="relative w-full h-[230px]">
-          <img
-            src={image}
-            alt="project_image"
-            className="w-full h-full object-cover rounded-2xl"
-          />
+          {appIcon ? (
+            <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#2b2b55] via-[#1a1a2e] to-[#0f0c29] flex items-center justify-center">
+              <img
+                src={appIcon}
+                alt={`${name} app icon`}
+                className="w-28 h-28 sm:w-32 sm:h-32 object-contain rounded-[1.75rem] shadow-2xl shadow-black/60"
+              />
+            </div>
+          ) : (
+            <img
+              src={image}
+              alt="project_image"
+              className="w-full h-full object-cover rounded-2xl"
+            />
+          )}
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
