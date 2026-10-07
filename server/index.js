@@ -23,8 +23,11 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Middleware to ensure DB connection per API request
+// Middleware to ensure DB connection per API request.
+// The AI chat endpoint builds its context from static fallback data and must
+// keep working even when MongoDB is unreachable, so it skips this gate.
 app.use("/api", async (req, res, next) => {
+  if (req.path === "/chat") return next();
   try {
     await connectDB();
     next();

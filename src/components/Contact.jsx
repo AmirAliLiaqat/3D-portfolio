@@ -1,14 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import emailjs from "emailjs-com";
-
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { slideIn, fadeIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { usePortfolio } from "../context/PortfolioContext";
-import { portfolioAPI } from "../services/api";
 
 const Contact = () => {
   const formRef = useRef();
@@ -28,49 +25,44 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      alert("Please fill in your name, email, and message.");
+      return;
+    }
     setLoading(true);
 
     try {
-      // 1. Try sending to Node.js backend API (MongoDB + Nodemailer SMTP)
-      const res = await portfolioAPI.sendContactInquiry(form);
-      if (res && res.success) {
-        setLoading(false);
-        setSuccess(true);
-        setTimeout(() => setSuccess(false), 4000);
-        setForm({ name: "", email: "", message: "" });
-        return;
-      }
-    } catch (apiError) {
-      console.warn("Backend Contact API failed, attempting EmailJS fallback:", apiError.message);
-    }
-
-    // 2. Fallback to EmailJS
-    emailjs
-      .sendForm(
-        "service_5jgq5nn",
-        "template_q39g54q",
-        formRef.current,
-        "6J3ax4aEv7ugLBiV5"
-      )
-      .then(
-        (result) => {
-          console.log("Message Sent via EmailJS:", result.text);
-          setLoading(false);
-          setSuccess(true);
-          setTimeout(() => setSuccess(false), 4000);
+      // Web3Forms: sends the inquiry straight to the registered inbox.
+      // The access key is public by design; set VITE_WEB3FORMS_ACCESS_KEY
+      // in .env (local) and in the Vercel project environment variables.
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        (error) => {
-          console.error("Error:", error.text);
-          setLoading(false);
-          alert("There was an error sending the message.");
-        }
-      );
-
-    setForm({
-      name: "",
-      email: "",
-      message: "",
-    });
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          name: form.name.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
+          subject: `New portfolio inquiry from ${form.name.trim()}`,
+          from_name: "3D Portfolio contact form",
+        }),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.message || "Submission failed");
+      }
+      setForm({ name: "", email: "", message: "" });
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 4000);
+    } catch (err) {
+      console.error("Contact form error:", err.message);
+      alert("There was an error sending the message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactCards = [

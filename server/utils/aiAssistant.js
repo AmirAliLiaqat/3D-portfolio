@@ -9,6 +9,16 @@ import {
   Testimonial,
   Skill,
 } from "../models/PortfolioData.js";
+import {
+  initialProfileDetails,
+  initialCompanyDetails,
+  initialServices,
+  initialExperiences,
+  initialEducation,
+  initialProjects,
+  initialBlogs,
+  initialTestimonials,
+} from "./initialData.js";
 
 let cachedContext = null;
 let cachedAt = 0;
@@ -173,27 +183,54 @@ export const buildPortfolioContext = async () => {
     return cachedContext;
   }
 
-  const [
-    profile,
-    company,
-    services,
-    skills,
-    experiences,
-    education,
-    projects,
-    blogs,
-    testimonials,
-  ] = await Promise.all([
-    ProfileDetails.findOne().sort({ createdAt: -1 }),
-    CompanyDetails.findOne().sort({ createdAt: -1 }),
-    Service.find().sort({ createdAt: 1 }),
-    Skill.find().sort({ createdAt: 1 }),
-    Experience.find().sort({ createdAt: -1 }),
-    Education.find().sort({ createdAt: -1 }),
-    Project.find().sort({ createdAt: -1 }),
-    Blog.find().sort({ createdAt: -1 }),
-    Testimonial.find().sort({ createdAt: -1 }),
-  ]);
+  let profile;
+  let company;
+  let services;
+  let skills;
+  let experiences;
+  let education;
+  let projects;
+  let blogs;
+  let testimonials;
+  try {
+    [
+      profile,
+      company,
+      services,
+      skills,
+      experiences,
+      education,
+      projects,
+      blogs,
+      testimonials,
+    ] = await Promise.all([
+      ProfileDetails.findOne().sort({ createdAt: -1 }),
+      CompanyDetails.findOne().sort({ createdAt: -1 }),
+      Service.find().sort({ createdAt: 1 }),
+      Skill.find().sort({ createdAt: 1 }),
+      Experience.find().sort({ createdAt: -1 }),
+      Education.find().sort({ createdAt: -1 }),
+      Project.find().sort({ createdAt: -1 }),
+      Blog.find().sort({ createdAt: -1 }),
+      Testimonial.find().sort({ createdAt: -1 }),
+    ]);
+  } catch (dbError) {
+    // Production safety: if MongoDB is unreachable, fall back to the static
+    // seed data so the AI assistant keeps working without a database.
+    console.warn(
+      "buildPortfolioContext: database unavailable, using static fallback data.",
+      dbError?.message
+    );
+    profile = initialProfileDetails;
+    company = initialCompanyDetails;
+    services = initialServices;
+    skills = [];
+    experiences = initialExperiences;
+    education = initialEducation;
+    projects = initialProjects;
+    blogs = initialBlogs;
+    testimonials = initialTestimonials;
+  }
 
   const name = profile?.name || "Amir Ali Liaqat";
   const lines = [];
