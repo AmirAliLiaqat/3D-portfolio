@@ -19,6 +19,14 @@
       "dest": "server/index.js"
     },
     {
+      "src": "/sitemap.xml",
+      "dest": "server/index.js"
+    },
+    {
+      "src": "/sitemap-(pages|posts).xml",
+      "dest": "server/index.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }

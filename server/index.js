@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import { runAllSeeds } from "./seed/index.js";
 import apiRoutes from "./routes/api.js";
+import sitemapRoutes from "./routes/sitemap.js";
 
 dotenv.config();
 
@@ -42,6 +43,9 @@ app.use("/api", async (req, res, next) => {
 
 // API Routes
 app.use("/api", apiRoutes);
+
+// Dynamic XML sitemaps (sitemap index + per-type sitemaps)
+app.use("/", sitemapRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
