@@ -116,7 +116,7 @@ const Hero = () => {
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="flex gap-3">
                 <a
-                  href="https://drive.google.com/file/d/1G89TtkNx5jTJzqQU6g-l6X4GCH-u0nou/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/1CERn454HS95BfRMOEmUF-hGsK05JvRXz/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
                 >
