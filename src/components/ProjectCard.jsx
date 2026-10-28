@@ -4,6 +4,7 @@ import { github, glob } from "../assets";
 import { Link } from "react-router-dom";
 import { getAppIcon } from "../utils/appIcons";
 import { getFeatureImage } from "../utils/featureImages";
+import { getLiveLink } from "../utils/projectDisplay";
 
 const ProjectCard = ({
   index,
@@ -14,9 +15,16 @@ const ProjectCard = ({
   image,
   source_code_link,
   source_link,
+  live_link,
 }) => {
   const appIcon = getAppIcon(name);
   const featureImage = getFeatureImage(name);
+  // Never open a blank tab: the globe icon only renders when a real live URL
+  // exists. (The database stores links as live_link and many are "#"; the
+  // display layer resolves the real DesignsToDeploy live URL into source_link.)
+  const liveUrl = getLiveLink({ source_link, live_link });
+  const hasCodeLink =
+    typeof source_code_link === "string" && /^https?:\/\//.test(source_code_link);
   return (
     <div>
       <Tilt
@@ -51,26 +59,30 @@ const ProjectCard = ({
           )}
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient mx-1 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
-            >
-              <img
-                src={github}
-                alt="source code"
-                className="w-1/2 h-1/2 object-contain"
-              />
-            </div>
-            <div
-              onClick={() => window.open(source_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
-            >
-              <img
-                src={glob}
-                alt="source link"
-                className="w-1/2 h-1/2 object-contain"
-              />
-            </div>
+            {hasCodeLink && (
+              <div
+                onClick={() => window.open(source_code_link, "_blank")}
+                className="black-gradient mx-1 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
+              >
+                <img
+                  src={github}
+                  alt="source code"
+                  className="w-1/2 h-1/2 object-contain"
+                />
+              </div>
+            )}
+            {liveUrl && (
+              <div
+                onClick={() => window.open(liveUrl, "_blank")}
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg"
+              >
+                <img
+                  src={glob}
+                  alt="source link"
+                  className="w-1/2 h-1/2 object-contain"
+                />
+              </div>
+            )}
           </div>
         </div>
 
