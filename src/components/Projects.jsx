@@ -7,9 +7,11 @@ import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { CardContainer } from "./styled/Project";
 import ProjectCard from "./ProjectCard";
+import { getDisplayProjects } from "../utils/projectDisplay";
 
 const Projects = () => {
-  const { projects } = usePortfolio();
+  const { projects: rawProjects } = usePortfolio();
+  const projects = getDisplayProjects(rawProjects);
   const [toggle, setToggle] = useState("all");
   const [showAll, setShowAll] = useState(false);
 
