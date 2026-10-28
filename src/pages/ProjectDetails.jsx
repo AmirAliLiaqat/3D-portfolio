@@ -6,10 +6,13 @@ import { styles } from "../styles";
 import { github, glob } from "../assets";
 import { fadeIn, textVariant } from "../utils/motion";
 import { getAppIcon } from "../utils/appIcons";
+import { getFeatureImage } from "../utils/featureImages";
+import { getDisplayProjects } from "../utils/projectDisplay";
 
 const ProjectDetails = () => {
   const { id } = useParams();
-  const { projects } = usePortfolio();
+  const { projects: rawProjects } = usePortfolio();
+  const projects = getDisplayProjects(rawProjects);
 
   // Find project by id or index
   const project = projects.find((p, index) => (p.id === id || index.toString() === id));
@@ -28,6 +31,7 @@ const ProjectDetails = () => {
   }
 
   const appIcon = getAppIcon(project.name);
+  const featureImage = getFeatureImage(project.name);
 
   return (
     <div className="bg-primary min-h-screen py-20 px-5 sm:px-16">
@@ -42,7 +46,13 @@ const ProjectDetails = () => {
             variants={fadeIn("right", "spring", 0.5, 0.75)}
             className="relative w-full h-[300px] sm:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
           >
-            {appIcon ? (
+            {featureImage ? (
+              <img
+                src={featureImage}
+                alt={`${project.name} feature image`}
+                className="w-full h-full object-cover"
+              />
+            ) : appIcon ? (
               <div className="w-full h-full bg-gradient-to-br from-[#2b2b55] via-[#1a1a2e] to-[#0f0c29] flex items-center justify-center">
                 <img
                   src={appIcon}

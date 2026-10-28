@@ -3,6 +3,7 @@ import { Tilt } from "react-tilt";
 import { github, glob } from "../assets";
 import { Link } from "react-router-dom";
 import { getAppIcon } from "../utils/appIcons";
+import { getFeatureImage } from "../utils/featureImages";
 
 const ProjectCard = ({
   index,
@@ -15,6 +16,7 @@ const ProjectCard = ({
   source_link,
 }) => {
   const appIcon = getAppIcon(name);
+  const featureImage = getFeatureImage(name);
   return (
     <div>
       <Tilt
@@ -26,7 +28,13 @@ const ProjectCard = ({
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
       >
         <div className="relative w-full h-[230px]">
-          {appIcon ? (
+          {featureImage ? (
+            <img
+              src={featureImage}
+              alt={`${name} feature image`}
+              className="w-full h-full object-cover rounded-2xl"
+            />
+          ) : appIcon ? (
             <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#2b2b55] via-[#1a1a2e] to-[#0f0c29] flex items-center justify-center">
               <img
                 src={appIcon}
