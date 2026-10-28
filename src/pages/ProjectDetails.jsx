@@ -7,7 +7,7 @@ import { github, glob } from "../assets";
 import { fadeIn, textVariant } from "../utils/motion";
 import { getAppIcon } from "../utils/appIcons";
 import { getFeatureImage } from "../utils/featureImages";
-import { getDisplayProjects } from "../utils/projectDisplay";
+import { getDisplayProjects, getLiveLink } from "../utils/projectDisplay";
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -32,13 +32,24 @@ const ProjectDetails = () => {
 
   const appIcon = getAppIcon(project.name);
   const featureImage = getFeatureImage(project.name);
+  // Never open a blank tab: live buttons only render when a real live URL
+  // exists (resolved by the display layer from the DesignsToDeploy data).
+  const liveUrl = getLiveLink(project);
+  const hasCodeLink =
+    typeof project.source_code_link === "string" &&
+    /^https?:\/\//.test(project.source_code_link);
 
   return (
     <div className="bg-primary min-h-screen py-20 px-5 sm:px-16">
       <div className="max-w-7xl mx-auto">
         <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>{project.category.toUpperCase()}</p>
+          <p className={styles.sectionSubText}>
+            {(project.categoryLabel || project.category).toUpperCase()}
+          </p>
           <h2 className={styles.sectionHeadText}>{project.name}</h2>
+          {project.tagline && (
+            <p className="mt-2 text-secondary text-lg">{project.tagline}</p>
+          )}
         </motion.div>
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -68,18 +79,22 @@ const ProjectDetails = () => {
               />
             )}
             <div className="absolute top-5 right-5 flex gap-3">
-              <div
-                onClick={() => window.open(project.source_code_link, "_blank")}
-                className="black-gradient w-12 h-12 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-all shadow-lg"
-              >
-                <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
-              </div>
-              <div
-                onClick={() => window.open(project.source_link, "_blank")}
-                className="black-gradient w-12 h-12 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-all shadow-lg"
-              >
-                <img src={glob} alt="live" className="w-1/2 h-1/2 object-contain" />
-              </div>
+              {hasCodeLink && (
+                <div
+                  onClick={() => window.open(project.source_code_link, "_blank")}
+                  className="black-gradient w-12 h-12 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-all shadow-lg"
+                >
+                  <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
+                </div>
+              )}
+              {liveUrl && (
+                <div
+                  onClick={() => window.open(liveUrl, "_blank")}
+                  className="black-gradient w-12 h-12 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-all shadow-lg"
+                >
+                  <img src={glob} alt="live" className="w-1/2 h-1/2 object-contain" />
+                </div>
+              )}
             </div>
           </motion.div>
 
@@ -91,6 +106,20 @@ const ProjectDetails = () => {
             <p className="text-secondary text-lg leading-relaxed mb-8">
               {project.description}
             </p>
+
+            {project.highlights && project.highlights.length > 0 && (
+              <>
+                <h3 className="text-white text-xl font-bold mb-4">Highlights</h3>
+                <ul className="flex flex-col gap-3 mb-10">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight} className="flex gap-3 text-secondary text-base leading-relaxed">
+                      <span className="text-[#915eff] font-bold">✓</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
 
             <h3 className="text-white text-xl font-bold mb-4">Technologies Used</h3>
             <div className="flex flex-wrap gap-3 mb-10">
@@ -105,21 +134,41 @@ const ProjectDetails = () => {
             </div>
 
             <div className="mt-auto flex gap-5">
-              <button
-                onClick={() => window.open(project.source_link, "_blank")}
-                className="flex-1 bg-[#915eff] py-4 rounded-xl text-white font-bold text-center hover:bg-[#804dee] transition-all shadow-lg shadow-primary"
-              >
-                Live Demo
-              </button>
-              <button
-                onClick={() => window.open(project.source_code_link, "_blank")}
-                className="flex-1 bg-tertiary py-4 rounded-xl text-white font-bold text-center hover:bg-[#2c3046] transition-all border border-[#ffffff10]"
-              >
-                Github Repo
-              </button>
+              {liveUrl && (
+                <button
+                  onClick={() => window.open(liveUrl, "_blank")}
+                  className="flex-1 bg-[#915eff] py-4 rounded-xl text-white font-bold text-center hover:bg-[#804dee] transition-all shadow-lg shadow-primary"
+                >
+                  Live Demo
+                </button>
+              )}
+              {hasCodeLink && (
+                <button
+                  onClick={() => window.open(project.source_code_link, "_blank")}
+                  className="flex-1 bg-tertiary py-4 rounded-xl text-white font-bold text-center hover:bg-[#2c3046] transition-all border border-[#ffffff10]"
+                >
+                  Github Repo
+                </button>
+              )}
             </div>
           </motion.div>
         </div>
+
+        {project.gallery && project.gallery.length > 0 && (
+          <div className="mt-20">
+            <h3 className="text-white text-2xl font-bold mb-6">Screenshots</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+              {project.gallery.map((shot, shotIndex) => (
+                <img
+                  key={`${project.name}-shot-${shotIndex}`}
+                  src={shot}
+                  alt={`${project.name} screenshot ${shotIndex + 1}`}
+                  className="w-full rounded-2xl shadow-xl object-cover"
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-20">
           <Link to="/" className="text-secondary hover:text-white flex items-center gap-2 transition-colors">
