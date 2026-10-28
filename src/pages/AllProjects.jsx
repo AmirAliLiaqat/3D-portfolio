@@ -4,9 +4,11 @@ import { styles } from "../styles";
 import { usePortfolio } from "../context/PortfolioContext";
 import { fadeIn, textVariant } from "../utils/motion";
 import ProjectCard from "../components/ProjectCard";
+import { getDisplayProjects } from "../utils/projectDisplay";
 
 const AllProjects = () => {
-  const { projects } = usePortfolio();
+  const { projects: rawProjects } = usePortfolio();
+  const projects = getDisplayProjects(rawProjects);
   const [toggle, setToggle] = useState("all");
 
   useEffect(() => {
