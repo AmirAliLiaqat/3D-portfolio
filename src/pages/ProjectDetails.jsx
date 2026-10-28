@@ -7,10 +7,12 @@ import { github, glob } from "../assets";
 import { fadeIn, textVariant } from "../utils/motion";
 import { getAppIcon } from "../utils/appIcons";
 import { getFeatureImage } from "../utils/featureImages";
+import { getDisplayProjects } from "../utils/projectDisplay";
 
 const ProjectDetails = () => {
   const { id } = useParams();
-  const { projects } = usePortfolio();
+  const { projects: rawProjects } = usePortfolio();
+  const projects = getDisplayProjects(rawProjects);
 
   // Find project by id or index
   const project = projects.find((p, index) => (p.id === id || index.toString() === id));
