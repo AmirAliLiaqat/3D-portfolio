@@ -68,7 +68,7 @@ const AllProjects = () => {
 
         <div className="mt-10 flex flex-wrap gap-7 justify-center">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project._id || project.id || `project-${index}`} index={index} {...project} />
+            <ProjectCard key={project._id || project.id || `project-${index}`} index={projects.indexOf(project)} {...project} />
           ))}
         </div>
 
