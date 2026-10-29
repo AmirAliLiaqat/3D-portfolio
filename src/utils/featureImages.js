@@ -9,6 +9,7 @@
 import barberShopFeature from "../assets/projects/feature/barber-shop.png";
 import omnitoolkitFeature from "../assets/projects/feature/omnitoolkit.png";
 import rewardlyFeature from "../assets/projects/feature/rewardly-feature.jpg";
+import designsToDeployFeature from "../assets/projects/feature/designs-to-deploy-feature.jpg";
 import ralliyFeature from "../assets/projects/feature/ralliy-feature.jpg";
 import byteKiDuniyaFeature from "../assets/projects/feature/byte-ki-duniya.png";
 import bytebunchFeature from "../assets/projects/feature/bytebunch.png";
@@ -43,6 +44,7 @@ const FEATURE_IMAGES = {
   "campus hub": campusHubFeature,
   "coffee shop": coffeeShopFeature,
   "dengueguard": dengueguardFeature,
+  "designs to deploy agency platform": designsToDeployFeature,
   "devbrains software house": devbrainsFeature,
   "devutils": devutilsFeature,
   "fixonic": fixonicFeature,
