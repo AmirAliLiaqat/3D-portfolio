@@ -21,6 +21,7 @@ const AllProjects = () => {
     if (toggle === "wordpress") return cat.includes("wordpress");
     if (toggle === "mern") return cat.includes("mern") || cat.includes("fullstack");
     if (toggle === "mobile") return cat.includes("mobile") || cat.includes("app") || cat.includes("frontend");
+    if (toggle === "professional") return cat.includes("professional");
     return cat === toggle.toLowerCase();
   });
 
@@ -29,6 +30,7 @@ const AllProjects = () => {
     { value: "wordpress", label: "WordPress" },
     { value: "mern", label: "MERN Stack" },
     { value: "mobile", label: "App / Mobile" },
+    { value: "professional", label: "Professional" },
   ];
 
   return (

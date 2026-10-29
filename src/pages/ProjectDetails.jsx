@@ -8,6 +8,7 @@ import { fadeIn, textVariant } from "../utils/motion";
 import { getAppIcon } from "../utils/appIcons";
 import { getFeatureImage } from "../utils/featureImages";
 import { getDisplayProjects, getLiveLink } from "../utils/projectDisplay";
+import ScreenshotCarousel from "../components/ScreenshotCarousel";
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -154,20 +155,25 @@ const ProjectDetails = () => {
           </motion.div>
         </div>
 
-        {project.gallery && project.gallery.length > 0 && (
-          <div className="mt-20">
-            <h3 className="text-white text-2xl font-bold mb-6">Screenshots</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-              {project.gallery.map((shot, shotIndex) => (
-                <img
-                  key={`${project.name}-shot-${shotIndex}`}
-                  src={shot}
-                  alt={`${project.name} screenshot ${shotIndex + 1}`}
-                  className="w-full rounded-2xl shadow-xl object-cover"
-                />
-              ))}
+        {project.gallery && project.gallery.length > 0 && project.carousel ? (
+          <ScreenshotCarousel images={project.gallery} name={project.name} />
+        ) : (
+          project.gallery &&
+          project.gallery.length > 0 && (
+            <div className="mt-20">
+              <h3 className="text-white text-2xl font-bold mb-6">Screenshots</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+                {project.gallery.map((shot, shotIndex) => (
+                  <img
+                    key={`${project.name}-shot-${shotIndex}`}
+                    src={shot}
+                    alt={`${project.name} screenshot ${shotIndex + 1}`}
+                    className="w-full rounded-2xl shadow-xl object-cover"
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )
         )}
 
         <div className="mt-20">
