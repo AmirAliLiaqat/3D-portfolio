@@ -15,6 +15,22 @@ import ralliyFeature from "../assets/projects/feature/ralliy-feature.jpg";
 import ralliy_1 from "../assets/projects/feature/gallery/ralliy-1.jpg";
 import ralliy_2 from "../assets/projects/feature/gallery/ralliy-2.jpg";
 import ralliy_3 from "../assets/projects/feature/gallery/ralliy-3.jpg";
+import ralliy_4 from "../assets/projects/feature/gallery/ralliy-4.jpg";
+import ralliy_5 from "../assets/projects/feature/gallery/ralliy-5.jpg";
+import ralliy_6 from "../assets/projects/feature/gallery/ralliy-6.jpg";
+import ralliy_7 from "../assets/projects/feature/gallery/ralliy-7.jpg";
+import ralliy_8 from "../assets/projects/feature/gallery/ralliy-8.jpg";
+import ralliy_9 from "../assets/projects/feature/gallery/ralliy-9.jpg";
+import ralliy_10 from "../assets/projects/feature/gallery/ralliy-10.jpg";
+import ralliy_11 from "../assets/projects/feature/gallery/ralliy-11.jpg";
+import ralliy_12 from "../assets/projects/feature/gallery/ralliy-12.jpg";
+import ralliy_13 from "../assets/projects/feature/gallery/ralliy-13.jpg";
+import ralliy_14 from "../assets/projects/feature/gallery/ralliy-14.jpg";
+import ralliy_15 from "../assets/projects/feature/gallery/ralliy-15.jpg";
+import ralliy_16 from "../assets/projects/feature/gallery/ralliy-16.jpg";
+import ralliy_17 from "../assets/projects/feature/gallery/ralliy-17.jpg";
+import ralliy_18 from "../assets/projects/feature/gallery/ralliy-18.jpg";
+import ralliy_19 from "../assets/projects/feature/gallery/ralliy-19.jpg";
 import devutils_premium_1 from "../assets/projects/feature/gallery/devutils-premium-1.jpg";
 import devutils_premium_2 from "../assets/projects/feature/gallery/devutils-premium-2.jpg";
 import devutils_premium_3 from "../assets/projects/feature/gallery/devutils-premium-3.jpg";
@@ -118,7 +134,7 @@ const RALLIY = {
     "AWS EC2",
   ]),
   image: ralliyFeature,
-  gallery: [ralliy_1, ralliy_2, ralliy_3],
+  gallery: [ralliy_1, ralliy_2, ralliy_3, ralliy_4, ralliy_5, ralliy_6, ralliy_7, ralliy_8, ralliy_9, ralliy_10, ralliy_11, ralliy_12, ralliy_13, ralliy_14, ralliy_15, ralliy_16, ralliy_17, ralliy_18, ralliy_19],
   carousel: true,
   source_code_link: "https://github.com/AmirAliLiaqat",
   source_link: "https://staging.ralliy.com/",
