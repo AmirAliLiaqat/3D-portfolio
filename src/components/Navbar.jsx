@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../mock/index.js";
 import { usePortfolio } from "../context/PortfolioContext";
@@ -8,6 +8,7 @@ import { CustomButton } from "./styled";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -18,6 +19,19 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // When arriving at home with a pending section target (clicked from another
+  // page), scroll to that section once the home page has rendered.
+  useEffect(() => {
+    const target = location.state?.scrollTo;
+    if (target && location.pathname === "/") {
+      const timer = setTimeout(() => {
+        document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+      window.history.replaceState({}, document.title);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   // Do not render top Navbar in Admin dashboard pages
   if (location.pathname.startsWith("/admin")) {
@@ -33,6 +47,40 @@ const Navbar = () => {
 
   const filteredNavLinks = navLinks.filter((link) => link.id !== "company");
 
+  const scrollToSection = (id) => {
+    // Already on the home page: smooth-scroll to the section in place.
+    // On any other page: go home first, the effect above finishes the scroll.
+    if (location.pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: id } });
+    }
+  };
+
+  const handleNavClick = (link) => {
+    setActive(link.title);
+    setToggle(false);
+    // Projects opens the dedicated projects page, like Blogs does.
+    if (link.id === "project") {
+      if (location.pathname !== "/projects") {
+        navigate("/projects");
+      }
+      window.scrollTo(0, 0);
+      return;
+    }
+    if (link.id === "blogs") {
+      return;
+    }
+    scrollToSection(link.id);
+  };
+
+  const renderLinkLabel = (link) => {
+    if (link.id === "blogs") {
+      return <Link to="/blogs">{link.title}</Link>;
+    }
+    return <span>{link.title}</span>;
+  };
+
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${
@@ -47,7 +95,11 @@ const Navbar = () => {
           className="flex items-center gap-2"
           onClick={() => {
             setActive("");
-            window.scrollTo(0, 0);
+            if (location.pathname !== "/") {
+              setTimeout(() => window.scrollTo(0, 0), 150);
+            } else {
+              window.scrollTo(0, 0);
+            }
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
@@ -62,13 +114,9 @@ const Navbar = () => {
               className={`${
                 active === link.title ? "text-white" : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.title)}
+              onClick={() => handleNavClick(link)}
             >
-              {link.id === "blogs" ? (
-                <Link to="/blogs">{link.title}</Link>
-              ) : (
-                <Link to={`/#${link.id}`}>{link.title}</Link>
-              )}
+              {renderLinkLabel(link)}
             </li>
           ))}
         </ul>
@@ -111,16 +159,9 @@ const Navbar = () => {
                   className={`${
                     active === link.title ? "text-white" : "text-secondary"
                   } font-poppins font-medium cursor-pointer text-[16px]`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.title);
-                  }}
+                  onClick={() => handleNavClick(link)}
                 >
-                  {link.id === "blogs" ? (
-                    <Link to="/blogs">{link.title}</Link>
-                  ) : (
-                    <Link to={`/#${link.id}`}>{link.title}</Link>
-                  )}
+                  {renderLinkLabel(link)}
                 </li>
               ))}
               <li>
