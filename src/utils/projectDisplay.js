@@ -11,6 +11,26 @@
 
 import omnitoolkitFeature from "../assets/projects/feature/omnitoolkit.png";
 import rewardlyFeature from "../assets/projects/feature/rewardly-feature.jpg";
+import ralliyFeature from "../assets/projects/feature/ralliy-feature.jpg";
+import ralliy_1 from "../assets/projects/feature/gallery/ralliy-1.jpg";
+import ralliy_2 from "../assets/projects/feature/gallery/ralliy-2.jpg";
+import ralliy_3 from "../assets/projects/feature/gallery/ralliy-3.jpg";
+import ralliy_4 from "../assets/projects/feature/gallery/ralliy-4.jpg";
+import ralliy_5 from "../assets/projects/feature/gallery/ralliy-5.jpg";
+import ralliy_6 from "../assets/projects/feature/gallery/ralliy-6.jpg";
+import ralliy_7 from "../assets/projects/feature/gallery/ralliy-7.jpg";
+import ralliy_8 from "../assets/projects/feature/gallery/ralliy-8.jpg";
+import ralliy_9 from "../assets/projects/feature/gallery/ralliy-9.jpg";
+import ralliy_10 from "../assets/projects/feature/gallery/ralliy-10.jpg";
+import ralliy_11 from "../assets/projects/feature/gallery/ralliy-11.jpg";
+import ralliy_12 from "../assets/projects/feature/gallery/ralliy-12.jpg";
+import ralliy_13 from "../assets/projects/feature/gallery/ralliy-13.jpg";
+import ralliy_14 from "../assets/projects/feature/gallery/ralliy-14.jpg";
+import ralliy_15 from "../assets/projects/feature/gallery/ralliy-15.jpg";
+import ralliy_16 from "../assets/projects/feature/gallery/ralliy-16.jpg";
+import ralliy_17 from "../assets/projects/feature/gallery/ralliy-17.jpg";
+import ralliy_18 from "../assets/projects/feature/gallery/ralliy-18.jpg";
+import ralliy_19 from "../assets/projects/feature/gallery/ralliy-19.jpg";
 import devutils_premium_1 from "../assets/projects/feature/gallery/devutils-premium-1.jpg";
 import devutils_premium_2 from "../assets/projects/feature/gallery/devutils-premium-2.jpg";
 import devutils_premium_3 from "../assets/projects/feature/gallery/devutils-premium-3.jpg";
@@ -52,13 +72,13 @@ const DETAILS = {
   "prepmaster": {"description": "A professional, scalable, and secure full-stack test preparation platform. This project features a Next.js 15 frontend, a FastAPI Python service, and a comprehensive DevOps suite for DigitalOcean deployment.", "tagline": "A secure, scalable full-stack test preparation platform.", "categoryLabel": "Test Preparation Platform", "highlights": ["Next.js 15 frontend with a FastAPI Python service", "Secure and scalable architecture", "DigitalOcean DevOps deployment suite"], "technologies": ["Next.js", "FastAPI", "MongoDB", "Tailwind CSS"], "liveUrl": "https://prepmaster-mock.vercel.app/"},
   "campus hub": {"description": "Campus Hub is a student management system (SMS) designed to enhance campus life and communication, providing tools for student engagement and academic management.", "tagline": null, "categoryLabel": "Student Management System", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Node.js"], "liveUrl": "https://campus-sms.vercel.app/"},
   "campus core": {"description": "Campus Core is an advanced institutional management system that streamlines administrative tasks, student records, and academic workflows for educational institutions.", "tagline": "Institutional management for records, admin tasks, and academic workflows.", "categoryLabel": "Institutional Management System", "highlights": ["Student records management", "Streamlined administrative tasks", "Academic workflow tools"], "technologies": ["React", "MongoDB", "Tailwind CSS", "Express.js"], "liveUrl": "https://campus-core-frontend.vercel.app/"},
-  "nexkind": {"description": "Nexkind is a modern web application designed to provide innovative digital solutions, featuring a sleek user interface and robust backend architecture.", "tagline": null, "categoryLabel": "Web Application", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Node.js"], "liveUrl": "https://nexkind.vercel.app/"},
+  "nexkind": {"category": "Professional", "description": "Nexkind is a modern web application designed to provide innovative digital solutions, featuring a sleek user interface and robust backend architecture.", "tagline": null, "categoryLabel": "Web Application", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Node.js"], "liveUrl": "https://nexkind.vercel.app/"},
   "coffee shop": {"description": "A coffee shop website built with Next.js, React, and Tailwind CSS.", "tagline": null, "categoryLabel": "Website", "highlights": [], "technologies": ["Next.js", "React", "Tailwind CSS"], "liveUrl": "https://leads-fyp.vercel.app"},
-  "fixonic": {"description": "Fixonic is a professional service marketplace connecting users with expert technicians for various repair needs, featuring a seamless booking and tracking system.", "tagline": null, "categoryLabel": "Service Marketplace", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Express.js"], "liveUrl": "https://fixonic.vercel.app/"},
+  "fixonic": {"category": "Professional", "description": "Fixonic is a professional service marketplace connecting users with expert technicians for various repair needs, featuring a seamless booking and tracking system.", "tagline": null, "categoryLabel": "Service Marketplace", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Express.js"], "liveUrl": "https://fixonic.vercel.app/"},
   "mcclg - college website": {"description": "MC College is an educational institute website built with React, Vite, and Bootstrap 5.", "tagline": null, "categoryLabel": "Educational Website", "highlights": [], "technologies": ["React", "Vite", "Bootstrap 5"], "liveUrl": "https://mcclg.vercel.app"},
   "sports arena": {"description": "A sports-themed web application built with React, Vite, and Tailwind CSS.", "tagline": null, "categoryLabel": "Web Application", "highlights": [], "technologies": ["React", "Vite", "Tailwind CSS"], "liveUrl": "https://sports-arena-eight.vercel.app"},
   "soar task manager": {"description": "A web application built with React, Vite, and Tailwind CSS.", "tagline": null, "categoryLabel": "Web Application", "highlights": [], "technologies": ["React", "Vite", "Tailwind CSS"], "liveUrl": "https://soar-task-react.vercel.app"},
-  "all in one media": {"description": "OmniToolkit is a full-stack, production-ready all-in-one web productivity platform with 124 tools across PDF processing, image editing, video downloading, calculators, and utilities. Most tools run entirely in the browser, while a Node.js and Express backend with a Python FastAPI microservice powers accounts, video downloads, URL shortening, and document conversion.", "tagline": "Every tool you need, all in one place.", "categoryLabel": "All-in-One Tools Platform", "highlights": ["124 tools across PDF, image, video, calculator, AI, and government service categories", "20+ PDF and office tools powered by a Python FastAPI microservice", "Video downloaders, URL shortener, AI resume builder, and GitHub and LinkedIn profile extractors", "Free and Pro accounts with OTP sign-in and a full admin dashboard"], "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Python", "FastAPI"], "liveUrl": "https://omnitoolkit.vercel.app/", "name": "OmniToolkit"},
+  "all in one media": {"category": "Professional", "description": "OmniToolkit is a full-stack, production-ready all-in-one web productivity platform with 124 tools across PDF processing, image editing, video downloading, calculators, and utilities. Most tools run entirely in the browser, while a Node.js and Express backend with a Python FastAPI microservice powers accounts, video downloads, URL shortening, and document conversion.", "tagline": "Every tool you need, all in one place.", "categoryLabel": "All-in-One Tools Platform", "highlights": ["124 tools across PDF, image, video, calculator, AI, and government service categories", "20+ PDF and office tools powered by a Python FastAPI microservice", "Video downloaders, URL shortener, AI resume builder, and GitHub and LinkedIn profile extractors", "Free and Pro accounts with OTP sign-in and a full admin dashboard"], "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Python", "FastAPI"], "liveUrl": "https://omnitoolkit.vercel.app/", "name": "OmniToolkit"},
   "barber shop": {"description": "A complete and responsive barber shop template built with the MERN stack, with a clean, attractive user experience and interface.", "tagline": null, "categoryLabel": "Website Template", "highlights": [], "technologies": ["HTML5", "CSS3", "Bootstrap 5", "React"], "liveUrl": "https://barber-shop-tau-three.vercel.app/"},
   "ums - university management system": {"description": "UMS is a complete and fully featured student management system with various modules and features.", "tagline": null, "categoryLabel": "Student Management System", "highlights": [], "technologies": ["React", "Next.js", "MUI", "Node.js", "Express.js", "MongoDB"], "liveUrl": "https://mern-lms-with-dashboard-client.vercel.app"},
   "richmond institute": {"description": "A website for Richmond Institute, showcasing its strengths and inviting prospective students to explore the opportunities available.", "tagline": null, "categoryLabel": "Educational Institute Website", "highlights": [], "technologies": ["WordPress", "Elementor"], "liveUrl": "https://richmondinstitute.pk"},
@@ -67,7 +87,7 @@ const DETAILS = {
   "warraich traders": {"description": "Warraich Traders is a housing society management system used for buying houses and managing housing materials.", "tagline": null, "categoryLabel": "Housing Society Management", "highlights": [], "technologies": ["HTML5", "CSS3", "Bootstrap 5", "WordPress", "PHP", "MySQL", "React"], "liveUrl": "https://warraich-traders-react.vercel.app/"},
   "mehar herbals": {"description": "Mehar Herbals is an e-commerce site providing a wide variety of herbal products to fulfill your herbal needs.", "tagline": "E-commerce storefront for a wide range of herbal products.", "categoryLabel": "E-commerce Store", "highlights": ["Full herbal product catalog", "WooCommerce-powered store", "Responsive shopping experience"], "technologies": ["HTML5", "CSS3", "Bootstrap 5", "WordPress", "PHP", "WooCommerce"], "liveUrl": "http://meharherbals.likesyou.org/"},
   "byte ki duniya": {"description": "Byte Ki Duniya is an IT services provider company that provides all the ultimate solutions for your business.", "tagline": null, "categoryLabel": "IT Services Website", "highlights": [], "technologies": ["HTML5", "CSS3", "Bootstrap 5", "WordPress", "PHP", "MySQL"], "liveUrl": "http://byte.likesyou.org/"},
-  "plantify mern app": {"description": "Plantify is a comprehensive plant care and disease detection platform that helps users identify plant health issues and provides expert recommendations for treatment.", "tagline": null, "categoryLabel": "Plant Care Platform", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Node.js"], "liveUrl": "https://plantify-fyp-project.vercel.app/"},
+  "plantify mern app": {"category": "Professional", "description": "Plantify is a comprehensive plant care and disease detection platform that helps users identify plant health issues and provides expert recommendations for treatment.", "tagline": null, "categoryLabel": "Plant Care Platform", "highlights": [], "technologies": ["React", "MongoDB", "Tailwind CSS", "Node.js"], "liveUrl": null},
   "devbrains software house": {"description": "DevBrains is an IT Services Provider Company that provides many services like Web Development, Graphic development, and many more.", "tagline": null, "categoryLabel": "WordPress Corporate Website", "highlights": [], "technologies": ["WordPress", "Elementor", "React"], "liveUrl": "http://devbrains.likesyou.org/"},
   "bytebunch software house": {"description": "ByteBunch is an IT Services Provider Company that provides many services like Web Development, Graphic development, and many more.", "tagline": null, "categoryLabel": "IT Services Website", "highlights": [], "technologies": ["HTML5", "CSS3", "Bootstrap 5", "WordPress", "PHP", "MySQL"], "liveUrl": "https://amiraliliaqat.github.io/ByteBunch-Html/"},
 };
@@ -85,6 +105,40 @@ const REWARDLY = {
   source_code_link: "https://github.com/AmirAliLiaqat",
   source_link: null,
   live_link: null,
+};
+
+
+const RALLIY = {
+  name: "Ralliy",
+  description:
+    "Ralliy is a freelance marketplace built to take the friction out of hiring. Clients describe what they need in plain words or upload files, and AI turns that into structured job posts; freelancers onboard the same way.",
+  tagline: "Calm the chaos of hiring.",
+  categoryLabel: "Freelance Marketplace",
+  category: "Professional",
+  highlights: [
+    "AI turns plain-word briefs and file uploads into structured job posts",
+    "Freelancers onboard the same simple way as clients",
+    "Matching engine ranks verified specialists against every brief",
+    "Bounties plus fiat and crypto payments",
+  ],
+  tags: toTags([
+    "Next.js",
+    "shadcn",
+    "Tailwind CSS",
+    "Apollo",
+    "GraphQL",
+    "Nest.js",
+    "PostgreSQL",
+    "Prisma",
+    "AWS Amplify",
+    "AWS EC2",
+  ]),
+  image: ralliyFeature,
+  gallery: [ralliy_1, ralliy_2, ralliy_3, ralliy_4, ralliy_5, ralliy_6, ralliy_7, ralliy_8, ralliy_9, ralliy_10, ralliy_11, ralliy_12, ralliy_13, ralliy_14, ralliy_15, ralliy_16, ralliy_17, ralliy_18, ralliy_19],
+  carousel: true,
+  source_code_link: "https://github.com/AmirAliLiaqat",
+  source_link: "https://staging.ralliy.com/",
+  live_link: "https://staging.ralliy.com/",
 };
 
 /**
@@ -110,6 +164,8 @@ export function getDisplayProjects(projects) {
       tags: details.technologies && details.technologies.length ? toTags(details.technologies) : project.tags,
       tagline: details.tagline || null,
       categoryLabel: details.categoryLabel || null,
+      ...(details.category ? { category: details.category } : {}),
+      ...(details.carousel ? { carousel: true } : {}),
       highlights: details.highlights || [],
       gallery: details.gallery || [],
       source_link: live,
@@ -119,7 +175,11 @@ export function getDisplayProjects(projects) {
   const hasRewardly = mapped.some(
     (project) => String(project?.name || "").trim().toLowerCase() === "rewardly"
   );
-  return hasRewardly ? mapped : [...mapped, REWARDLY];
+  const hasRalliy = mapped.some(
+    (project) => String(project?.name || "").trim().toLowerCase() === "ralliy"
+  );
+  let out = hasRewardly ? mapped : [...mapped, REWARDLY];
+  return hasRalliy ? out : [...out, RALLIY];
 }
 
 export function hasLiveLink(project) {
