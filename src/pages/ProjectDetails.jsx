@@ -152,6 +152,28 @@ const ProjectDetails = () => {
                 </button>
               )}
             </div>
+
+            {project.qrCode && project.playUrl && (
+              <div className="mt-8 flex items-center gap-6 rounded-2xl border border-[#ffffff10] bg-tertiary p-6">
+                <img
+                  src={project.qrCode}
+                  alt={`${project.name} Google Play QR code`}
+                  className="h-32 w-32 shrink-0 rounded-xl bg-white p-2 shadow-lg"
+                />
+                <div>
+                  <h3 className="text-white text-xl font-bold mb-2">Get the App</h3>
+                  <p className="text-secondary text-base mb-4">
+                    Scan the QR code or tap below to download on Google Play.
+                  </p>
+                  <button
+                    onClick={() => window.open(project.playUrl, "_blank")}
+                    className="bg-[#915eff] px-6 py-3 rounded-xl text-white font-bold hover:bg-[#804dee] transition-all shadow-lg shadow-primary"
+                  >
+                    Google Play
+                  </button>
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
 
